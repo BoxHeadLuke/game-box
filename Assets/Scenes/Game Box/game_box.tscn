@@ -1,21 +1,290 @@
 [gd_scene format=3 uid="uid://us2anx60fgwp"]
 
 [ext_resource type="PackedScene" uid="uid://bj8lb7d0ieuym" path="res://Assets/GB/Objects/Player/gb_player.tscn" id="1_fuyfo"]
+[ext_resource type="Script" uid="uid://bahnc4m2nqkct" path="res://Assets/Scenes/Game Box/game_box.gd" id="1_rbs5k"]
 [ext_resource type="Shader" uid="uid://dlie15d4kp6ya" path="res://Assets/Shaders/CRT.gdshader" id="2_awqor"]
+[ext_resource type="Script" uid="uid://c1ukv11vnnvfe" path="res://Assets/Scenes/Game Box/crt.gd" id="3_lekkh"]
 [ext_resource type="PackedScene" uid="uid://bn48nmk785v3r" path="res://Assets/GB/Objects/Grab Objects/Box/gb_box.tscn" id="4_drekg"]
 [ext_resource type="PackedScene" uid="uid://d3emgtn0wjvra" path="res://Assets/GB/Objects/Sidekick/gb_sidekick.tscn" id="5_xt5hh"]
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_17rya"]
 shader = ExtResource("2_awqor")
+shader_parameter/overlay = false
 shader_parameter/resolution = Vector2(288, 176)
-shader_parameter/scan_line_amount = 0.0990000047025
+shader_parameter/brightness = 1.4
+shader_parameter/scanlines_opacity = 0.4
+shader_parameter/scanlines_width = 0.25
+shader_parameter/grille_opacity = 0.3
+shader_parameter/roll = true
+shader_parameter/roll_speed = 8.0
+shader_parameter/roll_size = 15.0
+shader_parameter/roll_variation = 1.8
+shader_parameter/distort_intensity = 0.05
+shader_parameter/aberration = 0.03
+shader_parameter/noise_opacity = 0.4
+shader_parameter/noise_speed = 5.0
+shader_parameter/static_noise_intensity = 0.06
+shader_parameter/pixelate = false
+shader_parameter/discolor = false
 shader_parameter/warp_amount = 0.0
-shader_parameter/vignette_amount = 0.5750000273125
+shader_parameter/clip_warp = false
 shader_parameter/vignette_intensity = 0.675
-shader_parameter/grille_amount = 0.266000012635
-shader_parameter/brightness_boost = 1.0
+shader_parameter/vignette_opacity = 0.5
+
+[sub_resource type="Animation" id="Animation_rbs5k"]
+resource_name = "Fade CRT"
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("CRT Effect:material:shader_parameter/scanlines_opacity")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 1),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [0.0, 0.4]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("CRT Effect:material:shader_parameter/scanlines_width")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 1),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [0.0, 0.25]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("CRT Effect:material:shader_parameter/grille_opacity")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0, 1),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [0.0, 0.3]
+}
+tracks/3/type = "value"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath("CRT Effect:material:shader_parameter/roll_size")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"times": PackedFloat32Array(0, 1),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [0.0, 15.0]
+}
+tracks/4/type = "value"
+tracks/4/imported = false
+tracks/4/enabled = true
+tracks/4/path = NodePath("CRT Effect:material:shader_parameter/distort_intensity")
+tracks/4/interp = 1
+tracks/4/loop_wrap = true
+tracks/4/keys = {
+"times": PackedFloat32Array(0, 1),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [0.0, 0.05]
+}
+tracks/5/type = "value"
+tracks/5/imported = false
+tracks/5/enabled = true
+tracks/5/path = NodePath("CRT Effect:material:shader_parameter/aberration")
+tracks/5/interp = 1
+tracks/5/loop_wrap = true
+tracks/5/keys = {
+"times": PackedFloat32Array(0, 1),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [4.7499999933364734e-08, 0.03]
+}
+tracks/6/type = "value"
+tracks/6/imported = false
+tracks/6/enabled = true
+tracks/6/path = NodePath("CRT Effect:material:shader_parameter/noise_opacity")
+tracks/6/interp = 1
+tracks/6/loop_wrap = true
+tracks/6/keys = {
+"times": PackedFloat32Array(0, 1),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [0.0, 0.4]
+}
+tracks/7/type = "value"
+tracks/7/imported = false
+tracks/7/enabled = true
+tracks/7/path = NodePath("CRT Effect:material:shader_parameter/brightness")
+tracks/7/interp = 1
+tracks/7/loop_wrap = true
+tracks/7/keys = {
+"times": PackedFloat32Array(0, 1),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [1.0, 1.4]
+}
+tracks/8/type = "value"
+tracks/8/imported = false
+tracks/8/enabled = true
+tracks/8/path = NodePath("CRT Effect:material:shader_parameter/static_noise_intensity")
+tracks/8/interp = 1
+tracks/8/loop_wrap = true
+tracks/8/keys = {
+"times": PackedFloat32Array(0, 1),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [0.0, 0.06]
+}
+tracks/9/type = "value"
+tracks/9/imported = false
+tracks/9/enabled = true
+tracks/9/path = NodePath("CRT Effect:material:shader_parameter/vignette_opacity")
+tracks/9/interp = 1
+tracks/9/loop_wrap = true
+tracks/9/keys = {
+"times": PackedFloat32Array(0, 1),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [0.0, 0.5]
+}
+
+[sub_resource type="Animation" id="Animation_lekkh"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("CRT Effect:material:shader_parameter/scanlines_opacity")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [0.4]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("CRT Effect:material:shader_parameter/scanlines_width")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [0.25]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("CRT Effect:material:shader_parameter/grille_opacity")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [0.3]
+}
+tracks/3/type = "value"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath("CRT Effect:material:shader_parameter/roll_size")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [15.0]
+}
+tracks/4/type = "value"
+tracks/4/imported = false
+tracks/4/enabled = true
+tracks/4/path = NodePath("CRT Effect:material:shader_parameter/distort_intensity")
+tracks/4/interp = 1
+tracks/4/loop_wrap = true
+tracks/4/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [0.05]
+}
+tracks/5/type = "value"
+tracks/5/imported = false
+tracks/5/enabled = true
+tracks/5/path = NodePath("CRT Effect:material:shader_parameter/aberration")
+tracks/5/interp = 1
+tracks/5/loop_wrap = true
+tracks/5/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [0.03]
+}
+tracks/6/type = "value"
+tracks/6/imported = false
+tracks/6/enabled = true
+tracks/6/path = NodePath("CRT Effect:material:shader_parameter/noise_opacity")
+tracks/6/interp = 1
+tracks/6/loop_wrap = true
+tracks/6/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [0.4]
+}
+tracks/7/type = "value"
+tracks/7/imported = false
+tracks/7/enabled = true
+tracks/7/path = NodePath("CRT Effect:material:shader_parameter/brightness")
+tracks/7/interp = 1
+tracks/7/loop_wrap = true
+tracks/7/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [1.4]
+}
+tracks/8/type = "value"
+tracks/8/imported = false
+tracks/8/enabled = true
+tracks/8/path = NodePath("CRT Effect:material:shader_parameter/static_noise_intensity")
+tracks/8/interp = 1
+tracks/8/loop_wrap = true
+tracks/8/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [0.06]
+}
+tracks/9/type = "value"
+tracks/9/imported = false
+tracks/9/enabled = true
+tracks/9/path = NodePath("CRT Effect:material:shader_parameter/vignette_opacity")
+tracks/9/interp = 1
+tracks/9/loop_wrap = true
+tracks/9/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [0.5]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_1k7sf"]
+_data = {
+&"Fade CRT": SubResource("Animation_rbs5k"),
+&"RESET": SubResource("Animation_lekkh")
+}
 
 [node name="GameBox" type="Node2D" unique_id=1282922401]
+script = ExtResource("1_rbs5k")
 
 [node name="ColorRect2" type="ColorRect" parent="." unique_id=142528917]
 offset_left = -477.0
@@ -64,16 +333,22 @@ polygon = PackedVector2Array(-13, 128, 290, 128, 345, 111, 374, 101, 432, 67, 38
 position = Vector2(-139, -128)
 polygon = PackedVector2Array(-153, 71, -62, 116, -13, 128, 290, 128, 374, 101, 432, 67, 388, 167, -14, 168)
 
-[node name="CanvasLayer" type="CanvasLayer" parent="." unique_id=1763021770]
+[node name="CRT" type="CanvasLayer" parent="." unique_id=1763021770 node_paths=PackedStringArray("CRT_Effect", "Animator")]
+process_mode = 3
+script = ExtResource("3_lekkh")
+CRT_Effect = NodePath("CRT Effect")
+Animator = NodePath("AnimationPlayer")
 
-[node name="TextureRect" type="ColorRect" parent="CanvasLayer" unique_id=337993390]
-visible = false
+[node name="CRT Effect" type="ColorRect" parent="CRT" unique_id=337993390]
 material = SubResource("ShaderMaterial_17rya")
 anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="CRT" unique_id=571034227]
+libraries/ = SubResource("AnimationLibrary_1k7sf")
 
 [node name="GB Sidekick" parent="." unique_id=1400024817 node_paths=PackedStringArray("Player") instance=ExtResource("5_xt5hh")]
 position = Vector2(118, 52)

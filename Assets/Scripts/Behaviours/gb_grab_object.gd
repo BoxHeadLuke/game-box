@@ -4,7 +4,7 @@ extends RigidBody2D
 @export var Use_Default_Material : bool = true
 
 const default_mass = 0.1
-const default_physics_material = "uid://cdjcu8pulisjp"
+const default_physics_material = "uid://bqk7vm4mlq2h5"
 
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
