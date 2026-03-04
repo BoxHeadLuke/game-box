@@ -1,0 +1,57 @@
+[gd_scene format=3 uid="uid://d3emgtn0wjvra"]
+
+[ext_resource type="Script" uid="uid://ddwja1xgxn471" path="res://Assets/GB/Objects/Sidekick/gb_sidekick.gd" id="1_m8swq"]
+[ext_resource type="Texture2D" uid="uid://b68ggspnqkres" path="res://Assets/GB/Visuals/GB Sidekick.png" id="1_pjdpf"]
+[ext_resource type="Script" uid="uid://c6ppxwwiuykhq" path="res://Assets/Scripts/Behaviours/squash_&_stretch.gd" id="2_ijtcd"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_m8swq"]
+atlas = ExtResource("1_pjdpf")
+region = Rect2(0, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_ijtcd"]
+atlas = ExtResource("1_pjdpf")
+region = Rect2(32, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_ysab0"]
+atlas = ExtResource("1_pjdpf")
+region = Rect2(64, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_l078n"]
+atlas = ExtResource("1_pjdpf")
+region = Rect2(96, 0, 32, 32)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_0pq8s"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_m8swq")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_ijtcd")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_ysab0")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_l078n")
+}],
+"loop": true,
+"name": &"default",
+"speed": 10.0
+}]
+
+[node name="GB Sidekick" type="Node2D" unique_id=1400024817]
+script = ExtResource("1_m8swq")
+
+[node name="SquashAndStretch" type="Node" parent="." unique_id=1271742821 node_paths=PackedStringArray("node")]
+script = ExtResource("2_ijtcd")
+node = NodePath("../Flip/AnimatedSprite2D")
+metadata/_custom_type_script = "uid://c6ppxwwiuykhq"
+
+[node name="Flip" type="Node2D" parent="." unique_id=525883284]
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="Flip" unique_id=1166120198]
+position = Vector2(0, -4)
+sprite_frames = SubResource("SpriteFrames_0pq8s")
+autoplay = "default"
+frame_progress = 0.21136262

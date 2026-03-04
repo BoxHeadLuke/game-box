@@ -1,0 +1,287 @@
+[gd_scene format=3 uid="uid://bj8lb7d0ieuym"]
+
+[ext_resource type="Script" uid="uid://bbvtsxuskqope" path="res://Assets/GB/Objects/Player/gb_player.gd" id="1_4xcf6"]
+[ext_resource type="Texture2D" uid="uid://baw1eeq3dahba" path="res://Assets/GB/Visuals/GB Player.png" id="1_fonqw"]
+[ext_resource type="Script" uid="uid://c6ppxwwiuykhq" path="res://Assets/Scripts/Behaviours/squash_&_stretch.gd" id="2_8qlrb"]
+
+[sub_resource type="Animation" id="Animation_8qc3j"]
+resource_name = "Fall"
+length = 0.1
+loop_mode = 1
+step = 0.05
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Flip/Body:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [9]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("../Grab Point Mover:position")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(0, 0)]
+}
+
+[sub_resource type="Animation" id="Animation_4xcf6"]
+resource_name = "Idle"
+length = 0.4
+loop_mode = 1
+step = 0.1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Flip/Body:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.1, 0.2, 0.3),
+"transitions": PackedFloat32Array(1, 1, 1, 1),
+"update": 1,
+"values": [0, 1, 2, 3]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("../Grab Point Mover:position")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(0, 0)]
+}
+
+[sub_resource type="Animation" id="Animation_m3vlg"]
+resource_name = "Jump"
+length = 0.1
+loop_mode = 1
+step = 0.05
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Flip/Body:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [8]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("../Grab Point Mover:position")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(0, 0)]
+}
+
+[sub_resource type="Animation" id="Animation_8qlrb"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Flip/Body:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [0]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("../Grab Point Mover:position")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(0, -29)]
+}
+
+[sub_resource type="Animation" id="Animation_dmoiy"]
+resource_name = "Run"
+length = 0.2
+loop_mode = 1
+step = 0.05
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Flip/Body:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.05, 0.1, 0.15),
+"transitions": PackedFloat32Array(1, 1, 1, 1),
+"update": 1,
+"values": [4, 5, 6, 7]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("../Grab Point Mover:position")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 0.075, 0.15),
+"transitions": PackedFloat32Array(0.5, 2, 1),
+"update": 0,
+"values": [Vector2(0, 0), Vector2(0, -2), Vector2(0, 0)]
+}
+
+[sub_resource type="Animation" id="Animation_o3loe"]
+resource_name = "Walk"
+length = 0.28
+loop_mode = 1
+step = 0.07
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Flip/Body:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.071428575, 0.14285715, 0.21428572),
+"transitions": PackedFloat32Array(1, 1, 1, 1),
+"update": 1,
+"values": [4, 5, 6, 7]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("../Grab Point Mover:position")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 0.105, 0.21),
+"transitions": PackedFloat32Array(0.5, 2, 1),
+"update": 0,
+"values": [Vector2(0, 0), Vector2(0, -2), Vector2(0, 0)]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_dmoiy"]
+_data = {
+&"Fall": SubResource("Animation_8qc3j"),
+&"Idle": SubResource("Animation_4xcf6"),
+&"Jump": SubResource("Animation_m3vlg"),
+&"RESET": SubResource("Animation_8qlrb"),
+&"Run": SubResource("Animation_dmoiy"),
+&"Walk": SubResource("Animation_o3loe")
+}
+
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_8qlrb"]
+radius = 5.9999995
+height = 24.0
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_8qlrb"]
+size = Vector2(14, 8)
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_8qlrb"]
+radius = 7.017834
+
+[node name="GB Player" type="CharacterBody2D" unique_id=1298103726 node_paths=PackedStringArray("Visuals", "Animator", "Squash", "Flip_Objects", "Left_Outer_Foot", "Left_Inner_Foot", "Right_Outer_Foot", "Right_Inner_Foot", "Grab_Point", "Grab_Point_Damper", "Grab_Zone", "Sidekick_Position")]
+collision_layer = 3
+collision_mask = 3
+platform_floor_layers = 4294967293
+script = ExtResource("1_4xcf6")
+Visuals = NodePath("Visuals")
+Animator = NodePath("Visuals/Animator")
+Squash = NodePath("Behaviours/SquashAndStretch")
+Flip_Objects = NodePath("Visuals/Flip")
+Left_Outer_Foot = NodePath("Raycasts/Left Outer Foot")
+Left_Inner_Foot = NodePath("Raycasts/Left Inner Foot")
+Right_Outer_Foot = NodePath("Raycasts/Right Outer Foot")
+Right_Inner_Foot = NodePath("Raycasts/Right Inner Foot")
+Grab_Point = NodePath("Grab Point Mover/Grab Point")
+Grab_Point_Damper = NodePath("Grab Point Mover/Grab Point/Damper")
+Grab_Zone = NodePath("Visuals/Flip/Grab Zone")
+Sidekick_Position = NodePath("Visuals/Flip/SideKick Position")
+
+[node name="Behaviours" type="Node" parent="." unique_id=2085511338]
+
+[node name="SquashAndStretch" type="Node" parent="Behaviours" unique_id=1200917051 node_paths=PackedStringArray("node")]
+script = ExtResource("2_8qlrb")
+node = NodePath("../../Visuals")
+speed = 7
+turn_amount = 1.2
+metadata/_custom_type_script = "uid://c6ppxwwiuykhq"
+
+[node name="Visuals" type="Node2D" parent="." unique_id=1917697078]
+
+[node name="Animator" type="AnimationPlayer" parent="Visuals" unique_id=1115044960]
+libraries/ = SubResource("AnimationLibrary_dmoiy")
+
+[node name="Flip" type="Node2D" parent="Visuals" unique_id=264878423]
+
+[node name="Body" type="Sprite2D" parent="Visuals/Flip" unique_id=1585352217]
+position = Vector2(0, -15)
+texture = ExtResource("1_fonqw")
+hframes = 10
+
+[node name="Grab Zone" type="Area2D" parent="Visuals/Flip" unique_id=712527221]
+collision_layer = 2
+collision_mask = 2
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Visuals/Flip/Grab Zone" unique_id=2079879957]
+position = Vector2(7, -12)
+rotation = 1.5707964
+shape = SubResource("CapsuleShape2D_8qlrb")
+
+[node name="SideKick Position" type="Node2D" parent="Visuals/Flip" unique_id=55980613]
+position = Vector2(-23, -25)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=1886077476]
+position = Vector2(0, -4)
+shape = SubResource("RectangleShape2D_8qlrb")
+
+[node name="CollisionShape2D2" type="CollisionShape2D" parent="." unique_id=1273243727]
+position = Vector2(0, -8)
+shape = SubResource("CircleShape2D_8qlrb")
+
+[node name="Raycasts" type="Node2D" parent="." unique_id=489646789]
+
+[node name="Left Outer Foot" type="RayCast2D" parent="Raycasts" unique_id=293397117]
+position = Vector2(-6.9, -1)
+target_position = Vector2(0, 6)
+
+[node name="Left Inner Foot" type="RayCast2D" parent="Raycasts" unique_id=885877200]
+position = Vector2(-4, -1)
+target_position = Vector2(0, 6)
+
+[node name="Right Outer Foot" type="RayCast2D" parent="Raycasts" unique_id=741434514]
+position = Vector2(6.9, -1)
+target_position = Vector2(0, 6)
+
+[node name="Right Inner Foot" type="RayCast2D" parent="Raycasts" unique_id=1475576622]
+position = Vector2(4, -1)
+target_position = Vector2(0, 6)
+
+[node name="Grab Point Mover" type="Node2D" parent="." unique_id=208021025]
+position = Vector2(0, -29)
+
+[node name="Grab Point" type="Node2D" parent="Grab Point Mover" unique_id=271221353]
+position = Vector2(0, -17)
+
+[node name="Damper" type="Node2D" parent="Grab Point Mover/Grab Point" unique_id=187968250]

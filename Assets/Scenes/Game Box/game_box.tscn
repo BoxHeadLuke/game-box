@@ -1,0 +1,96 @@
+[gd_scene format=3 uid="uid://us2anx60fgwp"]
+
+[ext_resource type="PackedScene" uid="uid://bj8lb7d0ieuym" path="res://Assets/GB/Objects/Player/gb_player.tscn" id="1_fuyfo"]
+[ext_resource type="Shader" uid="uid://dlie15d4kp6ya" path="res://Assets/Shaders/CRT.gdshader" id="2_awqor"]
+[ext_resource type="PackedScene" uid="uid://bn48nmk785v3r" path="res://Assets/GB/Objects/Grab Objects/Box/gb_box.tscn" id="4_drekg"]
+[ext_resource type="PackedScene" uid="uid://d3emgtn0wjvra" path="res://Assets/GB/Objects/Sidekick/gb_sidekick.tscn" id="5_xt5hh"]
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_17rya"]
+shader = ExtResource("2_awqor")
+shader_parameter/resolution = Vector2(288, 176)
+shader_parameter/scan_line_amount = 0.0990000047025
+shader_parameter/warp_amount = 0.0
+shader_parameter/vignette_amount = 0.5750000273125
+shader_parameter/vignette_intensity = 0.675
+shader_parameter/grille_amount = 0.266000012635
+shader_parameter/brightness_boost = 1.0
+
+[node name="GameBox" type="Node2D" unique_id=1282922401]
+
+[node name="ColorRect2" type="ColorRect" parent="." unique_id=142528917]
+offset_left = -477.0
+offset_top = -203.0
+offset_right = 751.0
+offset_bottom = 409.0
+color = Color(0.3137255, 0.7254902, 0.92156863, 1)
+
+[node name="ColorRect" type="ColorRect" parent="." unique_id=781952113]
+offset_right = 10.0
+offset_bottom = 647.0
+
+[node name="ColorRect" type="ColorRect" parent="ColorRect" unique_id=452018892]
+layout_mode = 0
+offset_left = 1142.0
+offset_right = 1152.0
+offset_bottom = 647.0
+
+[node name="ColorRect" type="ColorRect" parent="ColorRect/ColorRect" unique_id=1707200548]
+layout_mode = 0
+offset_left = -1142.0
+offset_right = 10.0
+offset_bottom = 9.0
+
+[node name="ColorRect" type="ColorRect" parent="ColorRect/ColorRect/ColorRect" unique_id=1609915588]
+layout_mode = 0
+offset_top = 639.0
+offset_right = 1152.0
+offset_bottom = 648.0
+
+[node name="GB Player" parent="." unique_id=1298103726 instance=ExtResource("1_fuyfo")]
+position = Vector2(138, 91)
+
+[node name="Camera2D" type="Camera2D" parent="GB Player" unique_id=1029816174]
+position = Vector2(0, -6)
+
+[node name="StaticBody2D" type="StaticBody2D" parent="." unique_id=113575203]
+position = Vector2(139, 128)
+
+[node name="Polygon2D" type="Polygon2D" parent="StaticBody2D" unique_id=704047511]
+position = Vector2(-139, -128)
+color = Color(0.40392157, 0.87058824, 0.5529412, 1)
+polygon = PackedVector2Array(-13, 128, 290, 128, 345, 111, 374, 101, 432, 67, 388, 167, -14, 168, -153, 71, -62, 116)
+
+[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="StaticBody2D" unique_id=38998560]
+position = Vector2(-139, -128)
+polygon = PackedVector2Array(-153, 71, -62, 116, -13, 128, 290, 128, 374, 101, 432, 67, 388, 167, -14, 168)
+
+[node name="CanvasLayer" type="CanvasLayer" parent="." unique_id=1763021770]
+
+[node name="TextureRect" type="ColorRect" parent="CanvasLayer" unique_id=337993390]
+visible = false
+material = SubResource("ShaderMaterial_17rya")
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="GB Sidekick" parent="." unique_id=1400024817 node_paths=PackedStringArray("Player") instance=ExtResource("5_xt5hh")]
+position = Vector2(118, 52)
+Player = NodePath("../GB Player")
+
+[node name="GB Box" parent="." unique_id=1407793 instance=ExtResource("4_drekg")]
+
+[node name="GB Box2" parent="." unique_id=432761499 instance=ExtResource("4_drekg")]
+position = Vector2(43, 10)
+
+[node name="GB Box3" parent="." unique_id=646137844 instance=ExtResource("4_drekg")]
+position = Vector2(-51, 35)
+
+[node name="GB Box4" parent="." unique_id=609800625 instance=ExtResource("4_drekg")]
+position = Vector2(73, 77)
+
+[node name="GB Box5" parent="." unique_id=346326607 instance=ExtResource("4_drekg")]
+position = Vector2(-36, 77)
+
+[editable path="GB Player"]

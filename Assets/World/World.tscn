@@ -1,0 +1,175 @@
+[gd_scene format=3 uid="uid://c0obricqshh07"]
+
+[ext_resource type="Script" uid="uid://c2frq4slcsjg6" path="res://Assets/World/world.gd" id="1_rw40b"]
+[ext_resource type="PackedScene" uid="uid://us2anx60fgwp" path="res://Assets/Scenes/Game Box/game_box.tscn" id="1_sudgk"]
+[ext_resource type="Script" uid="uid://bd046eokvcnu2" path="res://addons/phantom_camera/scripts/phantom_camera_host/phantom_camera_host.gd" id="2_0ukkx"]
+[ext_resource type="Script" uid="uid://csjccrhj5wnx7" path="res://addons/phantom_camera/scripts/phantom_camera/phantom_camera_3d.gd" id="3_3p22m"]
+[ext_resource type="Script" uid="uid://b8hhnqsugykly" path="res://addons/phantom_camera/scripts/resources/camera_3d_resource.gd" id="5_2o6ge"]
+[ext_resource type="Resource" uid="uid://qjyje4yfkh1r" path="res://Assets/Resources/3d_cam_tween.tres" id="5_rw40b"]
+[ext_resource type="PackedScene" uid="uid://kli06428x4uy" path="res://Assets/Appartment/Player/apt_player.tscn" id="6_3p22m"]
+[ext_resource type="Script" uid="uid://b1ir3q51v8vrh" path="res://Assets/Scripts/Behaviours/apt_grab_object.gd" id="8_2o6ge"]
+
+[sub_resource type="Resource" id="Resource_op1do"]
+script = ExtResource("5_2o6ge")
+size = 2.01
+metadata/_custom_type_script = "uid://b8hhnqsugykly"
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_uxkm3"]
+albedo_color = Color(0.16078432, 0.19607843, 0.40784314, 1)
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_3hdf3"]
+albedo_color = Color(0.16078432, 0.19607843, 0.40784314, 1)
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_sudgk"]
+albedo_color = Color(0.48235294, 0.41568628, 0.64705884, 1)
+
+[sub_resource type="ProceduralSkyMaterial" id="ProceduralSkyMaterial_sudgk"]
+
+[sub_resource type="Sky" id="Sky_sudgk"]
+sky_material = SubResource("ProceduralSkyMaterial_sudgk")
+
+[sub_resource type="Environment" id="Environment_uxkm3"]
+background_mode = 2
+background_color = Color(0.065179035, 0.71088415, 0.9529664, 1)
+sky = SubResource("Sky_sudgk")
+
+[sub_resource type="QuadMesh" id="QuadMesh_y6flb"]
+
+[sub_resource type="ViewportTexture" id="ViewportTexture_mlekv"]
+viewport_path = NodePath("Game Box")
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_il6x7"]
+resource_local_to_scene = true
+shading_mode = 0
+specular_mode = 2
+disable_ambient_light = true
+disable_fog = true
+disable_specular_occlusion = true
+vertex_color_use_as_albedo = true
+vertex_color_is_srgb = true
+albedo_texture = SubResource("ViewportTexture_mlekv")
+
+[sub_resource type="SphereMesh" id="SphereMesh_h7mlw"]
+radius = 0.1
+height = 0.2
+
+[sub_resource type="SphereShape3D" id="SphereShape3D_op1do"]
+radius = 0.1
+
+[node name="World" type="Node3D" unique_id=1260796919 node_paths=PackedStringArray("Appartment", "GameBox", "Screen_Cam")]
+process_mode = 3
+script = ExtResource("1_rw40b")
+Appartment = NodePath("Appartment")
+GameBox = NodePath("Game Box/GameBox")
+Screen_Cam = NodePath("Screen Cam")
+
+[node name="Camera3D" type="Camera3D" parent="." unique_id=1650807608]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.3348036, -1.0584109)
+top_level = true
+size = 2.01
+
+[node name="PhantomCameraHost" type="Node" parent="Camera3D" unique_id=843636215]
+process_priority = 300
+process_physics_priority = 300
+script = ExtResource("2_0ukkx")
+metadata/_custom_type_script = "uid://bd046eokvcnu2"
+
+[node name="Screen Cam" type="Node3D" parent="." unique_id=1224155058]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.3348036, -1.0584109)
+script = ExtResource("3_3p22m")
+priority = 2
+tween_resource = ExtResource("5_rw40b")
+camera_3d_resource = SubResource("Resource_op1do")
+metadata/_custom_type_script = "uid://csjccrhj5wnx7"
+
+[node name="Appartment" type="Node3D" parent="." unique_id=602988121]
+process_mode = 3
+
+[node name="CSGCombiner3D" type="CSGCombiner3D" parent="Appartment" unique_id=1468737153]
+use_collision = true
+
+[node name="CSGBox3D" type="CSGBox3D" parent="Appartment/CSGCombiner3D" unique_id=552771223]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.5, 4.5)
+size = Vector3(15, 1, 20)
+material = SubResource("StandardMaterial3D_uxkm3")
+
+[node name="CSGBox3D8" type="CSGBox3D" parent="Appartment/CSGCombiner3D" unique_id=1991941628]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 6.5, 4.5)
+size = Vector3(15, 1, 20)
+material = SubResource("StandardMaterial3D_3hdf3")
+
+[node name="CSGBox3D2" type="CSGBox3D" parent="Appartment/CSGCombiner3D" unique_id=1589118446]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 3, -5)
+size = Vector3(15, 6, 1)
+material = SubResource("StandardMaterial3D_sudgk")
+
+[node name="CSGBox3D7" type="CSGBox3D" parent="Appartment/CSGCombiner3D" unique_id=1455205307]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 3, 14)
+size = Vector3(15, 6, 1)
+material = SubResource("StandardMaterial3D_sudgk")
+
+[node name="CSGBox3D3" type="CSGBox3D" parent="Appartment/CSGCombiner3D" unique_id=130565122]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -7, 0.5, 4.5)
+size = Vector3(1, 1, 20)
+material = SubResource("StandardMaterial3D_sudgk")
+
+[node name="CSGBox3D4" type="CSGBox3D" parent="Appartment/CSGCombiner3D" unique_id=1624974893]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -7, 4.5, 4.5)
+size = Vector3(1, 3, 20)
+material = SubResource("StandardMaterial3D_sudgk")
+
+[node name="CSGBox3D5" type="CSGBox3D" parent="Appartment/CSGCombiner3D" unique_id=1966406251]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 7, 0.5, 4.5)
+size = Vector3(1, 1, 20)
+material = SubResource("StandardMaterial3D_sudgk")
+
+[node name="CSGBox3D6" type="CSGBox3D" parent="Appartment/CSGCombiner3D" unique_id=641005618]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 7, 4.5, 4.5)
+size = Vector3(1, 3, 20)
+material = SubResource("StandardMaterial3D_sudgk")
+
+[node name="WorldEnvironment" type="WorldEnvironment" parent="Appartment" unique_id=1174499935]
+environment = SubResource("Environment_uxkm3")
+
+[node name="OmniLight3D" type="OmniLight3D" parent="Appartment" unique_id=1237129930]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 2, 2)
+light_energy = 0.347
+omni_range = 4096.0
+omni_attenuation = 0.0
+
+[node name="APT Player" parent="Appartment" unique_id=223959281 instance=ExtResource("6_3p22m")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 1.6889012)
+
+[node name="DirectionalLight3D" type="DirectionalLight3D" parent="Appartment" unique_id=1874855924]
+transform = Transform3D(-0.8660254, -0.43301278, 0.25, 0, 0.49999997, 0.86602545, -0.50000006, 0.75, -0.43301266, 0, 0, 0)
+shadow_enabled = true
+
+[node name="TV" type="Node3D" parent="Appartment" unique_id=343301416]
+transform = Transform3D(0.65, 0, 0, 0, 0.65, 0, 0, 0, 0.65, 0, 1.3799324, -2)
+
+[node name="Screen" type="MeshInstance3D" parent="Appartment/TV" unique_id=475358688]
+transform = Transform3D(2.88, 0, 0, 0, 1.76, 0, 0, 0, 1, 0, 0, 0)
+mesh = SubResource("QuadMesh_y6flb")
+surface_material_override/0 = SubResource("StandardMaterial3D_il6x7")
+
+[node name="Game Box" type="SubViewport" parent="." unique_id=386324046]
+disable_3d = true
+transparent_bg = true
+canvas_item_default_texture_filter = 0
+size = Vector2i(1440, 880)
+size_2d_override = Vector2i(288, 176)
+size_2d_override_stretch = true
+
+[node name="GameBox" parent="Game Box" unique_id=1282922401 instance=ExtResource("1_sudgk")]
+process_mode = 1
+
+[node name="APTGrabObject" type="RigidBody3D" parent="." unique_id=1981113381]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.92494947, -0.5306927)
+script = ExtResource("8_2o6ge")
+metadata/_custom_type_script = "uid://b1ir3q51v8vrh"
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="APTGrabObject" unique_id=1786923663]
+mesh = SubResource("SphereMesh_h7mlw")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="APTGrabObject" unique_id=1379638184]
+shape = SubResource("SphereShape3D_op1do")

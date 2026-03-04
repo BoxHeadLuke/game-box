@@ -1,0 +1,21 @@
+[gd_scene format=3 uid="uid://bn48nmk785v3r"]
+
+[ext_resource type="Script" uid="uid://dvyaqeofsrm7g" path="res://Assets/Scripts/Behaviours/gb_grab_object.gd" id="1_ltbk8"]
+[ext_resource type="Texture2D" uid="uid://pepvsaiwalbc" path="res://Assets/GB/Visuals/GB Box.png" id="2_tt6o4"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_tt6o4"]
+size = Vector2(16, 16)
+
+[node name="GB Box" type="RigidBody2D" unique_id=1407793]
+can_sleep = false
+max_contacts_reported = 2
+script = ExtResource("1_ltbk8")
+metadata/_custom_type_script = "uid://dvyaqeofsrm7g"
+
+[node name="GbBox" type="Sprite2D" parent="." unique_id=1886660646]
+position = Vector2(0, -8)
+texture = ExtResource("2_tt6o4")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=1966826549]
+position = Vector2(0, -8)
+shape = SubResource("RectangleShape2D_tt6o4")
