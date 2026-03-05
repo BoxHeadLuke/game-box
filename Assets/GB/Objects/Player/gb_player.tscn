@@ -12,7 +12,7 @@ step = 0.05
 tracks/0/type = "value"
 tracks/0/imported = false
 tracks/0/enabled = true
-tracks/0/path = NodePath("Flip/Body:frame")
+tracks/0/path = NodePath("Visual Flip/Body:frame")
 tracks/0/interp = 1
 tracks/0/loop_wrap = true
 tracks/0/keys = {
@@ -42,7 +42,7 @@ step = 0.1
 tracks/0/type = "value"
 tracks/0/imported = false
 tracks/0/enabled = true
-tracks/0/path = NodePath("Flip/Body:frame")
+tracks/0/path = NodePath("Visual Flip/Body:frame")
 tracks/0/interp = 1
 tracks/0/loop_wrap = true
 tracks/0/keys = {
@@ -72,7 +72,7 @@ step = 0.05
 tracks/0/type = "value"
 tracks/0/imported = false
 tracks/0/enabled = true
-tracks/0/path = NodePath("Flip/Body:frame")
+tracks/0/path = NodePath("Visual Flip/Body:frame")
 tracks/0/interp = 1
 tracks/0/loop_wrap = true
 tracks/0/keys = {
@@ -99,7 +99,7 @@ length = 0.001
 tracks/0/type = "value"
 tracks/0/imported = false
 tracks/0/enabled = true
-tracks/0/path = NodePath("Flip/Body:frame")
+tracks/0/path = NodePath("Visual Flip/Body:frame")
 tracks/0/interp = 1
 tracks/0/loop_wrap = true
 tracks/0/keys = {
@@ -129,7 +129,7 @@ step = 0.05
 tracks/0/type = "value"
 tracks/0/imported = false
 tracks/0/enabled = true
-tracks/0/path = NodePath("Flip/Body:frame")
+tracks/0/path = NodePath("Visual Flip/Body:frame")
 tracks/0/interp = 1
 tracks/0/loop_wrap = true
 tracks/0/keys = {
@@ -159,7 +159,7 @@ step = 0.07
 tracks/0/type = "value"
 tracks/0/imported = false
 tracks/0/enabled = true
-tracks/0/path = NodePath("Flip/Body:frame")
+tracks/0/path = NodePath("Visual Flip/Body:frame")
 tracks/0/interp = 1
 tracks/0/loop_wrap = true
 tracks/0/keys = {
@@ -195,13 +195,21 @@ _data = {
 radius = 5.9999995
 height = 24.0
 
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_dmoiy"]
+radius = 7.0
+height = 17.999996
+
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_o3loe"]
+radius = 7.0
+height = 42.0
+
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_8qlrb"]
 size = Vector2(14, 8)
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_8qlrb"]
 radius = 7.017834
 
-[node name="GB Player" type="CharacterBody2D" unique_id=1298103726 node_paths=PackedStringArray("Visuals", "Animator", "Squash", "Flip_Objects", "Left_Outer_Foot", "Left_Inner_Foot", "Right_Outer_Foot", "Right_Inner_Foot", "Grab_Point", "Grab_Point_Damper", "Grab_Zone", "Sidekick_Position")]
+[node name="GB Player" type="CharacterBody2D" unique_id=1298103726 node_paths=PackedStringArray("Visuals", "Animator", "Squash", "Visual_Flip", "Flip", "Left_Outer_Foot", "Left_Inner_Foot", "Right_Outer_Foot", "Right_Inner_Foot", "Grab_Point", "Grab_Point_Damper", "Grab_Zone", "Sidekick_Position", "Sidekick_Zone", "Sidekick_Summon_Zone", "Backup_Sidekick_Position", "Backup_Sidekick_Zone", "Backup_Sidekick_Summon_Zone")]
 collision_layer = 3
 collision_mask = 3
 platform_floor_layers = 4294967293
@@ -209,15 +217,21 @@ script = ExtResource("1_4xcf6")
 Visuals = NodePath("Visuals")
 Animator = NodePath("Visuals/Animator")
 Squash = NodePath("Behaviours/SquashAndStretch")
-Flip_Objects = NodePath("Visuals/Flip")
+Visual_Flip = NodePath("Visuals/Visual Flip")
+Flip = NodePath("Flip")
 Left_Outer_Foot = NodePath("Raycasts/Left Outer Foot")
 Left_Inner_Foot = NodePath("Raycasts/Left Inner Foot")
 Right_Outer_Foot = NodePath("Raycasts/Right Outer Foot")
 Right_Inner_Foot = NodePath("Raycasts/Right Inner Foot")
 Grab_Point = NodePath("Grab Point Mover/Grab Point")
 Grab_Point_Damper = NodePath("Grab Point Mover/Grab Point/Damper")
-Grab_Zone = NodePath("Visuals/Flip/Grab Zone")
-Sidekick_Position = NodePath("Visuals/Flip/SideKick Position")
+Grab_Zone = NodePath("Flip/Grab Zone")
+Sidekick_Position = NodePath("Flip/SideKick Position")
+Sidekick_Zone = NodePath("Flip/SideKick Position/Sidekick Zone")
+Sidekick_Summon_Zone = NodePath("Flip/SideKick Position/Sidekick Summon Zone")
+Backup_Sidekick_Position = NodePath("Flip/Backup SideKick Position")
+Backup_Sidekick_Zone = NodePath("Flip/Backup SideKick Position/Sidekick Zone")
+Backup_Sidekick_Summon_Zone = NodePath("Flip/Backup SideKick Position/Sidekick Summon Zone")
 
 [node name="Behaviours" type="Node" parent="." unique_id=2085511338]
 
@@ -233,24 +247,63 @@ metadata/_custom_type_script = "uid://c6ppxwwiuykhq"
 [node name="Animator" type="AnimationPlayer" parent="Visuals" unique_id=1115044960]
 libraries/ = SubResource("AnimationLibrary_dmoiy")
 
-[node name="Flip" type="Node2D" parent="Visuals" unique_id=264878423]
+[node name="Visual Flip" type="Node2D" parent="Visuals" unique_id=264878423]
 
-[node name="Body" type="Sprite2D" parent="Visuals/Flip" unique_id=1585352217]
+[node name="Body" type="Sprite2D" parent="Visuals/Visual Flip" unique_id=1585352217]
 position = Vector2(0, -15)
 texture = ExtResource("1_fonqw")
 hframes = 10
 
-[node name="Grab Zone" type="Area2D" parent="Visuals/Flip" unique_id=712527221]
-collision_layer = 2
+[node name="Flip" type="Node2D" parent="." unique_id=1696158149]
+
+[node name="Grab Zone" type="Area2D" parent="Flip" unique_id=712527221]
+collision_layer = 0
 collision_mask = 2
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="Visuals/Flip/Grab Zone" unique_id=2079879957]
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Flip/Grab Zone" unique_id=2079879957]
 position = Vector2(7, -12)
 rotation = 1.5707964
 shape = SubResource("CapsuleShape2D_8qlrb")
 
-[node name="SideKick Position" type="Node2D" parent="Visuals/Flip" unique_id=55980613]
+[node name="SideKick Position" type="Node2D" parent="Flip" unique_id=55980613]
 position = Vector2(-23, -25)
+
+[node name="Sidekick Zone" type="Area2D" parent="Flip/SideKick Position" unique_id=794049045]
+collision_layer = 0
+collision_mask = 3
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Flip/SideKick Position/Sidekick Zone" unique_id=251571033]
+rotation = 1.5707964
+shape = SubResource("CapsuleShape2D_dmoiy")
+
+[node name="Sidekick Summon Zone" type="Area2D" parent="Flip/SideKick Position" unique_id=1401719323]
+collision_layer = 0
+collision_mask = 3
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Flip/SideKick Position/Sidekick Summon Zone" unique_id=2131730415]
+position = Vector2(-12, 0)
+rotation = 1.5707964
+shape = SubResource("CapsuleShape2D_o3loe")
+
+[node name="Backup SideKick Position" type="Node2D" parent="Flip" unique_id=309645376]
+position = Vector2(23, -25)
+
+[node name="Sidekick Zone" type="Area2D" parent="Flip/Backup SideKick Position" unique_id=1865507192]
+collision_layer = 0
+collision_mask = 3
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Flip/Backup SideKick Position/Sidekick Zone" unique_id=1977028417]
+rotation = 1.5707964
+shape = SubResource("CapsuleShape2D_dmoiy")
+
+[node name="Sidekick Summon Zone" type="Area2D" parent="Flip/Backup SideKick Position" unique_id=1881771851]
+collision_layer = 0
+collision_mask = 3
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Flip/Backup SideKick Position/Sidekick Summon Zone" unique_id=1109316956]
+position = Vector2(12, 0)
+rotation = 1.5707964
+shape = SubResource("CapsuleShape2D_o3loe")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=1886077476]
 position = Vector2(0, -4)

@@ -7,7 +7,8 @@ extends CharacterBody2D
 @export var Visuals : Node2D
 @export var Animator : AnimationPlayer
 @export var Squash : SquashAndStretch
-@export var Flip_Objects : Node2D
+@export var Visual_Flip : Node2D
+@export var Flip : Node2D
 @export var Left_Outer_Foot : RayCast2D
 @export var Left_Inner_Foot : RayCast2D
 @export var Right_Outer_Foot : RayCast2D
@@ -16,6 +17,11 @@ extends CharacterBody2D
 @export var Grab_Point_Damper : Node2D
 @export var Grab_Zone : Area2D
 @export var Sidekick_Position : Node2D
+@export var Sidekick_Zone : Area2D
+@export var Sidekick_Summon_Zone : Area2D
+@export var Backup_Sidekick_Position : Node2D
+@export var Backup_Sidekick_Zone : Area2D
+@export var Backup_Sidekick_Summon_Zone : Area2D
 
 const Acceleration : float = 300.0
 const Run_Acceleration : float = 300.0
@@ -49,6 +55,11 @@ var camera_y_pos : float = 0.0
 var running : bool = false
 var jumping : bool = false
 var grab_object : RigidBody2D
+var sidekick_pos : Vector2
+var sidekick_summon_pos : Vector2
+var sidekick_summon_left : bool
+var is_flipped : bool
+var prev_velocity : Vector2
 
 # State Machine (Kinda)
 enum{
@@ -61,12 +72,35 @@ var state = MOVING
 
 func _physics_process(delta):
 	
+	
+	
 	if not Globals.in_game:
 		return
 	
 	input = Input.get_action_strength("GB Right") - Input.get_action_strength("GB Left")
 	
+	if Globals.in_game_time > 0.1:
+	
+		if Sidekick_Zone.get_overlapping_bodies().size() == 0:
+			sidekick_pos = Sidekick_Position.global_position
+			sidekick_summon_left = not is_flipped
+		elif Backup_Sidekick_Zone.get_overlapping_bodies().size() == 0:
+			sidekick_pos = Backup_Sidekick_Position.global_position
+			sidekick_summon_left = is_flipped
+		
+		
+	if Sidekick_Summon_Zone.get_overlapping_bodies().size() == 0:
+		sidekick_summon_pos = Sidekick_Position.global_position
+		sidekick_summon_left = is_flipped
+	elif Backup_Sidekick_Summon_Zone.get_overlapping_bodies().size() == 0:
+		sidekick_summon_pos = Backup_Sidekick_Position.global_position
+		sidekick_summon_left = not is_flipped
+	
+	
 	match state:
+		
+		
+		
 		MOVING:
 			# X-Axis movement
 			if Input.is_action_pressed("GB Run") and is_on_floor():
@@ -139,7 +173,7 @@ func _physics_process(delta):
 				jump_queue_time = 0
 				coyote_time = 0
 				jumping = true
-			
+				
 			
 				
 			
@@ -161,12 +195,20 @@ func _physics_process(delta):
 			# Animations
 			
 			if input > 0:
-				Flip_Objects.scale.x = 1
+				Visual_Flip.scale.x = 1
+				Flip.scale.x = 1
+				is_flipped = false
 			elif input < 0:
-				Flip_Objects.scale.x = -1
+				Visual_Flip.scale.x = -1
+				Flip.scale.x = -1
+				is_flipped = true
 				
 			
-			Squash._turn_stretch(Flip_Objects.scale.x)
+			Squash._turn_stretch(Visual_Flip.scale.x)
+			
+			
+			
+			
 			
 			
 			if is_on_floor():
@@ -181,6 +223,10 @@ func _physics_process(delta):
 					if jump_queue_time < delta:
 						Squash._force_stretch(0.7)
 					prev_on_ground = false
+					
+					if prev_velocity.y > 10:
+						#Globals.gb_audio.play("Player Land")
+						pass
 			else:
 				if velocity.y < 0:
 					Animator.play("Jump")
@@ -214,7 +260,12 @@ func _physics_process(delta):
 				grab_object.rotation = Grab_Point_Damper.rotation
 				Grab_Point_Damper.position = lerp(Grab_Point_Damper.position, Vector2(0,0) , Grab_Speed*delta)
 				Grab_Point_Damper.rotation = lerp_angle(Grab_Point_Damper.rotation , 0.0 , Grab_Rotation_Speed*delta)
-		
+			
+			
+			
+			
+			prev_velocity = velocity
+
 
 func grab():
 	var current_grab_object : Node = null
@@ -228,7 +279,7 @@ func grab():
 	if current_grab_object:
 		grab_object = current_grab_object
 		
-		
+		grab_object.disable_mode = grab_object.DISABLE_MODE_REMOVE
 		grab_object.process_mode = grab_object.PROCESS_MODE_DISABLED
 		
 		Grab_Point_Damper.global_position = grab_object.global_position
@@ -237,7 +288,8 @@ func grab():
 
 func drop():
 	grab_object.process_mode = grab_object.PROCESS_MODE_INHERIT
+	grab_object.disable_mode = grab_object.DISABLE_MODE_MAKE_STATIC
 	var temp_grab_object = grab_object
 	grab_object = null
 	#await get_tree().create_timer(0.1).timeout
-	temp_grab_object.apply_central_force(Vector2(Flip_Objects.scale.x * 500, -500) + (velocity*5))
+	temp_grab_object.apply_central_force(Vector2(Visual_Flip.scale.x * 500, -500) + (velocity*5))

@@ -1,0 +1,208 @@
+[gd_scene format=3 uid="uid://c7d312wamnm5"]
+
+[ext_resource type="Script" uid="uid://crijv77o1dhyo" path="res://Assets/GB/Scenes/Dialogue Balloon/balloon.gd" id="1_s2gbs"]
+[ext_resource type="PackedScene" uid="uid://ckvgyvclnwggo" path="res://addons/dialogue_manager/dialogue_label.tscn" id="2_hfvdi"]
+[ext_resource type="Script" uid="uid://bb52rsfwhkxbn" path="res://addons/dialogue_manager/dialogue_responses_menu.gd" id="3_1j1j0"]
+[ext_resource type="FontFile" uid="uid://c6aa1i6wym28l" path="res://Assets/Resources/Habbo.ttf" id="3_6wo4c"]
+[ext_resource type="Texture2D" uid="uid://cna0hw5o572ld" path="res://Assets/GB/Visuals/Dialogue Header.png" id="5_00gje"]
+[ext_resource type="Texture2D" uid="uid://bpwhvtmof6jf1" path="res://Assets/GB/Visuals/Dialogue Balloon.png" id="5_g70tq"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_00gje"]
+content_margin_left = 6.0
+content_margin_top = 3.0
+content_margin_right = 6.0
+content_margin_bottom = 3.0
+bg_color = Color(0.0666667, 0.0666667, 0.0666667, 1)
+border_width_left = 1
+border_width_top = 1
+border_width_right = 1
+border_width_bottom = 1
+border_color = Color(0.345098, 0.345098, 0.345098, 1)
+corner_radius_top_left = 3
+corner_radius_top_right = 3
+corner_radius_bottom_right = 3
+corner_radius_bottom_left = 3
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_qhysh"]
+content_margin_left = 6.0
+content_margin_top = 3.0
+content_margin_right = 6.0
+content_margin_bottom = 3.0
+bg_color = Color(0.227451, 0.227451, 0.227451, 1)
+border_width_left = 1
+border_width_top = 1
+border_width_right = 1
+border_width_bottom = 1
+border_color = Color(1, 1, 1, 1)
+corner_radius_top_left = 3
+corner_radius_top_right = 3
+corner_radius_bottom_right = 3
+corner_radius_bottom_left = 3
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_7hsnu"]
+content_margin_left = 6.0
+content_margin_top = 3.0
+content_margin_right = 6.0
+content_margin_bottom = 3.0
+bg_color = Color(0.0666667, 0.0666667, 0.0666667, 1)
+border_width_left = 1
+border_width_top = 1
+border_width_right = 1
+border_width_bottom = 1
+corner_radius_top_left = 3
+corner_radius_top_right = 3
+corner_radius_bottom_right = 3
+corner_radius_bottom_left = 3
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_0d12s"]
+content_margin_left = 6.0
+content_margin_top = 3.0
+content_margin_right = 6.0
+content_margin_bottom = 3.0
+bg_color = Color(0.0666667, 0.0666667, 0.0666667, 1)
+border_width_left = 1
+border_width_top = 1
+border_width_right = 1
+border_width_bottom = 1
+corner_radius_top_left = 3
+corner_radius_top_right = 3
+corner_radius_bottom_right = 3
+corner_radius_bottom_left = 3
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_w7nwt"]
+bg_color = Color(0, 0, 0, 1)
+border_width_left = 1
+border_width_top = 1
+border_width_right = 1
+border_width_bottom = 1
+corner_radius_top_left = 3
+corner_radius_top_right = 3
+corner_radius_bottom_right = 3
+corner_radius_bottom_left = 3
+
+[sub_resource type="Theme" id="Theme_qq3yp"]
+default_font_size = 8
+Button/styles/disabled = SubResource("StyleBoxFlat_00gje")
+Button/styles/focus = SubResource("StyleBoxFlat_qhysh")
+Button/styles/hover = SubResource("StyleBoxFlat_7hsnu")
+Button/styles/normal = SubResource("StyleBoxFlat_0d12s")
+MarginContainer/constants/margin_bottom = 4
+MarginContainer/constants/margin_left = 8
+MarginContainer/constants/margin_right = 8
+MarginContainer/constants/margin_top = 4
+PanelContainer/styles/panel = SubResource("StyleBoxFlat_w7nwt")
+
+[node name="Balloon" type="CanvasLayer" unique_id=1662346848]
+layer = 2
+script = ExtResource("1_s2gbs")
+
+[node name="Balloon" type="Control" parent="." unique_id=506822758]
+unique_name_in_owner = true
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme = SubResource("Theme_qq3yp")
+
+[node name="ResponsesMenu" type="VBoxContainer" parent="Balloon" unique_id=1317994639]
+unique_name_in_owner = true
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -116.5
+offset_top = -9.0
+offset_right = 116.5
+offset_bottom = 9.0
+grow_horizontal = 2
+grow_vertical = 2
+size_flags_vertical = 8
+theme_override_constants/separation = 2
+script = ExtResource("3_1j1j0")
+
+[node name="ResponseExample" type="Button" parent="Balloon/ResponsesMenu" unique_id=721162657]
+layout_mode = 2
+text = "Response Example"
+
+[node name="Top" type="Control" parent="Balloon" unique_id=582465891]
+layout_mode = 1
+anchors_preset = 5
+anchor_left = 0.5
+anchor_right = 0.5
+offset_left = -144.0
+offset_right = 144.0
+offset_bottom = 58.0
+grow_horizontal = 2
+
+[node name="DialogueBalloon" type="Sprite2D" parent="Balloon/Top" unique_id=1938968869]
+position = Vector2(144, 33)
+texture = ExtResource("5_g70tq")
+
+[node name="CharacterLabel" type="RichTextLabel" parent="Balloon/Top" unique_id=1301562369]
+unique_name_in_owner = true
+clip_contents = false
+layout_mode = 0
+offset_left = 55.0
+offset_top = 5.0
+offset_right = 88.0
+offset_bottom = 20.0
+mouse_filter = 1
+theme_override_colors/default_color = Color(1, 0.827451, 0.6784314, 1)
+theme_override_fonts/normal_font = ExtResource("3_6wo4c")
+theme_override_font_sizes/normal_font_size = 16
+bbcode_enabled = true
+text = "Luke"
+fit_content = true
+scroll_active = false
+autowrap_mode = 0
+horizontal_alignment = 1
+
+[node name="NinePatchRect" type="NinePatchRect" parent="Balloon/Top/CharacterLabel" unique_id=465080263]
+show_behind_parent = true
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = -6.0
+offset_right = 5.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = ExtResource("5_00gje")
+patch_margin_left = 4
+patch_margin_top = 4
+patch_margin_right = 4
+patch_margin_bottom = 4
+
+[node name="DialogueLabel" parent="Balloon/Top" unique_id=1803399822 instance=ExtResource("2_hfvdi")]
+unique_name_in_owner = true
+layout_mode = 0
+anchors_preset = 0
+anchor_right = 0.0
+offset_left = 43.0
+offset_top = 20.0
+offset_right = 251.0
+offset_bottom = 57.0
+grow_horizontal = 1
+size_flags_vertical = 3
+theme_override_colors/default_color = Color(0.38039216, 0.22352941, 0.23137255, 1)
+theme_override_constants/line_separation = -2
+theme_override_fonts/normal_font = ExtResource("3_6wo4c")
+theme_override_font_sizes/normal_font_size = 16
+text = "Hello person going through my game files, how are you today?"
+
+[node name="TextureRect" type="TextureRect" parent="Balloon/Top" unique_id=767103871]
+layout_mode = 0
+offset_right = 40.0
+offset_bottom = 40.0
+
+[node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="." unique_id=441547993]
+unique_name_in_owner = true
+
+[node name="Sprite2D" type="Sprite2D" parent="." unique_id=723574141]
+
+[connection signal="gui_input" from="Balloon" to="." method="_on_balloon_gui_input"]
+[connection signal="response_selected" from="Balloon/ResponsesMenu" to="." method="_on_responses_menu_response_selected"]

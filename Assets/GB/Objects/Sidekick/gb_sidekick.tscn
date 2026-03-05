@@ -4,6 +4,8 @@
 [ext_resource type="Texture2D" uid="uid://b68ggspnqkres" path="res://Assets/GB/Visuals/GB Sidekick.png" id="1_pjdpf"]
 [ext_resource type="Script" uid="uid://c6ppxwwiuykhq" path="res://Assets/Scripts/Behaviours/squash_&_stretch.gd" id="2_ijtcd"]
 [ext_resource type="Texture2D" uid="uid://x4q8wsjvyidq" path="res://Assets/GB/Visuals/GB Sidekick Portal.png" id="4_ysab0"]
+[ext_resource type="Script" uid="uid://ch48tmhwpdcy5" path="res://Assets/Scripts/Behaviours/dialogue_trigger.gd" id="5_0pq8s"]
+[ext_resource type="Resource" uid="uid://cht2m2nafs6s4" path="res://Assets/Dialogue/test.dialogue" id="6_nkheu"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_0pq8s"]
 atlas = ExtResource("1_pjdpf")
@@ -183,17 +185,25 @@ animations = [{
 "speed": 10.0
 }]
 
-[node name="GB Sidekick" type="Node2D" unique_id=1400024817 node_paths=PackedStringArray("Body_Sprite", "Squash", "Flip")]
+[node name="GB Sidekick" type="Node2D" unique_id=1400024817 node_paths=PackedStringArray("Body_Sprite", "Squash", "PortalSquash", "Flip", "Summon_Pos")]
 process_mode = 3
 script = ExtResource("1_m8swq")
 Body_Sprite = NodePath("Body Sprite")
 Squash = NodePath("SquashAndStretch")
+PortalSquash = NodePath("PortalSquash")
 Flip = NodePath("Flip")
+Summon_Pos = NodePath("Flip/Summon Pos")
 
 [node name="SquashAndStretch" type="Node" parent="." unique_id=1271742821 node_paths=PackedStringArray("node")]
 script = ExtResource("2_ijtcd")
 node = NodePath("../Body Sprite")
 speed = 7
+metadata/_custom_type_script = "uid://c6ppxwwiuykhq"
+
+[node name="PortalSquash" type="Node" parent="." unique_id=1116144085 node_paths=PackedStringArray("node")]
+script = ExtResource("2_ijtcd")
+node = NodePath("../Flip/Portal Sprite")
+speed = 5
 metadata/_custom_type_script = "uid://c6ppxwwiuykhq"
 
 [node name="Body Sprite" type="AnimatedSprite2D" parent="." unique_id=1166120198]
@@ -205,8 +215,17 @@ autoplay = "right idle"
 [node name="Flip" type="Node2D" parent="." unique_id=525883284]
 
 [node name="Portal Sprite" type="AnimatedSprite2D" parent="Flip" unique_id=1193238374]
-position = Vector2(26, -6)
+position = Vector2(23, -6)
 sprite_frames = SubResource("SpriteFrames_rxba5")
 animation = &"spin"
 autoplay = "spin"
 frame_progress = 0.5060415
+
+[node name="Summon Pos" type="Node2D" parent="Flip" unique_id=1705744110]
+position = Vector2(23, -6)
+
+[node name="DialogueTrigger" type="Node" parent="." unique_id=441702125]
+script = ExtResource("5_0pq8s")
+Dialogue_File = ExtResource("6_nkheu")
+Start_Flag = "start"
+metadata/_custom_type_script = "uid://ch48tmhwpdcy5"

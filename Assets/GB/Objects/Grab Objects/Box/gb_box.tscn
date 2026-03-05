@@ -7,7 +7,9 @@
 size = Vector2(16, 16)
 
 [node name="GB Box" type="RigidBody2D" unique_id=1407793]
+disable_mode = 1
 can_sleep = false
+contact_monitor = true
 max_contacts_reported = 2
 script = ExtResource("1_ltbk8")
 metadata/_custom_type_script = "uid://dvyaqeofsrm7g"

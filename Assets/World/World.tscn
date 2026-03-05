@@ -7,7 +7,11 @@
 [ext_resource type="Script" uid="uid://b8hhnqsugykly" path="res://addons/phantom_camera/scripts/resources/camera_3d_resource.gd" id="5_2o6ge"]
 [ext_resource type="Resource" uid="uid://qjyje4yfkh1r" path="res://Assets/Resources/3d_cam_tween.tres" id="5_rw40b"]
 [ext_resource type="PackedScene" uid="uid://kli06428x4uy" path="res://Assets/Appartment/Player/apt_player.tscn" id="6_3p22m"]
+[ext_resource type="Texture2D" uid="uid://ba5yypy511spe" path="res://Assets/Appartment/Particles/APT Binary Zero.png" id="7_h7mlw"]
+[ext_resource type="PackedScene" uid="uid://edqcyslkhjr3" path="res://Assets/GB/GB Audio/gb_audio.tscn" id="7_mh0j8"]
 [ext_resource type="PackedScene" uid="uid://0rtb5gmasppp" path="res://Assets/Appartment/Objects/Grab Objects/Box/apt_box.tscn" id="8_2o6ge"]
+[ext_resource type="Texture2D" uid="uid://b6yxkvkdleg4w" path="res://Assets/Appartment/Particles/APT Binary One.png" id="8_op1do"]
+[ext_resource type="PackedScene" uid="uid://bo6k5n3hyqee6" path="res://Assets/Appartment/3D Models/Screen.fbx" id="11_fdrvb"]
 
 [sub_resource type="Resource" id="Resource_op1do"]
 script = ExtResource("5_2o6ge")
@@ -33,28 +37,53 @@ background_mode = 2
 background_color = Color(0.065179035, 0.71088415, 0.9529664, 1)
 sky = SubResource("Sky_sudgk")
 
-[sub_resource type="QuadMesh" id="QuadMesh_y6flb"]
+[sub_resource type="BoxShape3D" id="BoxShape3D_op1do"]
+size = Vector3(2.868164, 1.7451782, 0.25045013)
 
-[sub_resource type="ViewportTexture" id="ViewportTexture_mlekv"]
-viewport_path = NodePath("Game Box")
-
-[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_il6x7"]
-resource_local_to_scene = true
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_fdrvb"]
 shading_mode = 0
 specular_mode = 2
-disable_ambient_light = true
-disable_fog = true
-disable_specular_occlusion = true
-vertex_color_use_as_albedo = true
-vertex_color_is_srgb = true
-albedo_texture = SubResource("ViewportTexture_mlekv")
+albedo_texture = ExtResource("7_h7mlw")
+texture_filter = 0
+texture_repeat = false
+billboard_mode = 1
+billboard_keep_scale = true
 
-[node name="World" type="Node3D" unique_id=1260796919 node_paths=PackedStringArray("Appartment", "GameBox", "Screen_Cam")]
+[sub_resource type="QuadMesh" id="QuadMesh_mh0j8"]
+material = SubResource("StandardMaterial3D_fdrvb")
+size = Vector2(0.21, 0.27)
+
+[sub_resource type="Curve" id="Curve_h7mlw"]
+_data = [Vector2(0, 1), 0.0, 0.0, 0, 0, Vector2(0.49076512, 0.48053277), 0.0, 0.0, 0, 0, Vector2(0.74670184, 0.6869877), 0.0, 0.0, 0, 0, Vector2(1, 0), 0.0, 0.0, 0, 0]
+point_count = 4
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_mh0j8"]
+shading_mode = 0
+specular_mode = 2
+albedo_texture = ExtResource("8_op1do")
+texture_filter = 0
+texture_repeat = false
+billboard_keep_scale = true
+
+[sub_resource type="QuadMesh" id="QuadMesh_op1do"]
+material = SubResource("StandardMaterial3D_mh0j8")
+size = Vector2(0.21, 0.27)
+
+[sub_resource type="ViewportTexture" id="ViewportTexture_mh0j8"]
+viewport_path = NodePath("../../../Game Box")
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_hmte7"]
+resource_local_to_scene = true
+shading_mode = 0
+albedo_texture = SubResource("ViewportTexture_mh0j8")
+
+[node name="World" type="Node3D" unique_id=1260796919 node_paths=PackedStringArray("Appartment", "GameBox", "Screen_Cam", "TV_Particles")]
 process_mode = 3
 script = ExtResource("1_rw40b")
 Appartment = NodePath("Appartment")
 GameBox = NodePath("Game Box/GameBox")
 Screen_Cam = NodePath("Screen Cam")
+TV_Particles = NodePath("Appartment/TV/Particles")
 
 [node name="Camera3D" type="Camera3D" parent="." unique_id=1650807608]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.3348036, -1.0584109)
@@ -140,10 +169,59 @@ shadow_enabled = true
 [node name="TV" type="Node3D" parent="Appartment" unique_id=343301416]
 transform = Transform3D(0.65, 0, 0, 0, 0.65, 0, 0, 0, 0.65, 0, 1.3799324, -2)
 
-[node name="Screen" type="MeshInstance3D" parent="Appartment/TV" unique_id=475358688]
-transform = Transform3D(2.88, 0, 0, 0, 1.76, 0, 0, 0, 1, 0, 0, 0)
-mesh = SubResource("QuadMesh_y6flb")
-surface_material_override/0 = SubResource("StandardMaterial3D_il6x7")
+[node name="Screen Zone" type="Area3D" parent="Appartment/TV" unique_id=1400139151]
+collision_layer = 2
+collision_mask = 2
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Appartment/TV/Screen Zone" unique_id=1556822203]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.004, -0.4236609)
+shape = SubResource("BoxShape3D_op1do")
+
+[node name="GB Audio" parent="Appartment/TV/Screen Zone" unique_id=611054415 instance=ExtResource("7_mh0j8")]
+
+[node name="Particles" type="Node3D" parent="Appartment/TV" unique_id=1974400917]
+process_mode = 3
+
+[node name="Zeros" type="CPUParticles3D" parent="Appartment/TV/Particles" unique_id=57336329]
+emitting = false
+amount = 16
+one_shot = true
+speed_scale = 1.5
+explosiveness = 0.98
+mesh = SubResource("QuadMesh_mh0j8")
+emission_shape = 1
+emission_sphere_radius = 3.61
+direction = Vector3(0, -1, 0)
+spread = 30.0
+gravity = Vector3(0, 4, 0)
+initial_velocity_min = 1.0
+initial_velocity_max = 3.0
+scale_amount_max = 1.5
+scale_amount_curve = SubResource("Curve_h7mlw")
+
+[node name="Ones" type="CPUParticles3D" parent="Appartment/TV/Particles" unique_id=1223211455]
+emitting = false
+amount = 16
+one_shot = true
+speed_scale = 1.5
+explosiveness = 0.98
+mesh = SubResource("QuadMesh_op1do")
+emission_shape = 1
+emission_sphere_radius = 1.0
+direction = Vector3(0, -1, 0)
+spread = 30.0
+gravity = Vector3(0, 4, 0)
+initial_velocity_min = 1.0
+initial_velocity_max = 3.0
+scale_amount_max = 1.5
+scale_amount_curve = SubResource("Curve_h7mlw")
+
+[node name="Screen" parent="Appartment/TV" unique_id=178766557 instance=ExtResource("11_fdrvb")]
+transform = Transform3D(1.0769231, 0, 0, 0, 1.0769231, 0, 0, 0, 1.0769231, 0, -0.14396977, -0.89901495)
+
+[node name="Plane" parent="Appartment/TV/Screen" index="0" unique_id=1797147306]
+transform = Transform3D(100, 0, 0, 0, 73.478516, -4.371139e-06, 0, 3.211848e-06, 100, 0, -2.320456e-08, 0.53085846)
+surface_material_override/0 = SubResource("StandardMaterial3D_hmte7")
 
 [node name="Game Box" type="SubViewport" parent="." unique_id=386324046]
 disable_3d = true
@@ -157,4 +235,21 @@ size_2d_override_stretch = true
 process_mode = 1
 
 [node name="APT Box" parent="." unique_id=158248917 instance=ExtResource("8_2o6ge")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.75650907, -1.0721818)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -3.1685593, 0.6990597, 2.1160355)
+Size = 1.0
+
+[node name="APT Box2" parent="." unique_id=494557083 instance=ExtResource("8_2o6ge")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -3.1685593, 0.6990597, 3.4606512)
+Size = 1.0
+
+[node name="APT Box3" parent="." unique_id=1003344453 instance=ExtResource("8_2o6ge")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -3.1685593, 0.6990597, 4.711171)
+Size = 1.0
+
+[node name="APT Box4" parent="." unique_id=814882048 instance=ExtResource("8_2o6ge")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -3.1685593, 0.6990597, 5.877836)
+Size = 1.0
+
+[connection signal="body_entered" from="Appartment/TV/Screen Zone" to="." method="_on_screen_zone_body_entered"]
+
+[editable path="Appartment/TV/Screen"]
