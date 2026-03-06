@@ -76,8 +76,10 @@ func _physics_process(delta):
 	
 	if not Globals.in_game:
 		return
-	
-	input = Input.get_action_strength("GB Right") - Input.get_action_strength("GB Left")
+	if not Globals.in_dialogue:
+		input = Input.get_action_strength("GB Right") - Input.get_action_strength("GB Left")
+	else:
+		input = 0.0
 	
 	if Globals.in_game_time > 0.1:
 	
@@ -167,7 +169,7 @@ func _physics_process(delta):
 			
 			
 			# Jumping
-			if (is_on_floor() or coyote_time > 0) and (Input.is_action_just_pressed("GB Jump") or jump_queue_time > 0):
+			if (is_on_floor() or coyote_time > 0) and (Input.is_action_just_pressed("GB Jump") or jump_queue_time > 0) and not Globals.in_dialogue:
 				velocity.y = -Jump_Force
 				Squash._force_stretch(1.4)
 				jump_queue_time = 0
@@ -194,6 +196,9 @@ func _physics_process(delta):
 			
 			# Animations
 			
+			# Flip both the visual and functional things that need to be flipped
+			# Depends on input direction
+			# Visual flip objects are also squash and stretced B)
 			if input > 0:
 				Visual_Flip.scale.x = 1
 				Flip.scale.x = 1
@@ -203,14 +208,11 @@ func _physics_process(delta):
 				Flip.scale.x = -1
 				is_flipped = true
 				
-			
 			Squash._turn_stretch(Visual_Flip.scale.x)
 			
 			
 			
-			
-			
-			
+			# Play animations and squash&stretch on landing
 			if is_on_floor():
 				if input == 0:
 					Animator.play("Idle")
@@ -248,13 +250,16 @@ func _physics_process(delta):
 				if c.get_collider() is RigidBody2D:
 					c.get_collider().apply_central_impulse(-c.get_normal() * Push_Force)
 			
+			# Pretty obvious
 			if Input.is_action_just_pressed("GB Grab"):
 				if grab_object:
 					drop()
 				else:
 					grab()
 			
+			
 			# Move grab objects
+			# Grab objects are moved relative to the player using the Grab_Point_Damper
 			if grab_object:
 				grab_object.position = Grab_Point_Damper.global_position
 				grab_object.rotation = Grab_Point_Damper.rotation
@@ -265,17 +270,23 @@ func _physics_process(delta):
 			
 			
 			prev_velocity = velocity
+		
+			
 
 
 func grab():
+	
 	var current_grab_object : Node = null
 	var current_grab_distance : float = 99999.0
+	
+	# Search for the closest available grab object in the area
 	for obj in Grab_Zone.get_overlapping_bodies():
 		if obj.is_in_group("grab_object"):
 			if Grab_Point.global_position.distance_to(obj.global_position) < current_grab_distance:
 				current_grab_object = obj
 				current_grab_distance = Grab_Point.global_position.distance_to(obj.global_position) < current_grab_distance
 	
+	# Set the current grab object and pause it (and make pausing it remove it instead of making it static)
 	if current_grab_object:
 		grab_object = current_grab_object
 		
@@ -287,9 +298,9 @@ func grab():
 
 
 func drop():
+	# Return the process mode of the grabbed object, and apply the force to throw it
 	grab_object.process_mode = grab_object.PROCESS_MODE_INHERIT
 	grab_object.disable_mode = grab_object.DISABLE_MODE_MAKE_STATIC
 	var temp_grab_object = grab_object
 	grab_object = null
-	#await get_tree().create_timer(0.1).timeout
 	temp_grab_object.apply_central_force(Vector2(Visual_Flip.scale.x * 500, -500) + (velocity*5))

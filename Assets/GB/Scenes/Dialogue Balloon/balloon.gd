@@ -45,6 +45,11 @@ var dialogue_line: DialogueLine:
 			apply_dialogue_line()
 		else:
 			# The dialogue has finished so close the balloon
+			EnterAnimator.play("Exit")
+			Globals.in_dialogue = false
+			await EnterAnimator.animation_finished
+			#Globals.in_dialogue = false
+			
 			if owner == null:
 				queue_free()
 			else:
@@ -67,7 +72,7 @@ var mutation_cooldown: Timer = Timer.new()
 ## The menu of responses
 @onready var responses_menu: DialogueResponsesMenu = %ResponsesMenu
 
-
+@onready var EnterAnimator = $"Enter Animator"
 
 func _ready() -> void:
 	balloon.hide()
@@ -79,18 +84,21 @@ func _ready() -> void:
 
 	mutation_cooldown.timeout.connect(_on_mutation_cooldown_timeout)
 	add_child(mutation_cooldown)
-
+	
+	
 	if auto_start:
 		if not is_instance_valid(dialogue_resource):
 			assert(false, DMConstants.get_error_message(DMConstants.ERR_MISSING_RESOURCE_FOR_AUTOSTART))
-		start()
+		
 
 
 func _process(delta: float) -> void:
 	
-	print("Awake")
 	if Input.is_action_just_pressed("APT Jump"):
-		next(dialogue_line.next_id)
+		if dialogue_label.is_typing:
+			dialogue_label.skip_typing()
+		else:
+			next(dialogue_line.next_id)
 	
 	if is_instance_valid(dialogue_line):
 		#progress.visible = not dialogue_label.is_typing and dialogue_line.responses.size() == 0 and not dialogue_line.has_tag("voice")
@@ -115,6 +123,14 @@ func _notification(what: int) -> void:
 
 ## Start some dialogue
 func start(with_dialogue_resource: DialogueResource = null, title: String = "", extra_game_states: Array = []) -> void:
+	
+	EnterAnimator.play("Enter")
+	
+	Globals.in_dialogue = true
+	
+	#await EnterAnimator.animation_finished
+	
+	
 	temporary_game_states = [self] + extra_game_states
 	is_waiting_for_input = false
 	if is_instance_valid(with_dialogue_resource):

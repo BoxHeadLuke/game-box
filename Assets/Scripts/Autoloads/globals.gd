@@ -7,11 +7,12 @@ var gb_objects : Node
 var gb_audio : Node
 var gb_dialogue_balloon = load("uid://c7d312wamnm5")
 
-var in_game = false
+var in_game : bool = false
+var in_dialogue : bool = false
 var in_game_time : float
 var out_game_time : float
-var paused_objects = []
-var summon_objects = []
+var paused_objects : Array[Node] = []
+var summon_objects : Array[String]  = []
 
 func _ready() -> void:
 	process_mode = Node.PROCESS_MODE_ALWAYS

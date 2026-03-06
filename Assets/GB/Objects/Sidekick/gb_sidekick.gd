@@ -26,47 +26,45 @@ func _process(delta: float) -> void:
 	
 	global_position = lerp(global_position , target_position , Speed*delta)
 	
+	# Animation and sprite flipping
 	if Player.Visual_Flip.scale.x > 0:
-		
-		
 		if Globals.in_game:
 			Body_Sprite.play("right idle")
 			Flip.scale.x = -1
 		else:
-			
 			if Player.sidekick_summon_left:
 				Body_Sprite.play("right summon")
 				Flip.scale.x = 1
 			else:
 				Body_Sprite.play("left summon")
 				Flip.scale.x = -1
-			
 	elif Player.Visual_Flip.scale.x < 0:
-		
 		if Globals.in_game:
 			Flip.scale.x = 1
 			Body_Sprite.play("left idle")
-			
 		else:
-			
 			if Player.sidekick_summon_left:
 				Body_Sprite.play("right summon")
 				Flip.scale.x = 1
 			else:
 				Body_Sprite.play("left summon")
 				Flip.scale.x = -1
+	Squash._turn_stretch(Flip.scale.x)
 	
+	# Rotate the sprite in the direction its moving (makes flying look smoother and more natural)
 	if global_position > target_position:
 		Body_Sprite.rotation_degrees = -global_position.distance_to(target_position) * 0.4
 	else:
 		Body_Sprite.rotation_degrees = global_position.distance_to(target_position) * 0.4
-	Squash._turn_stretch(Flip.scale.x)
 	prev_pos = global_position
 	
-	
+	# This should probably be the portal sprite instead
+	# Make the portal invisible when in the game
 	Flip.visible = not Globals.in_game
 	
-	
+	# Summon objects from the globals summon list
+	# Only summon one each frame (this shouldnt be a problem)
+	# Unpause the object, so it moves while everything else is frozen to create a cool effect
 	if not Globals.in_game:
 		if Globals.summon_objects.size() > 0:
 			var obj = load(Globals.summon_objects[0]).instantiate()
@@ -79,12 +77,13 @@ func _process(delta: float) -> void:
 			PortalSquash._force_stretch(0.5)
 			
 	else:
+		
+		# Make it so object summoned since the last pause are returned to the correct process mode
 		var removed_summons : bool = false
 		for obj in recent_summons:
 			if obj != null:
 				obj.process_mode = Node.PROCESS_MODE_INHERIT
 				removed_summons = true
-		
 		if removed_summons:
 			$DialogueTrigger.start()
 		recent_summons.clear()
