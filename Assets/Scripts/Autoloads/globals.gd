@@ -28,7 +28,7 @@ func _process(delta: float) -> void:
 		out_game_time += delta
 	
 	
-	if Input.is_action_just_pressed("Switch"):
+	if Input.is_action_just_pressed("Switch") and not in_dialogue:
 		in_game = not in_game
 		
 		
