@@ -1,0 +1,29 @@
+[gd_scene format=3 uid="uid://bcnc16n3kee1r"]
+
+[ext_resource type="Script" uid="uid://dvyaqeofsrm7g" path="res://Assets/Scripts/Behaviours/gb_grab_object.gd" id="1_1hpv7"]
+[ext_resource type="Texture2D" uid="uid://cba7elsmb8cch" path="res://Assets/GB/Visuals/GB Baseball Bat.png" id="2_sip5j"]
+[ext_resource type="Script" uid="uid://c6g30fygy5us6" path="res://Assets/Scripts/Behaviours/player_attack_trigger.gd" id="3_o8y5u"]
+
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_b0qyd"]
+radius = 3.5
+height = 21.0
+
+[node name="GB Baseball Bat" type="RigidBody2D" unique_id=909468769 node_paths=PackedStringArray("Use_Trigger")]
+script = ExtResource("1_1hpv7")
+Use_Trigger = NodePath("PlayerAttackTrigger")
+metadata/_custom_type_script = "uid://dvyaqeofsrm7g"
+
+[node name="GbBaseballBat" type="Sprite2D" parent="." unique_id=191247392]
+texture = ExtResource("2_sip5j")
+offset = Vector2(0.5, -16)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=1851569420]
+position = Vector2(0, -10.5)
+shape = SubResource("CapsuleShape2D_b0qyd")
+
+[node name="PlayerAttackTrigger" type="Node" parent="." unique_id=1184822709 node_paths=PackedStringArray("Make_Invisible")]
+script = ExtResource("3_o8y5u")
+Attack_Anim = "Swing"
+Attack_Sprite = ExtResource("2_sip5j")
+Make_Invisible = NodePath("..")
+metadata/_custom_type_script = "uid://c6g30fygy5us6"

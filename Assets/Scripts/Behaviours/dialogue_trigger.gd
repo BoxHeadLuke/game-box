@@ -1,5 +1,5 @@
 class_name DialogueTrigger
-extends Node
+extends Trigger
 
 @export var Dialogue_File : DialogueResource
 @export var Start_Flag : String

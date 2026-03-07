@@ -1,0 +1,83 @@
+[gd_scene format=3 uid="uid://brl7fhwiplfcv"]
+
+[ext_resource type="Texture2D" uid="uid://bt66ekvn7fvj4" path="res://Assets/GB/Visuals/Diamond.png" id="1_ue1k0"]
+[ext_resource type="FontFile" uid="uid://c6aa1i6wym28l" path="res://Assets/Resources/Habbo.ttf" id="2_72h0f"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_72h0f"]
+atlas = ExtResource("1_ue1k0")
+region = Rect2(0, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_1q7os"]
+atlas = ExtResource("1_ue1k0")
+region = Rect2(32, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_jlg0f"]
+atlas = ExtResource("1_ue1k0")
+region = Rect2(64, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_pi623"]
+atlas = ExtResource("1_ue1k0")
+region = Rect2(96, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_e3ul5"]
+atlas = ExtResource("1_ue1k0")
+region = Rect2(128, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_4bosj"]
+atlas = ExtResource("1_ue1k0")
+region = Rect2(160, 0, 32, 32)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_pawr0"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_72h0f")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_1q7os")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_jlg0f")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_pi623")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_e3ul5")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_4bosj")
+}],
+"loop": true,
+"name": &"default",
+"speed": 5.0
+}]
+
+[node name="GB HUD" type="CanvasLayer" unique_id=2065244573]
+
+[node name="Screen" type="Control" parent="." unique_id=1381577183]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="Control" type="Control" parent="Screen" unique_id=313270642]
+layout_mode = 1
+anchors_preset = 0
+offset_right = 97.0
+offset_bottom = 49.0
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="." unique_id=1629159825]
+position = Vector2(19, 18)
+sprite_frames = SubResource("SpriteFrames_pawr0")
+autoplay = "default"
+
+[node name="Label" type="Label" parent="AnimatedSprite2D" unique_id=598526424]
+offset_left = 11.0
+offset_top = -7.0
+offset_right = 51.0
+offset_bottom = 16.0
+theme_override_fonts/font = ExtResource("2_72h0f")
+text = "x3"

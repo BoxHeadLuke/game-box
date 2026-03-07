@@ -1,0 +1,30 @@
+[gd_scene format=3 uid="uid://be210fud65mrg"]
+
+[ext_resource type="Script" uid="uid://dvyaqeofsrm7g" path="res://Assets/Scripts/Behaviours/gb_grab_object.gd" id="1_865dj"]
+[ext_resource type="Texture2D" uid="uid://dcc8btvhpji8o" path="res://Assets/GB/Visuals/GB Kitchen Knife.png" id="2_71yak"]
+[ext_resource type="Script" uid="uid://c6g30fygy5us6" path="res://Assets/Scripts/Behaviours/player_attack_trigger.gd" id="3_aqmt8"]
+
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_aqmt8"]
+radius = 3.0
+height = 18.0
+
+[node name="GB Kitchen Knife" type="RigidBody2D" unique_id=1148473754 node_paths=PackedStringArray("Use_Trigger")]
+script = ExtResource("1_865dj")
+Impact_Sound = "Metal Impact"
+Use_Trigger = NodePath("PlayerAttackTrigger")
+metadata/_custom_type_script = "uid://dvyaqeofsrm7g"
+
+[node name="GbKitchenKnife" type="Sprite2D" parent="." unique_id=1836276737]
+texture = ExtResource("2_71yak")
+offset = Vector2(0, -16)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=2139985441]
+position = Vector2(1, -9)
+shape = SubResource("CapsuleShape2D_aqmt8")
+
+[node name="PlayerAttackTrigger" type="Node" parent="." unique_id=860329456 node_paths=PackedStringArray("Make_Invisible")]
+script = ExtResource("3_aqmt8")
+Attack_Anim = "Poke"
+Attack_Sprite = ExtResource("2_71yak")
+Make_Invisible = NodePath("..")
+metadata/_custom_type_script = "uid://c6g30fygy5us6"

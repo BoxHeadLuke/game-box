@@ -1,0 +1,24 @@
+[remap]
+
+importer="wav"
+type="AudioStreamWAV"
+uid="uid://dw2c48f2g457h"
+path="res://.godot/imported/Guitar Sound REPLACE 2.wav-65cbaa3a317a20ba2b0bc1f5d4f5efc6.sample"
+
+[deps]
+
+source_file="res://Assets/Audio/Guitar Sound REPLACE 2.wav"
+dest_files=["res://.godot/imported/Guitar Sound REPLACE 2.wav-65cbaa3a317a20ba2b0bc1f5d4f5efc6.sample"]
+
+[params]
+
+force/8_bit=false
+force/mono=false
+force/max_rate=false
+force/max_rate_hz=44100
+edit/trim=false
+edit/normalize=false
+edit/loop_mode=0
+edit/loop_begin=0
+edit/loop_end=-1
+compress/mode=2

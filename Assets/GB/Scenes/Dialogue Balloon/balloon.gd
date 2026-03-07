@@ -15,10 +15,10 @@ extends CanvasLayer
 @export var will_block_other_input: bool = true
 
 ## The action to use for advancing the dialogue
-@export var next_action: StringName = &"GB Jump"
+@export var next_action: StringName = &"Jump"
 
 ## The action to use to skip typing the dialogue
-@export var skip_action: StringName = &"GB Use"
+@export var skip_action: StringName = &"Use"
 
 ## A sound player for voice lines (if they exist).
 @onready var audio_stream_player: AudioStreamPlayer = %AudioStreamPlayer
@@ -94,7 +94,7 @@ func _ready() -> void:
 
 func _process(delta: float) -> void:
 	
-	if Input.is_action_just_pressed("APT Jump"):
+	if Input.is_action_just_pressed("Jump"):
 		if dialogue_label.is_typing:
 			dialogue_label.skip_typing()
 		else:

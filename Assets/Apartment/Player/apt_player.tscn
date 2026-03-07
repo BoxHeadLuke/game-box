@@ -1,0 +1,54 @@
+[gd_scene format=3 uid="uid://kli06428x4uy"]
+
+[ext_resource type="Script" uid="uid://csjccrhj5wnx7" path="res://addons/phantom_camera/scripts/phantom_camera/phantom_camera_3d.gd" id="1_d15js"]
+[ext_resource type="Script" uid="uid://dqhjkquw2ahqj" path="res://Assets/Apartment/Player/apt_player.gd" id="1_evsd6"]
+[ext_resource type="Resource" uid="uid://qjyje4yfkh1r" path="res://Assets/Resources/3d_cam_tween.tres" id="3_evsd6"]
+[ext_resource type="Script" uid="uid://b8hhnqsugykly" path="res://addons/phantom_camera/scripts/resources/camera_3d_resource.gd" id="3_yqo43"]
+
+[sub_resource type="CapsuleShape3D" id="CapsuleShape3D_q4sgf"]
+
+[sub_resource type="CapsuleMesh" id="CapsuleMesh_oxejd"]
+
+[sub_resource type="Resource" id="Resource_s83wy"]
+script = ExtResource("3_yqo43")
+metadata/_custom_type_script = "uid://b8hhnqsugykly"
+
+[sub_resource type="CylinderShape3D" id="CylinderShape3D_evsd6"]
+height = 3.3041992
+radius = 0.3334961
+
+[node name="APT Player" type="CharacterBody3D" unique_id=223959281 node_paths=PackedStringArray("Head", "Grab_Zone", "Grab_Point")]
+script = ExtResource("1_evsd6")
+Head = NodePath("Head")
+Grab_Zone = NodePath("Head/Grab Zone")
+Grab_Point = NodePath("Head/Grab Point")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="." unique_id=805870532]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1, 0)
+shape = SubResource("CapsuleShape3D_q4sgf")
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="." unique_id=1268130029]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1, 0)
+visible = false
+mesh = SubResource("CapsuleMesh_oxejd")
+
+[node name="Head" type="Node3D" parent="." unique_id=972623309]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.5, 0)
+
+[node name="PhantomCamera3D" type="Node3D" parent="Head" unique_id=218793960]
+script = ExtResource("1_d15js")
+priority = 1
+tween_resource = ExtResource("3_evsd6")
+camera_3d_resource = SubResource("Resource_s83wy")
+metadata/_custom_type_script = "uid://csjccrhj5wnx7"
+
+[node name="Grab Point" type="Marker3D" parent="Head" unique_id=1041684986]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.272066, -0.9656074)
+
+[node name="Grab Zone" type="Area3D" parent="Head" unique_id=1246307321]
+collision_layer = 2
+collision_mask = 2
+
+[node name="CollisionShape3D2" type="CollisionShape3D" parent="Head/Grab Zone" unique_id=2030500125]
+transform = Transform3D(1, 0, 0, 0, -4.371139e-08, -1, 0, 1, -4.371139e-08, 0, 0, -1.6520996)
+shape = SubResource("CylinderShape3D_evsd6")

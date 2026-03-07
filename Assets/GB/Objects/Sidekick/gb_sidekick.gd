@@ -13,7 +13,7 @@ const Speed : float = 4.0
 
 var prev_pos : Vector2
 var recent_summons : Array[Node]
-
+var has_spoken : bool =false
 
 func _process(delta: float) -> void:
 	
@@ -85,7 +85,10 @@ func _process(delta: float) -> void:
 				obj.process_mode = Node.PROCESS_MODE_INHERIT
 				removed_summons = true
 		if removed_summons:
-			$DialogueTrigger.start()
+			if not has_spoken:
+				$DialogueTrigger.start()
+				has_spoken = true
+			
 		recent_summons.clear()
 		
 	

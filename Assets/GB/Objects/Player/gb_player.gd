@@ -22,6 +22,12 @@ extends CharacterBody2D
 @export var Backup_Sidekick_Position : Node2D
 @export var Backup_Sidekick_Zone : Area2D
 @export var Backup_Sidekick_Summon_Zone : Area2D
+@export var Camera : PhantomCamera2D
+@export var Camera_Pivot : Node2D
+@export var Camera_Position : Node2D
+@export var Attack : Node2D
+@export var Attack_Animator : AnimationPlayer
+@export var Attack_Sprite : Sprite2D
 
 const Acceleration : float = 300.0
 const Run_Acceleration : float = 300.0
@@ -60,6 +66,7 @@ var sidekick_summon_pos : Vector2
 var sidekick_summon_left : bool
 var is_flipped : bool
 var prev_velocity : Vector2
+var attacking : bool = false
 
 # State Machine (Kinda)
 enum{
@@ -70,17 +77,27 @@ enum{
 var state = MOVING
 
 
+func _ready() -> void:
+	Globals.gb_player = self
+
+
 func _physics_process(delta):
+	
+	if Input.is_action_just_pressed("Use"):
+		if grab_object:
+			grab_object.use()
 	
 	
 	
 	if not Globals.in_game:
 		return
 	if not Globals.in_dialogue:
-		input = Input.get_action_strength("GB Right") - Input.get_action_strength("GB Left")
+		input = Input.get_action_strength("Right") - Input.get_action_strength("Left")
 	else:
 		input = 0.0
 	
+	# A bunch of nonsense to find out where to put the sidekick
+	# He shouldn't be going into walls because then things would spawn funny
 	if Globals.in_game_time > 0.1:
 	
 		if Sidekick_Zone.get_overlapping_bodies().size() == 0:
@@ -105,9 +122,9 @@ func _physics_process(delta):
 		
 		MOVING:
 			# X-Axis movement
-			if Input.is_action_pressed("GB Run") and is_on_floor():
+			if Input.is_action_pressed("Run") and is_on_floor():
 				running = true
-			elif not Input.is_action_pressed("GB Run"):
+			elif not Input.is_action_pressed("Run"):
 				running = false
 			
 			# oh my goodness
@@ -155,7 +172,7 @@ func _physics_process(delta):
 			# Jump queue and coyote time
 			if is_on_floor():
 				coyote_time = Coyote_Time
-			elif Input.is_action_just_pressed("GB Jump"):
+			elif Input.is_action_just_pressed("Jump"):
 				jump_queue_time = Jump_Queue_Time
 			
 			# Remove jumping state (for variable jump height triggers)
@@ -163,13 +180,13 @@ func _physics_process(delta):
 				jumping = false
 			
 			# Variable jump height
-			if jumping and not Input.is_action_pressed("GB Jump"):
+			if jumping and not Input.is_action_pressed("Jump"):
 				jumping = false
 				velocity.y *= Variable_Jump_Multiplier
 			
 			
 			# Jumping
-			if (is_on_floor() or coyote_time > 0) and (Input.is_action_just_pressed("GB Jump") or jump_queue_time > 0) and not Globals.in_dialogue:
+			if (is_on_floor() or coyote_time > 0) and (Input.is_action_just_pressed("Jump") or jump_queue_time > 0) and not Globals.in_dialogue :
 				velocity.y = -Jump_Force
 				Squash._force_stretch(1.4)
 				jump_queue_time = 0
@@ -251,7 +268,7 @@ func _physics_process(delta):
 					c.get_collider().apply_central_impulse(-c.get_normal() * Push_Force)
 			
 			# Pretty obvious
-			if Input.is_action_just_pressed("GB Grab"):
+			if Input.is_action_just_pressed("Grab") and not attacking and not Globals.in_dialogue:
 				if grab_object:
 					drop()
 				else:
@@ -270,8 +287,28 @@ func _physics_process(delta):
 			
 			
 			prev_velocity = velocity
+
+
+func _process(delta: float) -> void:
+	# Camera Look-ahead
+	if input == 0:
+		Camera.position.x = lerpf(Camera.position.x, 0.0 , Camera_Offset_Speed_X * delta )
+	else:
+		Camera.position.x = lerpf(Camera.position.x, input * Camera_Offset_Multiplier_X , Camera_Offset_Speed_X * delta )
+	
+	
+	# Camera Y ignore
+	
+	Camera_Pivot.position.x = Camera_Position.global_position.x
+	if is_on_floor() or Camera_Position.global_position > Camera_Pivot.position:
+		camera_y_pos = Camera_Position.global_position.y
 		
-			
+	if Camera_Pivot.position.y - Camera_Position.global_position.y >= 0:
+		Camera_Pivot.position.y = lerp(Camera_Pivot.position.y , camera_y_pos , Camera_Y_Speed_Up * delta)
+	elif Camera_Pivot.position.y - Camera_Position.global_position.y <= 0:
+		Camera_Pivot.position.y = lerp(Camera_Pivot.position.y , camera_y_pos , Camera_Y_Speed_Down * delta)
+	
+
 
 
 func grab():
@@ -304,3 +341,14 @@ func drop():
 	var temp_grab_object = grab_object
 	grab_object = null
 	temp_grab_object.apply_central_force(Vector2(Visual_Flip.scale.x * 500, -500) + (velocity*5))
+
+
+func attack(anim : String , tex : Texture):
+	#if not is_on_floor():
+	#	return
+	Attack.scale.x = Flip.scale.x
+	Attack_Sprite.texture = tex
+	attacking = true
+	Attack_Animator.play(anim)
+	await Attack_Animator.animation_finished
+	attacking = false

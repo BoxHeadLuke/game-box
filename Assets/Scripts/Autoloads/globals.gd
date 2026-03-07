@@ -5,6 +5,7 @@ var apt_root : Node
 var gb_root : Node
 var gb_objects : Node
 var gb_audio : Node
+var gb_player : Node
 var gb_dialogue_balloon = load("uid://c7d312wamnm5")
 
 var in_game : bool = false
