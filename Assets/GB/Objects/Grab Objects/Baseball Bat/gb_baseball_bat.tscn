@@ -8,22 +8,26 @@
 radius = 3.5
 height = 21.0
 
-[node name="GB Baseball Bat" type="RigidBody2D" unique_id=909468769 node_paths=PackedStringArray("Use_Trigger")]
+[node name="Node2D" type="Node2D" unique_id=1150404974]
+
+[node name="GB Baseball Bat" type="RigidBody2D" parent="." unique_id=909468769 node_paths=PackedStringArray("Use_Trigger")]
 script = ExtResource("1_1hpv7")
 Use_Trigger = NodePath("PlayerAttackTrigger")
 metadata/_custom_type_script = "uid://dvyaqeofsrm7g"
 
-[node name="GbBaseballBat" type="Sprite2D" parent="." unique_id=191247392]
+[node name="GbBaseballBat" type="Sprite2D" parent="GB Baseball Bat" unique_id=191247392]
 texture = ExtResource("2_sip5j")
 offset = Vector2(0.5, -16)
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=1851569420]
+[node name="CollisionShape2D" type="CollisionShape2D" parent="GB Baseball Bat" unique_id=1851569420]
 position = Vector2(0, -10.5)
 shape = SubResource("CapsuleShape2D_b0qyd")
 
-[node name="PlayerAttackTrigger" type="Node" parent="." unique_id=1184822709 node_paths=PackedStringArray("Make_Invisible")]
+[node name="PlayerAttackTrigger" type="Node" parent="GB Baseball Bat" unique_id=1184822709 node_paths=PackedStringArray("Weapon", "Make_Invisible")]
 script = ExtResource("3_o8y5u")
 Attack_Anim = "Swing"
 Attack_Sprite = ExtResource("2_sip5j")
-Make_Invisible = NodePath("..")
+Weapon = NodePath("..")
+Make_Invisible = NodePath("../..")
+Fade = false
 metadata/_custom_type_script = "uid://c6g30fygy5us6"

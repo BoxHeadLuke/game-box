@@ -12,6 +12,7 @@
 [ext_resource type="PackedScene" uid="uid://bx3q2820656fq" path="res://Assets/GB/Objects/Grab Objects/Guitar/gb_guitar.tscn" id="10_i465b"]
 [ext_resource type="PackedScene" uid="uid://bcnc16n3kee1r" path="res://Assets/GB/Objects/Grab Objects/Baseball Bat/gb_baseball_bat.tscn" id="11_hhrp4"]
 [ext_resource type="PackedScene" uid="uid://be210fud65mrg" path="res://Assets/GB/Objects/Grab Objects/Kitchen Knife/gb_kitchen_knife.tscn" id="12_46011"]
+[ext_resource type="Texture2D" uid="uid://qw3ywotd8l3q" path="res://Assets/GB/Visuals/Basic Characters.png" id="13_njlly"]
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_17rya"]
 shader = ExtResource("2_awqor")
@@ -406,4 +407,8 @@ position = Vector2(220, 46)
 position = Vector2(194, 31)
 
 [node name="GB Kitchen Knife" parent="." unique_id=1148473754 instance=ExtResource("12_46011")]
-position = Vector2(206, 89)
+position = Vector2(182, 42)
+
+[node name="BasicCharacters" type="Sprite2D" parent="." unique_id=801633966]
+position = Vector2(406, 64)
+texture = ExtResource("13_njlly")

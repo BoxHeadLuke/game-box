@@ -22,9 +22,11 @@ offset = Vector2(0, -16)
 position = Vector2(1, -9)
 shape = SubResource("CapsuleShape2D_aqmt8")
 
-[node name="PlayerAttackTrigger" type="Node" parent="." unique_id=860329456 node_paths=PackedStringArray("Make_Invisible")]
+[node name="PlayerAttackTrigger" type="Node" parent="." unique_id=860329456 node_paths=PackedStringArray("Weapon", "Make_Invisible")]
 script = ExtResource("3_aqmt8")
 Attack_Anim = "Poke"
 Attack_Sprite = ExtResource("2_71yak")
+Weapon = NodePath("..")
 Make_Invisible = NodePath("..")
+Fade = false
 metadata/_custom_type_script = "uid://c6g30fygy5us6"

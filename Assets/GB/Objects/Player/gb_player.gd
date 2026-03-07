@@ -278,7 +278,7 @@ func _physics_process(delta):
 			# Move grab objects
 			# Grab objects are moved relative to the player using the Grab_Point_Damper
 			if grab_object:
-				grab_object.position = Grab_Point_Damper.global_position
+				grab_object.global_position = Grab_Point_Damper.global_position
 				grab_object.rotation = Grab_Point_Damper.rotation
 				Grab_Point_Damper.position = lerp(Grab_Point_Damper.position, Vector2(0,0) , Grab_Speed*delta)
 				Grab_Point_Damper.rotation = lerp_angle(Grab_Point_Damper.rotation , 0.0 , Grab_Rotation_Speed*delta)
@@ -346,6 +346,7 @@ func drop():
 func attack(anim : String , tex : Texture):
 	#if not is_on_floor():
 	#	return
+	
 	Attack.scale.x = Flip.scale.x
 	Attack_Sprite.texture = tex
 	attacking = true
