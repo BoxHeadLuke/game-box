@@ -4,8 +4,6 @@
 [ext_resource type="Texture2D" uid="uid://b68ggspnqkres" path="res://Assets/GB/Visuals/GB Sidekick.png" id="1_pjdpf"]
 [ext_resource type="Script" uid="uid://c6ppxwwiuykhq" path="res://Assets/Scripts/Behaviours/squash_&_stretch.gd" id="2_ijtcd"]
 [ext_resource type="Texture2D" uid="uid://x4q8wsjvyidq" path="res://Assets/GB/Visuals/GB Sidekick Portal.png" id="4_ysab0"]
-[ext_resource type="Script" uid="uid://ch48tmhwpdcy5" path="res://Assets/Scripts/Behaviours/dialogue_trigger.gd" id="5_0pq8s"]
-[ext_resource type="Resource" uid="uid://cht2m2nafs6s4" path="res://Assets/Dialogue/test.dialogue" id="6_nkheu"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_0pq8s"]
 atlas = ExtResource("1_pjdpf")
@@ -223,9 +221,3 @@ frame_progress = 0.5060415
 
 [node name="Summon Pos" type="Node2D" parent="Flip" unique_id=1705744110]
 position = Vector2(23, -6)
-
-[node name="DialogueTrigger" type="Node" parent="." unique_id=441702125]
-script = ExtResource("5_0pq8s")
-Dialogue_File = ExtResource("6_nkheu")
-Start_Flag = "start"
-metadata/_custom_type_script = "uid://ch48tmhwpdcy5"

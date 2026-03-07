@@ -1,0 +1,35 @@
+[gd_scene format=3 uid="uid://djghq3r7go3vo"]
+
+[ext_resource type="Script" uid="uid://b1ir3q51v8vrh" path="res://Assets/Scripts/Behaviours/apt_grab_object.gd" id="1_ytuyq"]
+[ext_resource type="Texture2D" uid="uid://dfg4sggb8u7af" path="res://Assets/GB/Visuals/GB Guitar.png" id="2_7yg4h"]
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_vf7nf"]
+transparency = 2
+alpha_scissor_threshold = 0.5
+alpha_antialiasing_mode = 0
+cull_mode = 2
+albedo_texture = ExtResource("2_7yg4h")
+texture_filter = 0
+
+[sub_resource type="QuadMesh" id="QuadMesh_trfm1"]
+size = Vector2(1, 2)
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_eu2iw"]
+size = Vector3(0.5969238, 1.3046875, 0.25952148)
+
+[node name="APT Guitar" type="RigidBody3D" unique_id=615627305 node_paths=PackedStringArray("Centre")]
+transform = Transform3D(-4.371139e-08, 1, 0, -1, -4.371139e-08, 0, 0, 0, 1, 0, 0, 0)
+script = ExtResource("1_ytuyq")
+Size = 1.0
+Centre = NodePath(".")
+GB_Version = "uid://bx3q2820656fq"
+metadata/_custom_type_script = "uid://b1ir3q51v8vrh"
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="." unique_id=1983730001]
+transform = Transform3D(0.7, 0, 0, 0, 0.7, 0, 0, 0, 0.7, 0, 0, 0)
+material_override = SubResource("StandardMaterial3D_vf7nf")
+mesh = SubResource("QuadMesh_trfm1")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="." unique_id=55940962]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.006713868, -0.15234375, -0.010131836)
+shape = SubResource("BoxShape3D_eu2iw")

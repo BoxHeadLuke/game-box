@@ -12,6 +12,7 @@
 [ext_resource type="PackedScene" uid="uid://0rtb5gmasppp" path="res://Assets/Apartment/Objects/Grab Objects/Box/apt_box.tscn" id="8_2o6ge"]
 [ext_resource type="Texture2D" uid="uid://b6yxkvkdleg4w" path="res://Assets/Apartment/Particles/APT Binary One.png" id="8_op1do"]
 [ext_resource type="PackedScene" uid="uid://bo6k5n3hyqee6" path="res://Assets/Apartment/3D Models/Screen.fbx" id="11_fdrvb"]
+[ext_resource type="PackedScene" uid="uid://djghq3r7go3vo" path="res://Assets/Apartment/Objects/Grab Objects/Guitar/apt_guitar.tscn" id="11_sxnil"]
 [ext_resource type="PackedScene" uid="uid://btrlt2ina43ul" path="res://Assets/Apartment/3D Models/Apartment Test.glb" id="13_hmte7"]
 
 [sub_resource type="Resource" id="Resource_op1do"]
@@ -64,13 +65,13 @@ billboard_keep_scale = true
 material = SubResource("StandardMaterial3D_mh0j8")
 size = Vector2(0.21, 0.27)
 
-[sub_resource type="ViewportTexture" id="ViewportTexture_hmte7"]
+[sub_resource type="ViewportTexture" id="ViewportTexture_ssbc4"]
 viewport_path = NodePath("../../../Game Box")
 
-[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_sxnil"]
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_x5c5b"]
 resource_local_to_scene = true
 shading_mode = 0
-albedo_texture = SubResource("ViewportTexture_hmte7")
+albedo_texture = SubResource("ViewportTexture_ssbc4")
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_7gb8a"]
 cull_mode = 2
@@ -185,7 +186,10 @@ transform = Transform3D(1.0769231, 0, 0, 0, 1.0769231, 0, 0, 0, 1.0769231, 0, -0
 
 [node name="Plane" parent="Appartment/TV/Screen" index="0" unique_id=1792985505]
 transform = Transform3D(108.38298, 0, 0, 0, 73.478516, -4.371139e-06, 0, 3.211848e-06, 100, 0, -2.320456e-08, 0.53085846)
-surface_material_override/0 = SubResource("StandardMaterial3D_sxnil")
+surface_material_override/0 = SubResource("StandardMaterial3D_x5c5b")
+
+[node name="APT Guitar" parent="Appartment" unique_id=615627305 instance=ExtResource("11_sxnil")]
+transform = Transform3D(-4.371139e-08, 1, 0, -1, -4.371139e-08, 0, 0, 0, 1, -2.2127576, 0.4313953, -2.126513)
 
 [node name="Game Box" type="SubViewport" parent="." unique_id=386324046]
 disable_3d = true

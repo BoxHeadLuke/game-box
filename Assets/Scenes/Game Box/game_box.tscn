@@ -9,7 +9,6 @@
 [ext_resource type="PackedScene" uid="uid://bbvr6anlvn38m" path="res://Assets/GB/Tiles/gb_grass_tiles.tscn" id="7_lekkh"]
 [ext_resource type="Texture2D" uid="uid://bt66ekvn7fvj4" path="res://Assets/GB/Visuals/Diamond.png" id="8_1k7sf"]
 [ext_resource type="PackedScene" uid="uid://brl7fhwiplfcv" path="res://Assets/GB/HUD/gb_hud.tscn" id="9_242rj"]
-[ext_resource type="PackedScene" uid="uid://bx3q2820656fq" path="res://Assets/GB/Objects/Grab Objects/Guitar/gb_guitar.tscn" id="10_i465b"]
 [ext_resource type="PackedScene" uid="uid://bcnc16n3kee1r" path="res://Assets/GB/Objects/Grab Objects/Baseball Bat/gb_baseball_bat.tscn" id="11_hhrp4"]
 [ext_resource type="PackedScene" uid="uid://be210fud65mrg" path="res://Assets/GB/Objects/Grab Objects/Kitchen Knife/gb_kitchen_knife.tscn" id="12_46011"]
 [ext_resource type="Texture2D" uid="uid://qw3ywotd8l3q" path="res://Assets/GB/Visuals/Basic Characters.png" id="13_njlly"]
@@ -353,6 +352,10 @@ color = Color(0.3137255, 0.7254902, 0.92156863, 1)
 [node name="GB Player" parent="." unique_id=1298103726 instance=ExtResource("1_fuyfo")]
 position = Vector2(138, 91)
 
+[node name="BasicCharacters" type="Sprite2D" parent="." unique_id=1139788667]
+position = Vector2(389, 65)
+texture = ExtResource("13_njlly")
+
 [node name="CRT" type="CanvasLayer" parent="." unique_id=1763021770 node_paths=PackedStringArray("CRT_Effect", "Animator")]
 process_mode = 3
 layer = 3
@@ -400,15 +403,8 @@ autoplay = "default"
 
 [node name="GB HUD" parent="." unique_id=2065244573 instance=ExtResource("9_242rj")]
 
-[node name="GB Guitar" parent="." unique_id=228432925 instance=ExtResource("10_i465b")]
-position = Vector2(220, 46)
-
 [node name="GB Baseball Bat" parent="." unique_id=909468769 instance=ExtResource("11_hhrp4")]
 position = Vector2(194, 31)
 
 [node name="GB Kitchen Knife" parent="." unique_id=1148473754 instance=ExtResource("12_46011")]
 position = Vector2(182, 42)
-
-[node name="BasicCharacters" type="Sprite2D" parent="." unique_id=801633966]
-position = Vector2(406, 64)
-texture = ExtResource("13_njlly")
