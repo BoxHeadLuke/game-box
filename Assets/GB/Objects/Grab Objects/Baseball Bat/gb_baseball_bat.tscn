@@ -1,7 +1,7 @@
 [gd_scene format=3 uid="uid://bcnc16n3kee1r"]
 
 [ext_resource type="Script" uid="uid://dvyaqeofsrm7g" path="res://Assets/Scripts/Behaviours/gb_grab_object.gd" id="1_1hpv7"]
-[ext_resource type="Texture2D" uid="uid://cba7elsmb8cch" path="res://Assets/GB/Visuals/GB Baseball Bat.png" id="2_sip5j"]
+[ext_resource type="Texture2D" uid="uid://cba7elsmb8cch" path="res://Assets/GB/Art/GB Baseball Bat.png" id="2_sip5j"]
 [ext_resource type="Script" uid="uid://c6g30fygy5us6" path="res://Assets/Scripts/Behaviours/player_attack_trigger.gd" id="3_o8y5u"]
 
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_b0qyd"]

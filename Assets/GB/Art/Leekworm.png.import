@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://cba7elsmb8cch"
-path="res://.godot/imported/GB Baseball Bat.png-eca4959bdb294727485108718c5ff4ad.ctex"
+uid="uid://b7jq0jrt4kmr0"
+path="res://.godot/imported/Leekworm.png-56af9c7f7e7837e76a8d9ea37a21db3f.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://Assets/GB/Visuals/GB Baseball Bat.png"
-dest_files=["res://.godot/imported/GB Baseball Bat.png-eca4959bdb294727485108718c5ff4ad.ctex"]
+source_file="res://Assets/GB/Art/Leekworm.png"
+dest_files=["res://.godot/imported/Leekworm.png-56af9c7f7e7837e76a8d9ea37a21db3f.ctex"]
 
 [params]
 

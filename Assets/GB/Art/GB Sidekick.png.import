@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://bf5tbyy5bxe1t"
-path="res://.godot/imported/Portal Particle 4.png-af056ef6fd934a86f6f927f6d72c35b3.ctex"
+uid="uid://b68ggspnqkres"
+path="res://.godot/imported/GB Sidekick.png-183b9a47c21bc0b9103d340d9836b0aa.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://Assets/GB/Visuals/Particles/Portal Particle 4.png"
-dest_files=["res://.godot/imported/Portal Particle 4.png-af056ef6fd934a86f6f927f6d72c35b3.ctex"]
+source_file="res://Assets/GB/Art/GB Sidekick.png"
+dest_files=["res://.godot/imported/GB Sidekick.png-183b9a47c21bc0b9103d340d9836b0aa.ctex"]
 
 [params]
 

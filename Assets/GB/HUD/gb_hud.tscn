@@ -1,6 +1,6 @@
 [gd_scene format=3 uid="uid://brl7fhwiplfcv"]
 
-[ext_resource type="Texture2D" uid="uid://bt66ekvn7fvj4" path="res://Assets/GB/Visuals/Diamond.png" id="1_ue1k0"]
+[ext_resource type="Texture2D" uid="uid://bt66ekvn7fvj4" path="res://Assets/GB/Art/Diamond.png" id="1_ue1k0"]
 [ext_resource type="FontFile" uid="uid://c6aa1i6wym28l" path="res://Assets/Resources/Habbo.ttf" id="2_72h0f"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_72h0f"]

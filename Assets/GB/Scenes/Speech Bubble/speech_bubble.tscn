@@ -1,0 +1,93 @@
+[gd_scene format=3 uid="uid://ux8y8w8pxr8y"]
+
+[ext_resource type="Texture2D" uid="uid://ilw2i2xvyw17" path="res://Assets/GB/Art/Speech Bubble.png" id="1_4kscq"]
+[ext_resource type="Script" uid="uid://jbwwbixn36g4" path="res://Assets/GB/Scenes/Speech Bubble/speech_bubble.gd" id="1_hxv1o"]
+
+[sub_resource type="Animation" id="Animation_hxv1o"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("SpeechBubble:rotation")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [-0.17453292]
+}
+
+[sub_resource type="Animation" id="Animation_1yodp"]
+resource_name = "Sway"
+loop_mode = 2
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("SpeechBubble:rotation")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 1),
+"transitions": PackedFloat32Array(-2, 1),
+"update": 0,
+"values": [-0.17453292, 0.17453292]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_kb4c2"]
+_data = {
+&"RESET": SubResource("Animation_hxv1o"),
+&"Sway": SubResource("Animation_1yodp")
+}
+
+[sub_resource type="Animation" id="Animation_hrwc2"]
+resource_name = "Appear"
+length = 0.5
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("SpeechBubble:scale")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.33333334, 0.5),
+"transitions": PackedFloat32Array(0.5, -2, 1),
+"update": 0,
+"values": [Vector2(1e-05, 1e-05), Vector2(1.2, 1.2), Vector2(1, 1)]
+}
+
+[sub_resource type="Animation" id="Animation_oduim"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("SpeechBubble:scale")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(1e-05, 1e-05)]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_vw78g"]
+_data = {
+&"Appear": SubResource("Animation_hrwc2"),
+&"RESET": SubResource("Animation_oduim")
+}
+
+[node name="Speech Bubble" type="Node2D" unique_id=1360615491]
+script = ExtResource("1_hxv1o")
+
+[node name="SpeechBubble" type="Sprite2D" parent="." unique_id=280455446]
+rotation = -0.17453292
+scale = Vector2(1e-05, 1e-05)
+texture = ExtResource("1_4kscq")
+offset = Vector2(0, -8)
+
+[node name="Sway Animator" type="AnimationPlayer" parent="." unique_id=401231361]
+libraries/ = SubResource("AnimationLibrary_kb4c2")
+
+[node name="Appear Animator" type="AnimationPlayer" parent="." unique_id=2140647700]
+libraries/ = SubResource("AnimationLibrary_vw78g")

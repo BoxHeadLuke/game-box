@@ -1,0 +1,17 @@
+~ start
+Nathan: [[Hi|Hello|Howdy]], this is some dialogue.
+Nathan: Here are some choices.
+- First one
+	Nathan: You picked the first one.
+- Second one
+	Nathan: You picked the second one.
+- Start again => start
+- End the conversation => END
+Nathan: For more information see the online documentation.
+=> END
+
+
+~ fat_cat_1
+Fat Cat : Feed Me
+Fat Cat: [b][shake rate=20 level=6]FEED ME NOW!!![/shake]
+Fat Cat: [i]please

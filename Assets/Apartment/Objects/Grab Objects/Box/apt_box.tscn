@@ -1,7 +1,7 @@
 [gd_scene format=3 uid="uid://0rtb5gmasppp"]
 
 [ext_resource type="Script" uid="uid://b1ir3q51v8vrh" path="res://Assets/Scripts/Behaviours/apt_grab_object.gd" id="1_uur7t"]
-[ext_resource type="Texture2D" uid="uid://pepvsaiwalbc" path="res://Assets/GB/Visuals/GB Box.png" id="2_u5rrs"]
+[ext_resource type="Texture2D" uid="uid://pepvsaiwalbc" path="res://Assets/GB/Art/GB Box.png" id="2_u5rrs"]
 [ext_resource type="AudioStream" uid="uid://5h2jqqxvqmqb" path="res://addons/kenney impact sounds/footstep_wood_003.ogg" id="3_bj8s1"]
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_u5rrs"]

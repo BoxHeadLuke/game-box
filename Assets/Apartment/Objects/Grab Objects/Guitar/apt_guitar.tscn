@@ -1,7 +1,7 @@
 [gd_scene format=3 uid="uid://djghq3r7go3vo"]
 
 [ext_resource type="Script" uid="uid://b1ir3q51v8vrh" path="res://Assets/Scripts/Behaviours/apt_grab_object.gd" id="1_ytuyq"]
-[ext_resource type="Texture2D" uid="uid://dfg4sggb8u7af" path="res://Assets/GB/Visuals/GB Guitar.png" id="2_7yg4h"]
+[ext_resource type="Texture2D" uid="uid://dfg4sggb8u7af" path="res://Assets/GB/Art/GB Guitar.png" id="2_7yg4h"]
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_vf7nf"]
 transparency = 2

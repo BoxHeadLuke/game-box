@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://qw3ywotd8l3q"
-path="res://.godot/imported/Basic Characters.png-39244fbe6c8bb21e29ebe3fe4dfa88a7.ctex"
+uid="uid://og3cdpdy1npc"
+path="res://.godot/imported/Portal Particle 1.png-d4d05f8c2fbe97218e1bdf25a43aa607.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://Assets/GB/Visuals/Basic Characters.png"
-dest_files=["res://.godot/imported/Basic Characters.png-39244fbe6c8bb21e29ebe3fe4dfa88a7.ctex"]
+source_file="res://Assets/GB/Art/Particles/Portal Particle 1.png"
+dest_files=["res://.godot/imported/Portal Particle 1.png-d4d05f8c2fbe97218e1bdf25a43aa607.ctex"]
 
 [params]
 

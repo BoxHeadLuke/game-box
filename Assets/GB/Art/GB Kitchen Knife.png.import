@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://dol1rqvhormbb"
-path="res://.godot/imported/Portal Particles.png-44823043a6052e859222ca3289c61df0.ctex"
+uid="uid://dcc8btvhpji8o"
+path="res://.godot/imported/GB Kitchen Knife.png-204eeeccfcbf6389d1ee26eb3a9ebf1f.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://Assets/GB/Visuals/Particles/Portal Particles.png"
-dest_files=["res://.godot/imported/Portal Particles.png-44823043a6052e859222ca3289c61df0.ctex"]
+source_file="res://Assets/GB/Art/GB Kitchen Knife.png"
+dest_files=["res://.godot/imported/GB Kitchen Knife.png-204eeeccfcbf6389d1ee26eb3a9ebf1f.ctex"]
 
 [params]
 

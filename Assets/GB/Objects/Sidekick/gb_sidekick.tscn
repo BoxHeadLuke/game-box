@@ -1,9 +1,9 @@
 [gd_scene format=3 uid="uid://d3emgtn0wjvra"]
 
 [ext_resource type="Script" uid="uid://ddwja1xgxn471" path="res://Assets/GB/Objects/Sidekick/gb_sidekick.gd" id="1_m8swq"]
-[ext_resource type="Texture2D" uid="uid://b68ggspnqkres" path="res://Assets/GB/Visuals/GB Sidekick.png" id="1_pjdpf"]
+[ext_resource type="Texture2D" uid="uid://b68ggspnqkres" path="res://Assets/GB/Art/GB Sidekick.png" id="1_pjdpf"]
 [ext_resource type="Script" uid="uid://c6ppxwwiuykhq" path="res://Assets/Scripts/Behaviours/squash_&_stretch.gd" id="2_ijtcd"]
-[ext_resource type="Texture2D" uid="uid://x4q8wsjvyidq" path="res://Assets/GB/Visuals/GB Sidekick Portal.png" id="4_ysab0"]
+[ext_resource type="Texture2D" uid="uid://x4q8wsjvyidq" path="res://Assets/GB/Art/GB Sidekick Portal.png" id="4_ysab0"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_0pq8s"]
 atlas = ExtResource("1_pjdpf")

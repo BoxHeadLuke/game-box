@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://dfg4sggb8u7af"
-path="res://.godot/imported/GB Guitar.png-8b268a7a8394c2f485188ab9faca740f.ctex"
+uid="uid://bt66ekvn7fvj4"
+path="res://.godot/imported/Diamond.png-b5ce4e93f0ef7269d8a54fb4cba7cac9.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://Assets/GB/Visuals/GB Guitar.png"
-dest_files=["res://.godot/imported/GB Guitar.png-8b268a7a8394c2f485188ab9faca740f.ctex"]
+source_file="res://Assets/GB/Art/Diamond.png"
+dest_files=["res://.godot/imported/Diamond.png-b5ce4e93f0ef7269d8a54fb4cba7cac9.ctex"]
 
 [params]
 
@@ -37,4 +37,4 @@ process/normal_map_invert_y=false
 process/hdr_as_srgb=false
 process/hdr_clamp_exposure=false
 process/size_limit=0
-detect_3d/compress_to=0
+detect_3d/compress_to=1

@@ -1,9 +1,9 @@
 [gd_scene format=3 uid="uid://bj8lb7d0ieuym"]
 
 [ext_resource type="Script" uid="uid://bbvtsxuskqope" path="res://Assets/GB/Objects/Player/gb_player.gd" id="1_4xcf6"]
-[ext_resource type="Texture2D" uid="uid://baw1eeq3dahba" path="res://Assets/GB/Visuals/GB Player.png" id="1_fonqw"]
+[ext_resource type="Texture2D" uid="uid://baw1eeq3dahba" path="res://Assets/GB/Art/GB Player.png" id="1_fonqw"]
 [ext_resource type="Script" uid="uid://c6ppxwwiuykhq" path="res://Assets/Scripts/Behaviours/squash_&_stretch.gd" id="2_8qlrb"]
-[ext_resource type="Texture2D" uid="uid://cba7elsmb8cch" path="res://Assets/GB/Visuals/GB Baseball Bat.png" id="4_8qc3j"]
+[ext_resource type="Texture2D" uid="uid://cba7elsmb8cch" path="res://Assets/GB/Art/GB Baseball Bat.png" id="4_8qc3j"]
 [ext_resource type="Script" uid="uid://bhexx6mj1xv3q" path="res://addons/phantom_camera/scripts/phantom_camera/phantom_camera_2d.gd" id="4_dmoiy"]
 [ext_resource type="Script" uid="uid://8umksf8e80fw" path="res://addons/phantom_camera/scripts/resources/tween_resource.gd" id="5_8qc3j"]
 
@@ -510,7 +510,7 @@ radius = 7.017834
 script = ExtResource("5_8qc3j")
 
 [node name="GB Player" type="CharacterBody2D" unique_id=1298103726 node_paths=PackedStringArray("Visuals", "Animator", "Squash", "Visual_Flip", "Flip", "Left_Outer_Foot", "Left_Inner_Foot", "Right_Outer_Foot", "Right_Inner_Foot", "Grab_Point", "Grab_Point_Damper", "Grab_Zone", "Sidekick_Position", "Sidekick_Zone", "Sidekick_Summon_Zone", "Backup_Sidekick_Position", "Backup_Sidekick_Zone", "Backup_Sidekick_Summon_Zone", "Camera", "Camera_Pivot", "Camera_Position", "Attack", "Attack_Animator", "Attack_Sprite")]
-collision_layer = 3
+collision_layer = 7
 collision_mask = 3
 platform_floor_layers = 4294967293
 script = ExtResource("1_4xcf6")

@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://x4q8wsjvyidq"
-path="res://.godot/imported/GB Sidekick Portal.png-f9f8f690d2ee4050d141bca034dd2c00.ctex"
+uid="uid://ba2h7k0sliuxw"
+path="res://.godot/imported/Not Alien Girl.png-b1cbdba1ed7c97b275776924da4e1f4d.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://Assets/GB/Visuals/GB Sidekick Portal.png"
-dest_files=["res://.godot/imported/GB Sidekick Portal.png-f9f8f690d2ee4050d141bca034dd2c00.ctex"]
+source_file="res://Assets/GB/Art/Not Alien Girl.png"
+dest_files=["res://.godot/imported/Not Alien Girl.png-b1cbdba1ed7c97b275776924da4e1f4d.ctex"]
 
 [params]
 

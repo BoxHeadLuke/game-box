@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://de202iavmocfs"
-path="res://.godot/imported/Portal Particle 2.png-16b8f149d25295b7363e7e3522ebd740.ctex"
+uid="uid://cba7elsmb8cch"
+path="res://.godot/imported/GB Baseball Bat.png-65044f50ca88978a3ebd6122053e8237.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://Assets/GB/Visuals/Particles/Portal Particle 2.png"
-dest_files=["res://.godot/imported/Portal Particle 2.png-16b8f149d25295b7363e7e3522ebd740.ctex"]
+source_file="res://Assets/GB/Art/GB Baseball Bat.png"
+dest_files=["res://.godot/imported/GB Baseball Bat.png-65044f50ca88978a3ebd6122053e8237.ctex"]
 
 [params]
 

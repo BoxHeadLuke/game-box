@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://cr3sysnmrgjhh"
-path="res://.godot/imported/Portal Particle 3.png-73576237cb0ab6f553e11f4b4d9c1d13.ctex"
+uid="uid://c44gi631uxull"
+path="res://.godot/imported/Fat Cat.png-fc625de55c2efc96388f9be01f12b196.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://Assets/GB/Visuals/Particles/Portal Particle 3.png"
-dest_files=["res://.godot/imported/Portal Particle 3.png-73576237cb0ab6f553e11f4b4d9c1d13.ctex"]
+source_file="res://Assets/GB/Art/Fat Cat.png"
+dest_files=["res://.godot/imported/Fat Cat.png-fc625de55c2efc96388f9be01f12b196.ctex"]
 
 [params]
 

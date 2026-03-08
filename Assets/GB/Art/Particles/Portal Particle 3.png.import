@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://bpwhvtmof6jf1"
-path="res://.godot/imported/Dialogue Balloon.png-c4260bf1f5cb41de94099ac82cda8729.ctex"
+uid="uid://cr3sysnmrgjhh"
+path="res://.godot/imported/Portal Particle 3.png-1d3373136f9a87b8c970dfca1bf6ad47.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://Assets/GB/Visuals/Dialogue Balloon.png"
-dest_files=["res://.godot/imported/Dialogue Balloon.png-c4260bf1f5cb41de94099ac82cda8729.ctex"]
+source_file="res://Assets/GB/Art/Particles/Portal Particle 3.png"
+dest_files=["res://.godot/imported/Portal Particle 3.png-1d3373136f9a87b8c970dfca1bf6ad47.ctex"]
 
 [params]
 

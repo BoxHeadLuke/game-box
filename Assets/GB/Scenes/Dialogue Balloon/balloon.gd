@@ -74,6 +74,8 @@ var mutation_cooldown: Timer = Timer.new()
 
 @onready var EnterAnimator = $"Enter Animator"
 
+var first_line : bool = true
+
 func _ready() -> void:
 	balloon.hide()
 	Engine.get_singleton("DialogueManager").mutated.connect(_on_mutated)
@@ -124,7 +126,7 @@ func _notification(what: int) -> void:
 ## Start some dialogue
 func start(with_dialogue_resource: DialogueResource = null, title: String = "", extra_game_states: Array = []) -> void:
 	
-	EnterAnimator.play("Enter")
+	
 	
 	Globals.in_dialogue = true
 	
@@ -137,12 +139,24 @@ func start(with_dialogue_resource: DialogueResource = null, title: String = "", 
 		dialogue_resource = with_dialogue_resource
 	if not title.is_empty():
 		start_from_title = title
+	
+	
+	
 	dialogue_line = await dialogue_resource.get_next_dialogue_line(start_from_title, temporary_game_states)
+	
+	#show()
+	#balloon.show()
+	#responses_menu.hide()
+	#EnterAnimator.play("Enter")
+	
+	#await EnterAnimator.animation_finished
 	show()
 
 
 ## Apply any changes to the balloon given a new [DialogueLine].
 func apply_dialogue_line() -> void:
+	
+	
 	mutation_cooldown.stop()
 
 	#progress.hide()
@@ -162,7 +176,13 @@ func apply_dialogue_line() -> void:
 	# Show our balloon
 	balloon.show()
 	will_hide_balloon = false
-
+	
+	if first_line:
+		EnterAnimator.play("Enter")
+	
+		await EnterAnimator.animation_finished
+		first_line = false
+	
 	dialogue_label.show()
 	if not dialogue_line.text.is_empty():
 		dialogue_label.type_out()

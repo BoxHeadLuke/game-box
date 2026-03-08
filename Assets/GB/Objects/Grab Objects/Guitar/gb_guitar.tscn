@@ -1,7 +1,7 @@
 [gd_scene format=3 uid="uid://bx3q2820656fq"]
 
 [ext_resource type="Script" uid="uid://dvyaqeofsrm7g" path="res://Assets/Scripts/Behaviours/gb_grab_object.gd" id="1_460vn"]
-[ext_resource type="Texture2D" uid="uid://dfg4sggb8u7af" path="res://Assets/GB/Visuals/GB Guitar.png" id="2_i87p3"]
+[ext_resource type="Texture2D" uid="uid://dfg4sggb8u7af" path="res://Assets/GB/Art/GB Guitar.png" id="2_i87p3"]
 [ext_resource type="Script" uid="uid://clmoravb7y2ls" path="res://Assets/Scripts/Behaviours/play_sound_trigger.gd" id="3_i87p3"]
 [ext_resource type="Script" uid="uid://c6ppxwwiuykhq" path="res://Assets/Scripts/Behaviours/squash_&_stretch.gd" id="4_iluap"]
 
