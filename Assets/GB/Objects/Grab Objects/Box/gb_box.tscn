@@ -1,6 +1,6 @@
 [gd_scene format=3 uid="uid://bn48nmk785v3r"]
 
-[ext_resource type="Script" uid="uid://dvyaqeofsrm7g" path="res://Assets/Scripts/Behaviours/gb_grab_object.gd" id="1_ltbk8"]
+[ext_resource type="Script" uid="uid://dvyaqeofsrm7g" path="res://Assets/Scripts/Behaviours/gb_bass_guitar.gd" id="1_ltbk8"]
 [ext_resource type="Texture2D" uid="uid://pepvsaiwalbc" path="res://Assets/GB/Art/GB Box.png" id="2_tt6o4"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_tt6o4"]

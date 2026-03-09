@@ -1,0 +1,47 @@
+[gd_scene format=3 uid="uid://cuexijelcmvta"]
+
+[ext_resource type="Script" uid="uid://dvyaqeofsrm7g" path="res://Assets/Scripts/Behaviours/gb_bass_guitar.gd" id="1_uifas"]
+[ext_resource type="Texture2D" uid="uid://cdfec0j7xntk" path="res://Assets/GB/Art/GB Umbrella.png" id="2_a8q4y"]
+[ext_resource type="Script" uid="uid://c6ppxwwiuykhq" path="res://Assets/Scripts/Behaviours/squash_&_stretch.gd" id="3_erdjq"]
+[ext_resource type="Script" uid="uid://bntpkk3t4q4ff" path="res://Assets/GB/Objects/Grab Objects/Umbrella/umbrella.gd" id="4_a8q4y"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_a8q4y"]
+radius = 9.0
+
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_erdjq"]
+radius = 4.0
+height = 18.0
+
+[node name="GB Umbrella" type="RigidBody2D" unique_id=340275771 node_paths=PackedStringArray("Use_Trigger", "Squash_And_Stretch")]
+gravity_scale = 0.5
+script = ExtResource("1_uifas")
+Use_Trigger = NodePath("Use")
+Squash_And_Stretch = NodePath("SquashAndStretch")
+metadata/_custom_type_script = "uid://dvyaqeofsrm7g"
+
+[node name="GbUmbrella" type="Sprite2D" parent="." unique_id=1591017020]
+texture = ExtResource("2_a8q4y")
+offset = Vector2(0, -16)
+hframes = 2
+
+[node name="SquashAndStretch" type="Node" parent="." unique_id=974439907 node_paths=PackedStringArray("node")]
+script = ExtResource("3_erdjq")
+node = NodePath("../GbUmbrella")
+metadata/_custom_type_script = "uid://c6ppxwwiuykhq"
+
+[node name="Use" type="Node" parent="." unique_id=1307550420 node_paths=PackedStringArray("grab_object", "sprite", "open_collision", "closed_collision")]
+script = ExtResource("4_a8q4y")
+grab_object = NodePath("..")
+sprite = NodePath("../GbUmbrella")
+float_speed = 10.0
+open_collision = NodePath("../Open Collision")
+closed_collision = NodePath("../Closed Collision")
+
+[node name="Open Collision" type="CollisionShape2D" parent="." unique_id=1493612830]
+position = Vector2(1, -9)
+shape = SubResource("CircleShape2D_a8q4y")
+
+[node name="Closed Collision" type="CollisionShape2D" parent="." unique_id=1558977947]
+position = Vector2(0, -9)
+shape = SubResource("CapsuleShape2D_erdjq")
+disabled = true

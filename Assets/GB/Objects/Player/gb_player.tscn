@@ -580,7 +580,7 @@ collision_layer = 0
 collision_mask = 2
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Flip/Grab Zone" unique_id=2079879957]
-position = Vector2(7, -11)
+position = Vector2(7, -10)
 rotation = 1.5707964
 shape = SubResource("CapsuleShape2D_8qlrb")
 
@@ -668,4 +668,4 @@ host_layers = 2
 metadata/_custom_type_script = "uid://bhexx6mj1xv3q"
 
 [node name="Camera Position" type="Node2D" parent="." unique_id=337079436]
-position = Vector2(0, -23)
+position = Vector2(0, -25)

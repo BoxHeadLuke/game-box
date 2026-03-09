@@ -1,0 +1,19 @@
+[gd_scene format=3 uid="uid://cnvk3dsuljgjh"]
+
+[ext_resource type="Script" uid="uid://dvyaqeofsrm7g" path="res://Assets/Scripts/Behaviours/gb_bass_guitar.gd" id="1_ojg3w"]
+[ext_resource type="Texture2D" uid="uid://dhem3qc51rux7" path="res://Assets/GB/Art/GB Apple.png" id="2_46nta"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_ojg3w"]
+size = Vector2(11, 10)
+
+[node name="GB Apple" type="RigidBody2D" unique_id=1413369442 groups=["food"]]
+script = ExtResource("1_ojg3w")
+metadata/_custom_type_script = "uid://dvyaqeofsrm7g"
+
+[node name="GbApple" type="Sprite2D" parent="." unique_id=1168939533]
+position = Vector2(1, -6)
+texture = ExtResource("2_46nta")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=1727741159]
+position = Vector2(0.5, -5)
+shape = SubResource("RectangleShape2D_ojg3w")

@@ -1,17 +1,21 @@
-~ start
-Nathan: [[Hi|Hello|Howdy]], this is some dialogue.
-Nathan: Here are some choices.
-- First one
-	Nathan: You picked the first one.
-- Second one
-	Nathan: You picked the second one.
-- Start again => start
-- End the conversation => END
-Nathan: For more information see the online documentation.
-=> END
+
 
 
 ~ fat_cat_1
-Fat Cat : Feed Me
-Fat Cat: [b][shake rate=20 level=6]FEED ME NOW!!![/shake]
-Fat Cat: [i]please
+if "food" in Globals.held_tags:
+	Fat Cat: YUMMY FOOD!
+	Fat Cat: [b][shake rate=20 level=6]GIVE IT TO ME!!!
+	
+else:
+	Fat Cat: Hey small blob thing.
+	Fat Cat: Me wants food.
+	Fat Cat: [b][shake rate=20 level=6]GIVE FOOD OR ME WILLS EAT YOU!!!
+	Fat Cat: [i]sorry, me is very hungry
+	Jacko: We should probably find this guy some food...
+=> END
+
+~ not_alien_1
+Totally Normal Girl: You're looking for aliens?
+Totally Normal Girl: Sorry, I haven't seen any.
+
+=> END

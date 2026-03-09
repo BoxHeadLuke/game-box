@@ -1,0 +1,17 @@
+[gd_scene format=3 uid="uid://dk3ngay7jfajw"]
+
+[ext_resource type="Texture2D" uid="uid://cc6unbpjg653u" path="res://Assets/GB/Art/Cobblestone.png" id="1_7agcy"]
+
+[sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_c384s"]
+texture = ExtResource("1_7agcy")
+0:0/0 = 0
+0:0/0/physics_layer_0/polygon_0/points = PackedVector2Array(-8, -8, 8, -8, 8, 8, -8, 8)
+0:1/0 = 0
+0:1/0/physics_layer_0/polygon_0/points = PackedVector2Array(-8, -8, 8, -8, 8, 8, -8, 8)
+
+[sub_resource type="TileSet" id="TileSet_ftnpf"]
+physics_layer_0/collision_layer = 1
+sources/0 = SubResource("TileSetAtlasSource_c384s")
+
+[node name="GB Cobblestone Tiles" type="TileMapLayer" unique_id=2110757318]
+tile_set = SubResource("TileSet_ftnpf")

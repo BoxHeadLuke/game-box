@@ -624,7 +624,7 @@ func show_error_for_missing_state_value(message: String, will_show: bool = true)
 func translate(data: Dictionary) -> String:
 	if TranslationServer.get_loaded_locales().size() == 0 or translation_source == DMConstants.TranslationSource.None:
 		return data.text
-
+	
 	var translation_key: String = data.get(&"translation_key", data.text)
 
 	if translation_key == "" or translation_key == data.text:

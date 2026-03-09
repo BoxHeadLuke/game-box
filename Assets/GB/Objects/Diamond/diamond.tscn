@@ -1,0 +1,71 @@
+[gd_scene format=3 uid="uid://cfr80thwhjg1g"]
+
+[ext_resource type="Script" uid="uid://dstsighr65nq4" path="res://Assets/GB/Objects/Diamond/diamond.gd" id="1_6w08l"]
+[ext_resource type="Texture2D" uid="uid://bt66ekvn7fvj4" path="res://Assets/GB/Art/Diamond.png" id="1_fi2g6"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_8viiy"]
+atlas = ExtResource("1_fi2g6")
+region = Rect2(0, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_6w08l"]
+atlas = ExtResource("1_fi2g6")
+region = Rect2(32, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_op2gp"]
+atlas = ExtResource("1_fi2g6")
+region = Rect2(64, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_d00ql"]
+atlas = ExtResource("1_fi2g6")
+region = Rect2(96, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_s33un"]
+atlas = ExtResource("1_fi2g6")
+region = Rect2(128, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_hnfqx"]
+atlas = ExtResource("1_fi2g6")
+region = Rect2(160, 0, 32, 32)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_2yx76"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_8viiy")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_6w08l")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_op2gp")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_d00ql")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_s33un")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_hnfqx")
+}],
+"loop": true,
+"name": &"default",
+"speed": 10.0
+}]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_b475n"]
+
+[node name="Diamond" type="Area2D" unique_id=2073332635]
+collision_layer = 0
+collision_mask = 4
+script = ExtResource("1_6w08l")
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="." unique_id=238880744]
+sprite_frames = SubResource("SpriteFrames_2yx76")
+autoplay = "default"
+frame_progress = 0.15168805
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=1048294158]
+shape = SubResource("CircleShape2D_b475n")
+
+[connection signal="area_entered" from="." to="." method="_on_area_entered"]

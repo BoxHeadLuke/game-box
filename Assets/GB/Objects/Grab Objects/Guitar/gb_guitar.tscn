@@ -1,6 +1,6 @@
 [gd_scene format=3 uid="uid://bx3q2820656fq"]
 
-[ext_resource type="Script" uid="uid://dvyaqeofsrm7g" path="res://Assets/Scripts/Behaviours/gb_grab_object.gd" id="1_460vn"]
+[ext_resource type="Script" uid="uid://dvyaqeofsrm7g" path="res://Assets/Scripts/Behaviours/gb_bass_guitar.gd" id="1_460vn"]
 [ext_resource type="Texture2D" uid="uid://dfg4sggb8u7af" path="res://Assets/GB/Art/GB Guitar.png" id="2_i87p3"]
 [ext_resource type="Script" uid="uid://clmoravb7y2ls" path="res://Assets/Scripts/Behaviours/play_sound_trigger.gd" id="3_i87p3"]
 [ext_resource type="Script" uid="uid://c6ppxwwiuykhq" path="res://Assets/Scripts/Behaviours/squash_&_stretch.gd" id="4_iluap"]
@@ -9,19 +9,19 @@
 radius = 5.0
 height = 28.0
 
-[node name="GB Guitar" type="RigidBody2D" unique_id=228432925 node_paths=PackedStringArray("Use_Trigger", "Squash_And_Stretch")]
+[node name="GB Guitar" type="RigidBody2D" unique_id=228432925 node_paths=PackedStringArray("Use_Trigger", "Squash_And_Stretch") groups=["guitar", "musical"]]
 contact_monitor = true
 script = ExtResource("1_460vn")
-Impact_Sound = "Guitar"
+Impact_Sound = "Guitar Impact"
 Use_Trigger = NodePath("PlayAudioTrigger")
 Squash_And_Stretch = NodePath("SquashAndStretch")
 metadata/_custom_type_script = "uid://dvyaqeofsrm7g"
 
-[node name="GbGuitar" type="Sprite2D" parent="." unique_id=1042582876]
+[node name="GbGuitar" type="Sprite2D" parent="." unique_id=1042582876 groups=["guitar", "musical"]]
 texture = ExtResource("2_i87p3")
 offset = Vector2(0, -16)
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=2084327522]
+[node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=2084327522 groups=["guitar", "musical"]]
 position = Vector2(0, -14)
 shape = SubResource("CapsuleShape2D_iluap")
 

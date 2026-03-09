@@ -1,0 +1,35 @@
+[gd_scene format=3 uid="uid://brr6n1k0mey47"]
+
+[ext_resource type="Script" uid="uid://dvyaqeofsrm7g" path="res://Assets/Scripts/Behaviours/gb_bass_guitar.gd" id="1_5008n"]
+[ext_resource type="Texture2D" uid="uid://c0421ntxy5jot" path="res://Assets/GB/Art/GB Bass Guitar.png" id="2_5ls04"]
+[ext_resource type="Script" uid="uid://clmoravb7y2ls" path="res://Assets/Scripts/Behaviours/play_sound_trigger.gd" id="3_ohlcl"]
+[ext_resource type="Script" uid="uid://c6ppxwwiuykhq" path="res://Assets/Scripts/Behaviours/squash_&_stretch.gd" id="4_yfv5f"]
+
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_hb1np"]
+radius = 5.0
+height = 28.0
+
+[node name="GB Bass Guitar" type="RigidBody2D" unique_id=1802441780 node_paths=PackedStringArray("Use_Trigger", "Squash_And_Stretch")]
+script = ExtResource("1_5008n")
+Impact_Sound = "Bass Guitar Impact"
+Use_Trigger = NodePath("PlayAudioTrigger")
+Squash_And_Stretch = NodePath("SquashAndStretch")
+metadata/_custom_type_script = "uid://dvyaqeofsrm7g"
+
+[node name="GbBassGuitar" type="Sprite2D" parent="." unique_id=830675354]
+texture = ExtResource("2_5ls04")
+offset = Vector2(0, -16)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=248040707]
+position = Vector2(0, -14)
+shape = SubResource("CapsuleShape2D_hb1np")
+
+[node name="PlayAudioTrigger" type="Node" parent="." unique_id=880811446]
+script = ExtResource("3_ohlcl")
+GB_Audio_Name = "Bass Guitar"
+metadata/_custom_type_script = "uid://clmoravb7y2ls"
+
+[node name="SquashAndStretch" type="Node" parent="." unique_id=1833030005 node_paths=PackedStringArray("node")]
+script = ExtResource("4_yfv5f")
+node = NodePath("../GbBassGuitar")
+metadata/_custom_type_script = "uid://c6ppxwwiuykhq"

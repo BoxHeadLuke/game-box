@@ -14,6 +14,17 @@ var in_game_time : float
 var out_game_time : float
 var paused_objects : Array[Node] = []
 var summon_objects : Array[String]  = []
+var held_tags : Array[StringName]
+
+var quest_trackers  : Dictionary = {
+	"fat_cat" : 0
+}
+
+var dialogue_colours  : Dictionary = {
+	"Default" : ["61393b" , "ffd3ad"],
+	#"Fat Cat" : ["293268" , "b483ef"],
+	#"Jacko" : ["b23c40" , "ffe091"],
+}
 
 func _ready() -> void:
 	process_mode = Node.PROCESS_MODE_ALWAYS

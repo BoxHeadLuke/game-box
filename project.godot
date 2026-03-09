@@ -44,6 +44,8 @@ enabled=PackedStringArray("res://addons/dialogue_manager/plugin.cfg", "res://add
 [global_group]
 
 grab_object=""
+food=""
+musical=""
 
 [gui]
 

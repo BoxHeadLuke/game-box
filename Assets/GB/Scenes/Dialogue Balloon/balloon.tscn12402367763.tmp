@@ -95,43 +95,6 @@ MarginContainer/constants/margin_right = 8
 MarginContainer/constants/margin_top = 4
 PanelContainer/styles/panel = SubResource("StyleBoxFlat_w7nwt")
 
-[sub_resource type="Animation" id="Animation_0d12s"]
-resource_name = "New Speaker"
-length = 0.3
-tracks/0/type = "value"
-tracks/0/imported = false
-tracks/0/enabled = true
-tracks/0/path = NodePath("%CharacterLabel:rotation")
-tracks/0/interp = 1
-tracks/0/loop_wrap = true
-tracks/0/keys = {
-"times": PackedFloat32Array(0, 0.06666667, 0.16666667, 0.23333333, 0.3),
-"transitions": PackedFloat32Array(0.5, -2, -2, 2, 1),
-"update": 0,
-"values": [0.0, -0.20943951023931956, 0.13962634015954636, -0.08726646259971647, 0.0]
-}
-
-[sub_resource type="Animation" id="Animation_w7nwt"]
-length = 0.001
-tracks/0/type = "value"
-tracks/0/imported = false
-tracks/0/enabled = true
-tracks/0/path = NodePath("%CharacterLabel:rotation")
-tracks/0/interp = 1
-tracks/0/loop_wrap = true
-tracks/0/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
-"update": 0,
-"values": [0.0]
-}
-
-[sub_resource type="AnimationLibrary" id="AnimationLibrary_5dgfw"]
-_data = {
-&"New Speaker": SubResource("Animation_0d12s"),
-&"RESET": SubResource("Animation_w7nwt")
-}
-
 [sub_resource type="Animation" id="Animation_00gje"]
 resource_name = "Enter"
 length = 0.3
@@ -264,9 +227,8 @@ self_modulate = Color(1, 0.827451, 0.6784314, 1)
 clip_contents = false
 layout_mode = 0
 offset_left = 23.0
-offset_right = 23.0
+offset_right = 56.0
 offset_bottom = 15.0
-pivot_offset = Vector2(0, 7)
 mouse_filter = 1
 theme_override_colors/default_color = Color(1, 1, 1, 1)
 theme_override_fonts/normal_font = ExtResource("3_6wo4c")
@@ -324,9 +286,6 @@ offset_left = -32.0
 offset_top = -5.0
 offset_right = 8.0
 offset_bottom = 35.0
-
-[node name="New Speaker Animator" type="AnimationPlayer" parent="Balloon/Top/Move" unique_id=179415696]
-libraries/ = SubResource("AnimationLibrary_5dgfw")
 
 [node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="." unique_id=441547993]
 unique_name_in_owner = true

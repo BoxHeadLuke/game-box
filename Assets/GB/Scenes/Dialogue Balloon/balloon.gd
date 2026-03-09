@@ -23,6 +23,10 @@ extends CanvasLayer
 ## A sound player for voice lines (if they exist).
 @onready var audio_stream_player: AudioStreamPlayer = %AudioStreamPlayer
 
+@onready var balloon_sprite = $Balloon/Top/Move/DialogueBalloon
+@onready var border_sprite = $Balloon/Top/Move/Border
+@onready var header_Sprite = $Balloon/Top/Move/CharacterLabel/NinePatchRect
+
 ## Temporary game states
 var temporary_game_states: Array = []
 
@@ -46,9 +50,9 @@ var dialogue_line: DialogueLine:
 		else:
 			# The dialogue has finished so close the balloon
 			EnterAnimator.play("Exit")
-			Globals.in_dialogue = false
-			await EnterAnimator.animation_finished
 			#Globals.in_dialogue = false
+			await EnterAnimator.animation_finished
+			Globals.in_dialogue = false
 			
 			if owner == null:
 				queue_free()
@@ -73,10 +77,13 @@ var mutation_cooldown: Timer = Timer.new()
 @onready var responses_menu: DialogueResponsesMenu = %ResponsesMenu
 
 @onready var EnterAnimator = $"Enter Animator"
+@onready var NewSpeakerAnimator = $"Balloon/Top/Move/New Speaker Animator"
 
 var first_line : bool = true
+var current_speaker : String
 
 func _ready() -> void:
+	Globals.in_dialogue = true
 	balloon.hide()
 	Engine.get_singleton("DialogueManager").mutated.connect(_on_mutated)
 
@@ -127,9 +134,6 @@ func _notification(what: int) -> void:
 func start(with_dialogue_resource: DialogueResource = null, title: String = "", extra_game_states: Array = []) -> void:
 	
 	
-	
-	Globals.in_dialogue = true
-	
 	#await EnterAnimator.animation_finished
 	
 	
@@ -177,11 +181,34 @@ func apply_dialogue_line() -> void:
 	balloon.show()
 	will_hide_balloon = false
 	
+	var colours : Array
+	if Globals.dialogue_colours.has(dialogue_line.character):
+		colours = Globals.dialogue_colours[dialogue_line.character]
+		print("True")
+	else:
+		colours = Globals.dialogue_colours["Default"]
+		
+	
+	header_Sprite.self_modulate = colours[0]
+	border_sprite.self_modulate = colours[0]
+	dialogue_label.self_modulate = colours[0]
+	character_label.self_modulate = colours[1]
+	balloon_sprite.self_modulate = colours[1]
+	
+	
+	
 	if first_line:
 		EnterAnimator.play("Enter")
-	
+		
 		await EnterAnimator.animation_finished
 		first_line = false
+	else:
+		if current_speaker != character_label.text:
+			NewSpeakerAnimator.play("New Speaker")
+	
+	
+	current_speaker = character_label.text
+	
 	
 	dialogue_label.show()
 	if not dialogue_line.text.is_empty():

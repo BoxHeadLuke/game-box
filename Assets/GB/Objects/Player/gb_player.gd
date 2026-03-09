@@ -290,6 +290,12 @@ func _physics_process(delta):
 
 
 func _process(delta: float) -> void:
+	
+	if grab_object:
+		Globals.held_tags = grab_object.get_groups()
+	else:
+		Globals.held_tags = []
+	
 	# Camera Look-ahead
 	if input == 0:
 		Camera.position.x = lerpf(Camera.position.x, 0.0 , Camera_Offset_Speed_X * delta )

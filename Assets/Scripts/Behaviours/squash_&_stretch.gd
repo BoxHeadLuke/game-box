@@ -7,6 +7,9 @@ extends Node
 
 var prev_value = 1
 
+func _ready() -> void:
+	process_mode = Node.PROCESS_MODE_ALWAYS
+
 # Return to normal
 func _process(delta):
 	
