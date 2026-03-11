@@ -17,7 +17,22 @@ else:
 ~ not_alien_1
 Totally Normal Girl: You're looking for aliens?
 Totally Normal Girl: Sorry, I haven't seen any.
-Totally Normal Girl: Do you have any human clothes?
-Totally Normal Girl: As a human, I would really like some.
+Totally Normal Girl: Have you seen my human pet?
+Totally Normal Girl: Not my human who is a pet, my pet for humans.
+Totally Normal Girl: Because I am a human.
+Totally Normal Girl: It responds to the name rocky...
 
 => END
+
+
+~ cowboy_joe
+if "pet_rock" in Globals.held_tags:
+	Cowboy Joe: Oh rocky, you're one sneaky horse
+	Cowboy Joe: You're mighty kind stranger.
+	Rocky: [i]neigh
+else:
+	Cowboy Joe: Howdy partner.
+	Cowboy Joe: Say, have you seen my trusty steed around these parts?
+	Cowboy Joe: He ran off while I was polishing my boots.
+	Cowboy Joe: He answers to the name rocky, and he's the sturdiest steed in the west.
+	Cowboy Joe: If you can find him, you'll be rewarded greatly.

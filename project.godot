@@ -101,7 +101,7 @@ Switch={
 
 [internationalization]
 
-locale/translations_pot_files=PackedStringArray("res://Assets/Dialogue/test.dialogue", "res://Assets/Dialogue/area_1_npcs.dialogue")
+locale/translations_pot_files=PackedStringArray("res://Assets/Dialogue/test.dialogue", "res://Assets/Dialogue/area_1_npcs.dialogue", "res://Assets/Dialogue/jacko.dialogue")
 
 [layer_names]
 

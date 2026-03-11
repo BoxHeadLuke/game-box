@@ -15,5 +15,6 @@ func _process(delta: float) -> void:
 	if not Globals.in_game and prev_in_game:
 		Animator.play_backwards("Fade CRT")
 		Animator.play("Fade CRT")
+		
 	
 	prev_in_game = Globals.in_game

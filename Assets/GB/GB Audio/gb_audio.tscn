@@ -6,16 +6,21 @@
 [ext_resource type="AudioStream" uid="uid://6wpwtv0s2ntu" path="res://addons/kenney impact sounds/impact_wood_heavy_002.ogg" id="3_wmxqg"]
 [ext_resource type="AudioStream" uid="uid://b08intt1hy0xm" path="res://addons/kenney impact sounds/impact_wood_heavy_003.ogg" id="4_mqsvv"]
 [ext_resource type="AudioStream" uid="uid://4vs264kdum2e" path="res://addons/kenney impact sounds/impact_wood_heavy_004.ogg" id="5_n87na"]
+[ext_resource type="AudioStream" uid="uid://cws7vlf4i447e" path="res://addons/kenney impact sounds/footstep_concrete_000.ogg" id="7_fwmen"]
 [ext_resource type="AudioStream" uid="uid://bg2sumfm4eacv" path="res://addons/kenney impact sounds/impact_soft_medium_000.ogg" id="7_n87na"]
 [ext_resource type="AudioStream" uid="uid://gvgan5xdv68o" path="res://addons/kenney impact sounds/impact_metal_heavy_000.ogg" id="7_q8v3g"]
 [ext_resource type="AudioStream" uid="uid://dko81jl5qh34c" path="res://addons/kenney impact sounds/impact_metal_heavy_001.ogg" id="8_lho2i"]
+[ext_resource type="AudioStream" uid="uid://c1xpfvuoglq8w" path="res://addons/kenney impact sounds/footstep_concrete_001.ogg" id="8_m124y"]
 [ext_resource type="AudioStream" uid="uid://bbr6cg7dejrja" path="res://addons/kenney impact sounds/impact_soft_medium_001.ogg" id="8_ugly0"]
 [ext_resource type="AudioStream" uid="uid://doqbxf0dhxis2" path="res://addons/kenney impact sounds/impact_metal_heavy_002.ogg" id="9_7deqq"]
+[ext_resource type="AudioStream" uid="uid://dngk3bugvak7y" path="res://addons/kenney impact sounds/footstep_concrete_002.ogg" id="9_eos0e"]
 [ext_resource type="AudioStream" uid="uid://bscmfvrggl3g1" path="res://addons/kenney impact sounds/impact_soft_medium_002.ogg" id="9_x4l8p"]
 [ext_resource type="AudioStream" uid="uid://by3c0buvbtm0r" path="res://Assets/Audio/player_jump_1.ogg" id="10_8apxc"]
+[ext_resource type="AudioStream" uid="uid://bmmaqj7jqpyjy" path="res://addons/kenney impact sounds/footstep_concrete_003.ogg" id="10_08eeq"]
 [ext_resource type="AudioStream" uid="uid://cfnoqywn7rolg" path="res://addons/kenney impact sounds/impact_metal_heavy_003.ogg" id="10_856wv"]
 [ext_resource type="AudioStream" uid="uid://ldsgpcx7noc3" path="res://addons/kenney impact sounds/impact_metal_heavy_004.ogg" id="11_5ohmg"]
 [ext_resource type="AudioStream" uid="uid://dttgpr1r26nbu" path="res://Assets/Audio/player_jump_2.ogg" id="11_juaww"]
+[ext_resource type="AudioStream" uid="uid://hj85705pl5ff" path="res://addons/kenney impact sounds/footstep_concrete_004.ogg" id="11_woy3o"]
 [ext_resource type="AudioStream" uid="uid://x1xenttovqv5" path="res://Assets/Audio/player_jump_3.ogg" id="12_f3gp6"]
 [ext_resource type="AudioStream" uid="uid://gjyqv7w4gal6" path="res://Assets/Audio/guitar_chord_1.wav" id="18_7deqq"]
 [ext_resource type="AudioStream" uid="uid://en2sg420kbeg" path="res://Assets/Audio/guitar_chord_2.wav" id="19_856wv"]
@@ -54,6 +59,28 @@ bus = &"GameBox SFX"
 
 [node name="Audio 5" type="AudioStreamPlayer" parent="Wood Impact" unique_id=1835606498]
 stream = ExtResource("5_n87na")
+bus = &"GameBox SFX"
+
+[node name="Stone Impact" type="Node3D" parent="." unique_id=123913654]
+
+[node name="Audio 1" type="AudioStreamPlayer" parent="Stone Impact" unique_id=1152314086]
+stream = ExtResource("7_fwmen")
+bus = &"GameBox SFX"
+
+[node name="Audio 2" type="AudioStreamPlayer" parent="Stone Impact" unique_id=920771969]
+stream = ExtResource("8_m124y")
+bus = &"GameBox SFX"
+
+[node name="Audio 3" type="AudioStreamPlayer" parent="Stone Impact" unique_id=1275206264]
+stream = ExtResource("9_eos0e")
+bus = &"GameBox SFX"
+
+[node name="Audio 4" type="AudioStreamPlayer" parent="Stone Impact" unique_id=1251275826]
+stream = ExtResource("10_08eeq")
+bus = &"GameBox SFX"
+
+[node name="Audio 5" type="AudioStreamPlayer" parent="Stone Impact" unique_id=403846946]
+stream = ExtResource("11_woy3o")
 bus = &"GameBox SFX"
 
 [node name="Metal Impact" type="Node3D" parent="." unique_id=1248637641]

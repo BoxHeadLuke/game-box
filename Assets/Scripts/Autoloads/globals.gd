@@ -16,8 +16,10 @@ var paused_objects : Array[Node] = []
 var summon_objects : Array[String]  = []
 var held_tags : Array[StringName]
 
-var quest_trackers  : Dictionary = {
-	"fat_cat" : 0
+var progress_trackers  : Dictionary = {
+	"summon_enabled" : false,
+	"home" : 0,
+	"fat_cat" : 0,
 }
 
 var dialogue_colours  : Dictionary = {

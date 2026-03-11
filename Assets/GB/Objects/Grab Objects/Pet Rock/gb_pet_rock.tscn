@@ -1,0 +1,37 @@
+[gd_scene format=3 uid="uid://gn5j1asu5l8d"]
+
+[ext_resource type="Script" uid="uid://dvyaqeofsrm7g" path="res://Assets/Scripts/Behaviours/gb_bass_guitar.gd" id="1_ux0cg"]
+[ext_resource type="Texture2D" uid="uid://bav3j7jkhlqok" path="res://Assets/GB/Art/Pet Rock.png" id="2_sfb86"]
+[ext_resource type="Script" uid="uid://pl2omuo3ic7l" path="res://Assets/GB/Objects/Grab Objects/Pet Rock/pet_rock.gd" id="3_sfb86"]
+[ext_resource type="Script" uid="uid://c6ppxwwiuykhq" path="res://Assets/Scripts/Behaviours/squash_&_stretch.gd" id="4_xs0rb"]
+
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_xs0rb"]
+radius = 5.0
+height = 16.0
+
+[node name="GB Pet Rock" type="RigidBody2D" unique_id=1458840425 node_paths=PackedStringArray("Use_Trigger", "Squash_And_Stretch") groups=["pet_rock"]]
+script = ExtResource("1_ux0cg")
+Impact_Sound = "Stone Impact"
+Use_Trigger = NodePath("Use")
+Squash_And_Stretch = NodePath("SquashAndStretch")
+metadata/_custom_type_script = "uid://dvyaqeofsrm7g"
+
+[node name="PetRock" type="Sprite2D" parent="." unique_id=672191585]
+texture = ExtResource("2_sfb86")
+offset = Vector2(0, -16)
+hframes = 5
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=1713519067 groups=["pet_rock"]]
+position = Vector2(0, -5)
+rotation = 1.5707964
+shape = SubResource("CapsuleShape2D_xs0rb")
+
+[node name="Use" type="Node" parent="." unique_id=2088259873 node_paths=PackedStringArray("sprite")]
+script = ExtResource("3_sfb86")
+sprite = NodePath("../PetRock")
+metadata/_custom_type_script = "uid://bdskcei23wcly"
+
+[node name="SquashAndStretch" type="Node" parent="." unique_id=1729302477 node_paths=PackedStringArray("node")]
+script = ExtResource("4_xs0rb")
+node = NodePath("../PetRock")
+metadata/_custom_type_script = "uid://c6ppxwwiuykhq"

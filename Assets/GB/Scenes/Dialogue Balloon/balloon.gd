@@ -81,6 +81,7 @@ var mutation_cooldown: Timer = Timer.new()
 
 var first_line : bool = true
 var current_speaker : String
+var start_anim_finished : bool = false
 
 func _ready() -> void:
 	Globals.in_dialogue = true
@@ -103,7 +104,7 @@ func _ready() -> void:
 
 func _process(delta: float) -> void:
 	
-	if Input.is_action_just_pressed("Jump"):
+	if Input.is_action_just_pressed("Jump") and start_anim_finished:
 		if dialogue_label.is_typing:
 			dialogue_label.skip_typing()
 		else:
@@ -201,6 +202,7 @@ func apply_dialogue_line() -> void:
 		EnterAnimator.play("Enter")
 		
 		await EnterAnimator.animation_finished
+		start_anim_finished = true
 		first_line = false
 	else:
 		if current_speaker != character_label.text:
