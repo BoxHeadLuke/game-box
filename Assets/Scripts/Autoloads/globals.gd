@@ -17,6 +17,7 @@ var summon_objects : Array[String]  = []
 var held_tags : Array[StringName]
 
 var progress_trackers  : Dictionary = {
+	"switch_enabled" : false,
 	"summon_enabled" : false,
 	"home" : 0,
 	"fat_cat" : 0,
@@ -42,7 +43,7 @@ func _process(delta: float) -> void:
 		out_game_time += delta
 	
 	
-	if Input.is_action_just_pressed("Switch") and not in_dialogue:
+	if Input.is_action_just_pressed("Switch") and not in_dialogue and progress_trackers["switch_enabled"]:
 		in_game = not in_game
 		
 		

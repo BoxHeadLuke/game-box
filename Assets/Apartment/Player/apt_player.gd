@@ -58,7 +58,7 @@ func _physics_process(delta: float) -> void:
 	
 	move_and_slide()
 	
-	if Input.is_action_just_pressed("Grab"):
+	if Input.is_action_just_pressed("Grab") or Input.is_action_just_pressed("Use"):
 		if grab_object:
 			drop()
 		else:

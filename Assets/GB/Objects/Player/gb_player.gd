@@ -273,6 +273,10 @@ func _physics_process(delta):
 					drop()
 				else:
 					grab()
+			if Input.is_action_just_pressed("Use") and not attacking and not Globals.in_dialogue:
+				if grab_object == null:
+					grab()
+				
 			
 			
 			# Move grab objects

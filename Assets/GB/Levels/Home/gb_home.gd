@@ -3,9 +3,15 @@ extends GBLevel
 @export var Jacko_Dialogue : DialogueResource
 
 var fake_jumps : int = 1
+var original_object_count
 
 func _ready() -> void:
+	
+	
 	Globals.gb_objects = Object_Parent
+	
+	original_object_count = Object_Parent.get_child_count()
+	
 	if Globals.progress_trackers["home"] <= 0:
 		await get_tree().process_frame
 	
@@ -14,6 +20,12 @@ func _ready() -> void:
 		start_dialogue(Jacko_Dialogue, "begin_home")
 		Globals.progress_trackers["home"] = 1
 
+func _process(delta: float) -> void:
+	if Globals.progress_trackers["home"] <= 2 and Object_Parent.get_child_count() > original_object_count:
+		Globals.progress_trackers["home"] = 3
+		start_dialogue(Jacko_Dialogue, "first_summon")
+
+
 
 func start_dialogue(file, flag):
 	if Globals.in_dialogue:
@@ -21,11 +33,12 @@ func start_dialogue(file, flag):
 	var d = Globals.gb_dialogue_balloon.instantiate()
 	Globals.gb_root.add_child(d)
 	d.start(file , flag)
+	
 
 
 func _on_fake_jump_entered(body: Node2D) -> void:
 	if Globals.progress_trackers["home"] <= 1:
-		if fake_jumps < 3:
+		if fake_jumps < 2:
 			fake_jumps += 1
 		else:
 			
