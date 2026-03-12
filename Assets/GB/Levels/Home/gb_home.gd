@@ -38,10 +38,11 @@ func start_dialogue(file, flag):
 
 func _on_fake_jump_entered(body: Node2D) -> void:
 	if Globals.progress_trackers["home"] <= 1:
-		if fake_jumps < 2:
+		if fake_jumps < 1:
 			fake_jumps += 1
+			
 		else:
 			
 			Globals.progress_trackers["home"] = 2
-			await get_tree().create_timer(0.5).timeout
+			await get_tree().create_timer(2.5).timeout
 			start_dialogue(Jacko_Dialogue, "fake_jump")
