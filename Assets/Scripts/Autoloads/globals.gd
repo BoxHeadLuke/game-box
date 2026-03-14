@@ -17,9 +17,10 @@ var summon_objects : Array[String]  = []
 var held_tags : Array[StringName]
 
 var progress_trackers  : Dictionary = {
-	"switch_enabled" : false,
-	"summon_enabled" : false,
+	"switch_enabled" : true,
+	"summon_enabled" : true,
 	"home" : 0,
+	"signo_warning" : false,
 	"fat_cat" : 0,
 }
 

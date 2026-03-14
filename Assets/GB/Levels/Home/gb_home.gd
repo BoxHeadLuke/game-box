@@ -46,3 +46,14 @@ func _on_fake_jump_entered(body: Node2D) -> void:
 			Globals.progress_trackers["home"] = 2
 			await get_tree().create_timer(2.5).timeout
 			start_dialogue(Jacko_Dialogue, "fake_jump")
+
+
+func _on_sad_pit_body_entered(body: Node2D) -> void:
+	
+	if body != Globals.gb_player:
+		return
+	
+	if Globals.progress_trackers["home"] <= 3:
+		Globals.progress_trackers["home"] = 4
+		await get_tree().create_timer(1).timeout
+		start_dialogue(Jacko_Dialogue, "sad_pit")

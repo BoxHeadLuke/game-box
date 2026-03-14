@@ -5,7 +5,7 @@ extends CharacterBody3D
 @export var Grab_Point : Node3D
 @export var Mouse_Sensitivity : float = 0.07
 
-const SPEED = 5.0
+const SPEED = 2.5
 const CROUCH_SPEED = 2.0
 const JUMP_VELOCITY = 4.5
 
