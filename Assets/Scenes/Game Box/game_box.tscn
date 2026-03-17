@@ -3,7 +3,6 @@
 [ext_resource type="Script" uid="uid://bahnc4m2nqkct" path="res://Assets/Scenes/Game Box/game_box.gd" id="1_rbs5k"]
 [ext_resource type="Shader" uid="uid://dlie15d4kp6ya" path="res://Assets/Shaders/CRT.gdshader" id="2_awqor"]
 [ext_resource type="Script" uid="uid://c1ukv11vnnvfe" path="res://Assets/Scenes/Game Box/crt.gd" id="3_lekkh"]
-[ext_resource type="PackedScene" uid="uid://3722kpav0b6h" path="res://Assets/GB/Levels/Home/gb_home.tscn" id="6_rbs5k"]
 [ext_resource type="Script" uid="uid://bd046eokvcnu2" path="res://addons/phantom_camera/scripts/phantom_camera_host/phantom_camera_host.gd" id="7_1k7sf"]
 [ext_resource type="PackedScene" uid="uid://brl7fhwiplfcv" path="res://Assets/GB/HUD/gb_hud.tscn" id="9_242rj"]
 
@@ -283,8 +282,12 @@ _data = {
 &"RESET": SubResource("Animation_lekkh")
 }
 
-[node name="GameBox" type="Node2D" unique_id=1282922401]
+[node name="GameBox" type="Node2D" unique_id=1282922401 node_paths=PackedStringArray("HUD", "Level_Parent", "Balloon_Parent")]
 script = ExtResource("1_rbs5k")
+start_level = "uid://3722kpav0b6h"
+HUD = NodePath("GB HUD")
+Level_Parent = NodePath("Level")
+Balloon_Parent = NodePath("Balloon")
 
 [node name="Camera2D" type="Camera2D" parent="." unique_id=360397076]
 physics_interpolation_mode = 1
@@ -318,4 +321,6 @@ grow_vertical = 2
 [node name="AnimationPlayer" type="AnimationPlayer" parent="CRT" unique_id=571034227]
 libraries/ = SubResource("AnimationLibrary_1k7sf")
 
-[node name="GB Home" parent="." unique_id=386444000 instance=ExtResource("6_rbs5k")]
+[node name="Level" type="Node2D" parent="." unique_id=505579719]
+
+[node name="Balloon" type="Node2D" parent="." unique_id=686689595]

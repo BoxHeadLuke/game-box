@@ -22,6 +22,10 @@ Jacko: Every object has unique effects, so anything could come in useful. Make s
 => END
 
 ~ signo_1
+if Globals.progress_trackers["home"] >= 4:
+	Press [SPACE] to jump.
+	=> END
+
 if Globals.progress_trackers["home"] >= 2:
 	=> signo_freak_out
 	=> END
@@ -31,6 +35,10 @@ Sign-o: To jump, just press [SPACE]!
 => END
 
 ~ signo_2
+if Globals.progress_trackers["home"] >= 4:
+	Press [SHIFT] to run.
+	=> END
+
 if Globals.progress_trackers["home"] >= 2:
 	=> signo_freak_out
 	=> END
@@ -42,6 +50,9 @@ Jacko: Yeah... thanks Sign-o.
 => END
 
 ~ signo_3
+if Globals.progress_trackers["home"] >= 4:
+	Do not double jump.
+	=> END
 if Globals.progress_trackers["home"] >= 2:
 	=> signo_freak_out
 	=> END
@@ -52,11 +63,19 @@ Jacko: Uh, that's weird. I guess you should just try pressing [SPACE] in mid-air
 => END
 
 ~ signo_4
+if Globals.progress_trackers["home"] >= 4:
+	Watch out for pits.
+	=> END
+if Globals.progress_trackers["home"] >= 4:
+	=> signo_freak_out
 Sign-o: [shake rate=20 level=4]Hey there ol' pal![/shake]
 Sign-o: [shake rate=20 level=4]Here's another wacky Sign-o tip![/shake]
 Sign-o: [shake rate=20 level=4]Remember to watch out for [/shake][speed=2][b][shake rate=20 level=20][rainbow]E 0:02:46:021   start: Invalid call. Nonexistent function 'get_next_dialogue_line' in base 'Nil'.<GDScript Source>balloon.gd:150 @ start() <Stack Trace> balloon.gd:150 @ start()dialogue_trigger.gd:12 @ start()dialogue_zone.gd:35 @ _physics_process()
 
 Jacko: Yeah, this guy's completely lost it.
+
+do Globals.progress_trackers["signo_warning"] = true
+
 => END
 
 ~ signo_freak_out
@@ -67,5 +86,13 @@ Jacko: Maybe we should just leave Sign-o alone.
 
 
 ~ sad_pit
-Jacko: Well, I guess we found what Sign-o was warning us about.
+if Globals.progress_trackers["signo_warning"]:
+	Jacko: Well, I guess we found what Sign-o was warning us about.
+else:
+	Jacko: Well this sucks. At least we can stack those boxes to get out.
 => END
+
+
+~ signo_5
+Central city ->
+Jacko: Sign-o... is that you?

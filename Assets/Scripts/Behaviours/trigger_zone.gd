@@ -1,12 +1,24 @@
 class_name TriggerZone
-extends Node
+extends Area2D
 
+@export var Activate_Trigger : Trigger
+@export var keep_layers : bool = false
 
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
-	pass # Replace with function body.
+	
+	connect("body_entered", body_entered)
+	
+	if not keep_layers:
+		set_collision_layer_value(1, false)
+		set_collision_mask_value(1, false)
+		set_collision_mask_value(3, true)
+	
+
+func body_entered(body):
+	Activate_Trigger.start()
+		
 
 
-# Called every frame. 'delta' is the elapsed time since the previous frame.
-func _process(delta: float) -> void:
-	pass
+
+	

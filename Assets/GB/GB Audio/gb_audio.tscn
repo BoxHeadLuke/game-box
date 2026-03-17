@@ -2,7 +2,9 @@
 
 [ext_resource type="Script" uid="uid://c2vwo4cvun78f" path="res://Assets/GB/GB Audio/gb_audio.gd" id="1_ideyi"]
 [ext_resource type="AudioStream" uid="uid://bi0yd0gr337wv" path="res://addons/kenney impact sounds/impact_wood_heavy_000.ogg" id="1_rcvo1"]
+[ext_resource type="AudioStream" uid="uid://cvc87ug5gor3x" path="res://Assets/Audio/Music/level_one_loop.wav" id="2_eos0e"]
 [ext_resource type="AudioStream" uid="uid://cfe75t8yx6a8f" path="res://addons/kenney impact sounds/impact_wood_heavy_001.ogg" id="2_ideyi"]
+[ext_resource type="AudioStream" uid="uid://ctmp3s7ei5r3h" path="res://Assets/Audio/SFX/tape_slow_REPLACE.wav" id="3_08eeq"]
 [ext_resource type="AudioStream" uid="uid://6wpwtv0s2ntu" path="res://addons/kenney impact sounds/impact_wood_heavy_002.ogg" id="3_wmxqg"]
 [ext_resource type="AudioStream" uid="uid://b08intt1hy0xm" path="res://addons/kenney impact sounds/impact_wood_heavy_003.ogg" id="4_mqsvv"]
 [ext_resource type="AudioStream" uid="uid://4vs264kdum2e" path="res://addons/kenney impact sounds/impact_wood_heavy_004.ogg" id="5_n87na"]
@@ -15,29 +17,49 @@
 [ext_resource type="AudioStream" uid="uid://doqbxf0dhxis2" path="res://addons/kenney impact sounds/impact_metal_heavy_002.ogg" id="9_7deqq"]
 [ext_resource type="AudioStream" uid="uid://dngk3bugvak7y" path="res://addons/kenney impact sounds/footstep_concrete_002.ogg" id="9_eos0e"]
 [ext_resource type="AudioStream" uid="uid://bscmfvrggl3g1" path="res://addons/kenney impact sounds/impact_soft_medium_002.ogg" id="9_x4l8p"]
-[ext_resource type="AudioStream" uid="uid://by3c0buvbtm0r" path="res://Assets/Audio/player_jump_1.ogg" id="10_8apxc"]
+[ext_resource type="AudioStream" uid="uid://by3c0buvbtm0r" path="res://Assets/Audio/SFX/player_jump_1.ogg" id="10_8apxc"]
 [ext_resource type="AudioStream" uid="uid://bmmaqj7jqpyjy" path="res://addons/kenney impact sounds/footstep_concrete_003.ogg" id="10_08eeq"]
 [ext_resource type="AudioStream" uid="uid://cfnoqywn7rolg" path="res://addons/kenney impact sounds/impact_metal_heavy_003.ogg" id="10_856wv"]
 [ext_resource type="AudioStream" uid="uid://ldsgpcx7noc3" path="res://addons/kenney impact sounds/impact_metal_heavy_004.ogg" id="11_5ohmg"]
-[ext_resource type="AudioStream" uid="uid://dttgpr1r26nbu" path="res://Assets/Audio/player_jump_2.ogg" id="11_juaww"]
+[ext_resource type="AudioStream" uid="uid://dttgpr1r26nbu" path="res://Assets/Audio/SFX/player_jump_2.ogg" id="11_juaww"]
 [ext_resource type="AudioStream" uid="uid://hj85705pl5ff" path="res://addons/kenney impact sounds/footstep_concrete_004.ogg" id="11_woy3o"]
-[ext_resource type="AudioStream" uid="uid://x1xenttovqv5" path="res://Assets/Audio/player_jump_3.ogg" id="12_f3gp6"]
-[ext_resource type="AudioStream" uid="uid://gjyqv7w4gal6" path="res://Assets/Audio/guitar_chord_1.wav" id="18_7deqq"]
-[ext_resource type="AudioStream" uid="uid://en2sg420kbeg" path="res://Assets/Audio/guitar_chord_2.wav" id="19_856wv"]
-[ext_resource type="AudioStream" uid="uid://cktpmthjrifl" path="res://Assets/Audio/guitar_chord_3.wav" id="20_5ohmg"]
-[ext_resource type="AudioStream" uid="uid://dkf5uso1rmge4" path="res://Assets/Audio/guitar_chord_4.wav" id="21_l62d8"]
-[ext_resource type="AudioStream" uid="uid://ksagjycehukp" path="res://Assets/Audio/guitar_impact_1.wav" id="22_hdx3c"]
-[ext_resource type="AudioStream" uid="uid://2qcgqf0j1euy" path="res://Assets/Audio/guitar_impact_2.wav" id="23_3ftyi"]
-[ext_resource type="AudioStream" uid="uid://gx76ka7sayu8" path="res://Assets/Audio/guitar_impact_3.wav" id="24_rs80a"]
-[ext_resource type="AudioStream" uid="uid://di82fa1x75to8" path="res://Assets/Audio/bass_note_1.wav" id="25_3ftyi"]
-[ext_resource type="AudioStream" uid="uid://cb3i4g68ed2t" path="res://Assets/Audio/bass_note_2.wav" id="26_rs80a"]
-[ext_resource type="AudioStream" uid="uid://xs181yth1e44" path="res://Assets/Audio/bass_note_3.wav" id="27_xklun"]
-[ext_resource type="AudioStream" uid="uid://dxw04lsca8jkb" path="res://Assets/Audio/bass_impact_1.wav" id="28_ausm8"]
-[ext_resource type="AudioStream" uid="uid://bsqnm4nb1uaqm" path="res://Assets/Audio/bass_impact_2.wav" id="29_vfbcj"]
+[ext_resource type="AudioStream" uid="uid://x1xenttovqv5" path="res://Assets/Audio/SFX/player_jump_3.ogg" id="12_f3gp6"]
+[ext_resource type="AudioStream" uid="uid://gjyqv7w4gal6" path="res://Assets/Audio/SFX/guitar_chord_1.wav" id="18_7deqq"]
+[ext_resource type="AudioStream" uid="uid://en2sg420kbeg" path="res://Assets/Audio/SFX/guitar_chord_2.wav" id="19_856wv"]
+[ext_resource type="AudioStream" uid="uid://cktpmthjrifl" path="res://Assets/Audio/SFX/guitar_chord_3.wav" id="20_5ohmg"]
+[ext_resource type="AudioStream" uid="uid://dkf5uso1rmge4" path="res://Assets/Audio/SFX/guitar_chord_4.wav" id="21_l62d8"]
+[ext_resource type="AudioStream" uid="uid://ksagjycehukp" path="res://Assets/Audio/SFX/guitar_impact_1.wav" id="22_hdx3c"]
+[ext_resource type="AudioStream" uid="uid://2qcgqf0j1euy" path="res://Assets/Audio/SFX/guitar_impact_2.wav" id="23_3ftyi"]
+[ext_resource type="AudioStream" uid="uid://gx76ka7sayu8" path="res://Assets/Audio/SFX/guitar_impact_3.wav" id="24_rs80a"]
+[ext_resource type="AudioStream" uid="uid://di82fa1x75to8" path="res://Assets/Audio/SFX/bass_note_1.wav" id="25_3ftyi"]
+[ext_resource type="AudioStream" uid="uid://cb3i4g68ed2t" path="res://Assets/Audio/SFX/bass_note_2.wav" id="26_rs80a"]
+[ext_resource type="AudioStream" uid="uid://xs181yth1e44" path="res://Assets/Audio/SFX/bass_note_3.wav" id="27_xklun"]
+[ext_resource type="AudioStream" uid="uid://dxw04lsca8jkb" path="res://Assets/Audio/SFX/bass_impact_1.wav" id="28_ausm8"]
+[ext_resource type="AudioStream" uid="uid://bsqnm4nb1uaqm" path="res://Assets/Audio/SFX/bass_impact_2.wav" id="29_vfbcj"]
+[ext_resource type="AudioStream" uid="uid://cr2xlyx1wbfya" path="res://Assets/Audio/SFX/default_voice.wav" id="35_m124y"]
 
 [node name="GB Audio" type="Node3D" unique_id=611054415]
 process_mode = 3
 script = ExtResource("1_ideyi")
+
+[node name="Level 1 Music GB" type="Node3D" parent="." unique_id=1002385588]
+
+[node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="Level 1 Music GB" unique_id=84149681]
+stream = ExtResource("2_eos0e")
+bus = &"GameBox Music"
+
+[node name="Level 1 Music APT" type="Node3D" parent="." unique_id=1677582185]
+
+[node name="AudioStreamPlayer3D" type="AudioStreamPlayer3D" parent="Level 1 Music APT" unique_id=2025908253]
+stream = ExtResource("2_eos0e")
+panning_strength = 3.0
+bus = &"Apartment Music"
+
+[node name="Portal" type="Node3D" parent="." unique_id=386188914]
+
+[node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="Portal" unique_id=442250823]
+stream = ExtResource("3_08eeq")
+bus = &"GameBox SFX"
 
 [node name="Wood Impact" type="Node3D" parent="." unique_id=366414438]
 
@@ -170,3 +192,9 @@ stream = ExtResource("28_ausm8")
 
 [node name="AudioStreamPlayer2" type="AudioStreamPlayer" parent="Bass Guitar Impact" unique_id=510265994]
 stream = ExtResource("29_vfbcj")
+
+[node name="Default Voice" type="Node3D" parent="." unique_id=248791471]
+
+[node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="Default Voice" unique_id=1997069865]
+stream = ExtResource("35_m124y")
+bus = &"GameBox SFX"

@@ -1,5 +1,8 @@
 extends CharacterBody2D
 
+@export_group("Level Stuff")
+@export var camera_limits_x : Vector2i = Vector2i(-10000000,10000000)
+@export var camera_limits_y : Vector2i = Vector2i(-10000000,10000000)
 @export_group("External References")
 @export var Sidekick : Node2D
 
@@ -78,6 +81,12 @@ var state = MOVING
 
 
 func _ready() -> void:
+	
+	Camera.limit_left = camera_limits_x.x
+	Camera.limit_right = camera_limits_x.y
+	Camera.limit_top = camera_limits_y.x
+	Camera.limit_bottom = camera_limits_y.y
+	
 	Globals.gb_player = self
 
 

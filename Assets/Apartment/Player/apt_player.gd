@@ -6,7 +6,7 @@ extends CharacterBody3D
 @export var Mouse_Sensitivity : float = 0.07
 
 const SPEED = 2.5
-const CROUCH_SPEED = 2.0
+const CROUCH_SPEED = 1.0
 const JUMP_VELOCITY = 4.5
 
 const STAND_HEIGHT : float = 1.5

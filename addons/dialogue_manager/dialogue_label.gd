@@ -127,6 +127,12 @@ func skip_typing() -> void:
 
 # Type out the next character(s)
 func _type_next(delta: float, seconds_needed: float) -> void:
+	
+	
+	if dialogue_line.text.length() > visible_characters:
+		if dialogue_line.text[visible_characters] != " ":
+			Globals.gb_audio.play("Default Voice")
+	
 	if _is_awaiting_mutation: return
 
 	if visible_characters == get_total_character_count():

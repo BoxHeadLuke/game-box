@@ -508,6 +508,9 @@ radius = 7.017834
 
 [sub_resource type="Resource" id="Resource_m3vlg"]
 script = ExtResource("5_8qc3j")
+duration = 0.2
+transition = 4
+ease = 1
 
 [node name="GB Player" type="CharacterBody2D" unique_id=1298103726 node_paths=PackedStringArray("Visuals", "Animator", "Squash", "Visual_Flip", "Flip", "Left_Outer_Foot", "Left_Inner_Foot", "Right_Outer_Foot", "Right_Inner_Foot", "Grab_Point", "Grab_Point_Damper", "Grab_Zone", "Sidekick_Position", "Sidekick_Zone", "Sidekick_Summon_Zone", "Backup_Sidekick_Position", "Backup_Sidekick_Zone", "Backup_Sidekick_Summon_Zone", "Camera", "Camera_Pivot", "Camera_Position", "Attack", "Attack_Animator", "Attack_Sprite")]
 collision_layer = 7

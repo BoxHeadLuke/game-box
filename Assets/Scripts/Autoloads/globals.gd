@@ -7,6 +7,7 @@ var gb_objects : Node
 var gb_audio : Node
 var gb_player : Node
 var gb_dialogue_balloon = load("uid://c7d312wamnm5")
+var gb_door : int = 0
 
 var in_game : bool = false
 var in_dialogue : bool = false
@@ -31,6 +32,7 @@ var dialogue_colours  : Dictionary = {
 }
 
 func _ready() -> void:
+	in_game = true
 	process_mode = Node.PROCESS_MODE_ALWAYS
 
 

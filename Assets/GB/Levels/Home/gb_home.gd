@@ -2,6 +2,8 @@ extends GBLevel
 
 @export var Jacko_Dialogue : DialogueResource
 
+@onready var signo_parent : Node2D = $NPCs/Signos
+
 var fake_jumps : int = 1
 var original_object_count
 
@@ -16,9 +18,14 @@ func _ready() -> void:
 		await get_tree().process_frame
 	
 		Globals.in_game = true
-	
+		
+		await get_tree().create_timer(1).timeout
 		start_dialogue(Jacko_Dialogue, "begin_home")
 		Globals.progress_trackers["home"] = 1
+		
+	elif Globals.progress_trackers["home"] >= 4:
+		kill_signo()
+
 
 func _process(delta: float) -> void:
 	if Globals.progress_trackers["home"] <= 2 and Object_Parent.get_child_count() > original_object_count:
@@ -57,3 +64,12 @@ func _on_sad_pit_body_entered(body: Node2D) -> void:
 		Globals.progress_trackers["home"] = 4
 		await get_tree().create_timer(1).timeout
 		start_dialogue(Jacko_Dialogue, "sad_pit")
+		
+		kill_signo()
+
+
+func kill_signo():
+	
+	for s in signo_parent.get_children():
+		s.play("dead")
+	

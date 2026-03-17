@@ -9,6 +9,7 @@
 [ext_resource type="Texture2D" uid="uid://bpwhvtmof6jf1" path="res://Assets/GB/Art/Dialogue Balloon.png" id="5_g70tq"]
 [ext_resource type="FontFile" uid="uid://1jqu6ccykgma" path="res://Assets/Resources/KarenFat.ttf" id="7_7hsnu"]
 [ext_resource type="FontFile" uid="uid://cyhg2trss4j4v" path="res://Assets/Resources/TinyUnicode.ttf" id="8_0d12s"]
+[ext_resource type="AudioStream" uid="uid://cr2xlyx1wbfya" path="res://Assets/Audio/SFX/default_voice.wav" id="10_w7nwt"]
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_00gje"]
 content_margin_left = 6.0
@@ -330,6 +331,7 @@ libraries/ = SubResource("AnimationLibrary_5dgfw")
 
 [node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="." unique_id=441547993]
 unique_name_in_owner = true
+stream = ExtResource("10_w7nwt")
 
 [node name="Sprite2D" type="Sprite2D" parent="." unique_id=723574141]
 
