@@ -2,8 +2,8 @@ class_name SquashAndStretch
 extends Node
 
 @export var node : Node2D
-@export var speed = 10
-@export var turn_amount = 1.3
+@export var speed : float  = 10
+@export var turn_amount : float = 1.3
 
 var prev_value = 1
 

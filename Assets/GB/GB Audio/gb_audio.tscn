@@ -37,6 +37,9 @@
 [ext_resource type="AudioStream" uid="uid://dxw04lsca8jkb" path="res://Assets/Audio/SFX/bass_impact_1.wav" id="28_ausm8"]
 [ext_resource type="AudioStream" uid="uid://bsqnm4nb1uaqm" path="res://Assets/Audio/SFX/bass_impact_2.wav" id="29_vfbcj"]
 [ext_resource type="AudioStream" uid="uid://cr2xlyx1wbfya" path="res://Assets/Audio/SFX/default_voice.wav" id="35_m124y"]
+[ext_resource type="AudioStream" uid="uid://coau71yca6hd8" path="res://Assets/Audio/SFX/meow_1.ogg" id="38_7dclt"]
+[ext_resource type="AudioStream" uid="uid://bi8r0nd08d5ij" path="res://Assets/Audio/SFX/meow_2.ogg" id="39_ugmt2"]
+[ext_resource type="AudioStream" uid="uid://c7a2rfafkfpm1" path="res://Assets/Audio/SFX/meow_3.ogg" id="40_h4jiu"]
 
 [node name="GB Audio" type="Node3D" unique_id=611054415]
 process_mode = 3
@@ -197,4 +200,18 @@ stream = ExtResource("29_vfbcj")
 
 [node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="Default Voice" unique_id=1997069865]
 stream = ExtResource("35_m124y")
+bus = &"GameBox SFX"
+
+[node name="Meow" type="Node3D" parent="." unique_id=602580613]
+
+[node name="Audio 1" type="AudioStreamPlayer" parent="Meow" unique_id=1003985290]
+stream = ExtResource("38_7dclt")
+bus = &"GameBox SFX"
+
+[node name="Audio 2" type="AudioStreamPlayer" parent="Meow" unique_id=314290630]
+stream = ExtResource("39_ugmt2")
+bus = &"GameBox SFX"
+
+[node name="Audio 3" type="AudioStreamPlayer" parent="Meow" unique_id=1321560847]
+stream = ExtResource("40_h4jiu")
 bus = &"GameBox SFX"

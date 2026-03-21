@@ -372,3 +372,8 @@ func attack(anim : String , tex : Texture):
 	Attack_Animator.play(anim)
 	await Attack_Animator.animation_finished
 	attacking = false
+
+func start_flip():
+	Visual_Flip.scale.x = -1
+	Flip.scale.x = -1
+	is_flipped = true

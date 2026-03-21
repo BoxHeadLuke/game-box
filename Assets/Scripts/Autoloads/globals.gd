@@ -22,7 +22,9 @@ var progress_trackers  : Dictionary = {
 	"summon_enabled" : true,
 	"home" : 0,
 	"signo_warning" : false,
-	"fat_cat" : 0,
+	"fat_cat_passed" : false,
+	"fat_cat_fed" : false,
+	"froggo_met" : false
 }
 
 var dialogue_colours  : Dictionary = {
@@ -63,3 +65,8 @@ func _process(delta: float) -> void:
 			for grab_obj in get_tree().get_nodes_in_group("grab_objects"):
 				if grab_obj is RigidBody2D:
 					grab_obj.freeze = true
+
+func gb_destroy_held():
+	var grab = gb_player.grab_object
+	gb_player.drop()
+	grab.queue_free()

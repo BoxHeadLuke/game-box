@@ -69,7 +69,7 @@ if Globals.progress_trackers["home"] >= 4:
 if Globals.progress_trackers["home"] >= 4:
 	=> signo_freak_out
 Sign-o: [shake rate=20 level=4]Hey there ol' pal![/shake]
-Sign-o: [shake rate=20 level=4]Here's another wacky Sign-o tip![/shake]
+Sign-o: [shake rate=20 level=4]Here's another [/shake][shake rate=20 level=20][rainbow][b]CRAZY[/b][/rainbow][/shake][shake rate=20 level=4] Sign-o tip![/shake]
 Sign-o: [shake rate=20 level=4]Remember to watch out for [/shake][speed=2][b][shake rate=20 level=20][rainbow]E 0:02:46:021   start: Invalid call. Nonexistent function 'get_next_dialogue_line' in base 'Nil'.<GDScript Source>balloon.gd:150 @ start() <Stack Trace> balloon.gd:150 @ start()dialogue_trigger.gd:12 @ start()dialogue_zone.gd:35 @ _physics_process()
 
 Jacko: Yeah, this guy's completely lost it.

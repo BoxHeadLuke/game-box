@@ -192,6 +192,7 @@ offset_right = 97.0
 offset_bottom = 49.0
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="." unique_id=1629159825]
+visible = false
 position = Vector2(19, 18)
 sprite_frames = SubResource("SpriteFrames_pawr0")
 autoplay = "default"

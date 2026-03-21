@@ -2,6 +2,7 @@ class_name LevelDoor
 extends Marker2D
 
 @export var door_number : int = 1
+@export var face_left : bool
 
 func _ready() -> void:
 	if door_number != Globals.gb_door:
@@ -11,3 +12,5 @@ func _ready() -> void:
 		await get_tree().process_frame
 	
 	Globals.gb_player.global_position = global_position
+	if face_left:
+		Globals.gb_player.start_flip()

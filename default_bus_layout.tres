@@ -7,6 +7,7 @@ keep_hf_hz = 20500.0
 drive = 0.31
 
 [resource]
+bus/0/bypass_fx = true
 bus/1/name = &"Apartment"
 bus/1/solo = false
 bus/1/mute = false
@@ -49,7 +50,7 @@ bus/7/name = &"GameBox Music"
 bus/7/solo = false
 bus/7/mute = false
 bus/7/bypass_fx = false
-bus/7/volume_db = 0.0
+bus/7/volume_db = -80.0
 bus/7/send = &"GameBox"
 bus/8/name = &"GameBox Ambience"
 bus/8/solo = false

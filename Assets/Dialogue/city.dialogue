@@ -1,0 +1,90 @@
+~ fat_cat_1
+if "food" in Globals.held_tags:
+	Fat Cat: YUMMY FOOD!
+	Fat Cat: [b][shake rate=20 level=6]GIVE IT TO ME!!!
+	
+else:
+	Fat Cat: Hey small blob thing.
+	Fat Cat: Me wants food.
+	Fat Cat: [b][shake rate=20 level=6]GIVE FOOD OR ME WILLS EAT YOU!!!
+	Fat Cat: [i]sorry, me is very hungry
+	Jacko: We should probably find this guy some food...
+=> END
+
+~ fat_cat_talk
+if not Globals.progress_trackers["fat_cat_passed"]:
+	if "food" in Globals.held_tags:
+		do Globals.progress_trackers["fat_cat_passed"] = true
+		do Globals.progress_trackers["fat_cat_fed"] = true
+		do Globals.gb_destroy_held()
+		=> fat_cat_feed
+	else:
+		=> fat_cat_start
+else:
+	if Globals.progress_trackers["fat_cat_fed"]:
+		=> fat_cat_pre_band_happy
+	else:
+		=> fat_cat_pre_band_sad
+	
+=> END
+
+~ fat_cat_start
+Fat Cat: YES, FOODS!!!
+	
+Fat Cat: Hey small blob thing.
+Fat Cat: You want pass me?
+Fat Cat: [b][shake rate=20 level=6]YOU IS NOT GET PASS UNTILS YOU FEEDS MEEE!!!!
+Fat Cat: [i]sorry, me is very hungry.
+=> END
+
+~ fat_cat_feed
+Fat Cat: [b][shake rate=20 level=6]YUMMY FOOD!!!!!
+Fat Cat: Thanks you small blob thing.
+Fat Cat: When you needs anythings, me will be happys to help!
+Fat Cat: You can go pasts now!
+=> END
+
+~ fat_cat_pre_band_happy
+Fat Cat: [b][shake rate=20 level=6]I LOVES YOU BLOB THING!!!!
+=> END
+
+~ fat_cat_pre_band_sad
+Fat Cat: [b][shake rate=20 level=6]I HATES YOU BLOB THING!!!!
+=> END
+
+~ fat_cat_bounce
+% Fat Cat: [b][shake rate=20 level=6]YOU IS NOT GET PAST TIL YOU FEEDS ME!!!!!!
+% Fat Cat: [b][shake rate=20 level=6]FEEDS ME!!!!!
+% Fat Cat: [b][shake rate=20 level=6]GIVES ME FOODS!!!!!
+% Fat Cat: [b][shake rate=20 level=6]IF YOU WANTS PAST, GIVES ME FOOD!!!!!
+% Fat Cat: [b][shake rate=20 level=6]YOU ONLY GETS PAST IF YOU GIVES FOOD!!!!!
+% Fat Cat: [b][shake rate=20 level=6]FOODS!!! FOODS!!!! FOODS!!!
+
+=> END
+
+~ fat_cat_pass
+Fat Cat: [b][shake rate=20 level=6] HEY GETS BACK HERE!!!!
+Fat Cat: [i]Whatevers, me don'ts even wants food anyway...
+=> END
+
+
+~ not_alien_girl
+Totally Normal Girl: You're looking for aliens?
+Totally Normal Girl: Sorry, I haven't seen any.
+=> END
+
+~ tree_sign
+World's most boring tree ->
+=> END
+
+~ froggo_talk
+Jacko: Let's just go, we have way more important things to worry about.
+
+~ froggo_meet
+do Globals.progress_trackers["froggo_met"] = true
+Froggo: Woah woah woah, hold up there kool katz.
+Froggo: Wanna join my totally epic band? We're kind of underground...
+Jacko: [shake rate=20 level=6]NO, WE'VE GOT WAY MORE IMPORTANT THINGS TO BE WORRYING ABOUT! GET OUT OF OUR WAY!!!
+Froggo: Don't be such a square dawg. Just lemme know if you change your mind dudez.
+Jacko: Whatever, let's just keep going, the aliens shouldn't be too far away.
+

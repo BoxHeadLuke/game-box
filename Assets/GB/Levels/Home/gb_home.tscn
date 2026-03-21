@@ -597,7 +597,7 @@ shape = SubResource("RectangleShape2D_t7yy0")
 
 [node name="SwitchLevelTrigger" type="Node" parent="Next Zone" unique_id=1412819657]
 script = ExtResource("28_t7yy0")
-level = "uid://cocknyls7ik1h"
+level = "uid://cu1x55k6ik758"
 metadata/_custom_type_script = "uid://btd6wa0m47im1"
 
 [node name="Door" type="Node2D" parent="." unique_id=937928604]
@@ -605,12 +605,14 @@ metadata/_custom_type_script = "uid://btd6wa0m47im1"
 [node name="Door 0" type="Marker2D" parent="Door" unique_id=654075560]
 position = Vector2(190, -3)
 script = ExtResource("29_7jlfi")
+door_number = 0
 metadata/_custom_type_script = "uid://08g4wiraqh22"
 
 [node name="Door 1" type="Marker2D" parent="Door" unique_id=616046294]
-position = Vector2(2668, -208)
+position = Vector2(2648, -208)
 gizmo_extents = 20.0
 script = ExtResource("29_7jlfi")
+face_left = true
 metadata/_custom_type_script = "uid://08g4wiraqh22"
 
 [connection signal="body_entered" from="Fake Jump" to="." method="_on_fake_jump_entered"]
