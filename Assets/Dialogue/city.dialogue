@@ -16,7 +16,7 @@ if not Globals.progress_trackers["fat_cat_passed"]:
 	if "food" in Globals.held_tags:
 		do Globals.progress_trackers["fat_cat_passed"] = true
 		do Globals.progress_trackers["fat_cat_fed"] = true
-		do Globals.gb_destroy_held()
+		#do Globals.gb_destroy_held()
 		=> fat_cat_feed
 	else:
 		=> fat_cat_start
@@ -29,7 +29,6 @@ else:
 => END
 
 ~ fat_cat_start
-Fat Cat: YES, FOODS!!!
 	
 Fat Cat: Hey small blob thing.
 Fat Cat: You want pass me?
@@ -38,6 +37,9 @@ Fat Cat: [i]sorry, me is very hungry.
 => END
 
 ~ fat_cat_feed
+Fat Cat: [i]Waits...
+Fat Cat: [b][shake rate=20 level=6]IS THATS FOODS?!?!?!
+do Globals.gb_destroy_held()
 Fat Cat: [b][shake rate=20 level=6]YUMMY FOOD!!!!!
 Fat Cat: Thanks you small blob thing.
 Fat Cat: When you needs anythings, me will be happys to help!
@@ -53,6 +55,11 @@ Fat Cat: [b][shake rate=20 level=6]I HATES YOU BLOB THING!!!!
 => END
 
 ~ fat_cat_bounce
+if "food" in Globals.held_tags:
+	do Globals.progress_trackers["fat_cat_passed"] = true
+	do Globals.progress_trackers["fat_cat_fed"] = true
+	=> fat_cat_feed
+	=> END
 % Fat Cat: [b][shake rate=20 level=6]YOU IS NOT GET PAST TIL YOU FEEDS ME!!!!!!
 % Fat Cat: [b][shake rate=20 level=6]FEEDS ME!!!!!
 % Fat Cat: [b][shake rate=20 level=6]GIVES ME FOODS!!!!!
@@ -78,7 +85,25 @@ World's most boring tree ->
 => END
 
 ~ froggo_talk
+if Globals.progress_trackers["band_search"]:
+	Froggo: Good luck kool katz!
+	=> END
+if Globals.progress_trackers["alien_exited"]:
+	Froggo: Wazzup kool katz, howz it hangin?
+	Jacko: Hey man, I think we got off to a bad start. We would just LOVE to join your band.
+	Froggo: That'z freaktastic dudez. Do you guyz play any instrumentz?
+	Jacko: Well, no. But we could learn from the rest of your band.
+	Froggo: Well thatz too bad kool katz, cuz it'z just me and I'm the singer.
+	Jacko: [shake rate=20 level=6]WHAT?????
+	Froggo: Well hey, maybe you guyz could schmooze around town and find some peepz to join the kool katz.
+	Jacko: Wait, so kool katz is the name of the band?
+	Jacko: I hate to say it, but this is our best shot so we might as well give it a try.
+	do Globals.progress_trackers["band_search"] = true
+	=> END
+	
+Froggo: Hey kool katz.
 Jacko: Let's just go, we have way more important things to worry about.
+=> END
 
 ~ froggo_meet
 do Globals.progress_trackers["froggo_met"] = true
@@ -87,4 +112,37 @@ Froggo: Wanna join my totally epic band? We're kind of underground...
 Jacko: [shake rate=20 level=6]NO, WE'VE GOT WAY MORE IMPORTANT THINGS TO BE WORRYING ABOUT! GET OUT OF OUR WAY!!!
 Froggo: Don't be such a square dawg. Just lemme know if you change your mind dudez.
 Jacko: Whatever, let's just keep going, the aliens shouldn't be too far away.
+=> END
 
+~ ricky_rats
+
+if Globals.progress_trackers["sewer_open"]:
+	Ricky Rats: Good luck kids.
+	=> END
+
+if Globals.progress_trackers["band_search"]:
+	Jacko: Hey weird rat guy, do you wanna join our band?
+	Ricky Rats: Sorry kid, but I gotta watch over these rat tunnels.
+	Jacko: Do you mean the sewers?
+	Ricky Rats: Whatever you call 'em, they've been overrun with pests ever since the water stopped flowing.
+	Jacko: Maybe we could help to turn it back on!
+	Ricky Rats: Well, I'll let ya give it a shot. I ain't got nothin' to lose.
+	
+	do Globals.progress_trackers["sewer_open"] = true
+	=> END
+Ricky Rats: Scram kid, these tunnels are overrun with pests.
+=> END
+
+
+~ alien_encounter_1
+Jacko: [shake rate=20 level=6]LOOK, IT'S AN ALIEN! STOP THEM!!!
+=> END
+
+~ alien_encounter_2
+Jacko: [shake rate=20 level=6]DAMN IT!!!
+Jacko: That's a gateway to the ship, but he closed it behind him.
+Jacko: If we can open it back up then we could get aboard their ship.
+Jacko: It would take a lot of energy though. Maybe thermal, or chemical, or kinetic...
+Jacko: or...sound...
+Jacko: We're gonna have to join that guy's band, aren't we?
+=> END

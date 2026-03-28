@@ -8,6 +8,7 @@ drive = 0.31
 
 [resource]
 bus/0/bypass_fx = true
+bus/0/volume_db = -2.7102394
 bus/1/name = &"Apartment"
 bus/1/solo = false
 bus/1/mute = false

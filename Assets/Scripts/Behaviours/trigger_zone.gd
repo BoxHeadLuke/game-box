@@ -1,5 +1,6 @@
 class_name TriggerZone
 extends Area2D
+signal entered
 
 @export var Activate_Trigger : Trigger
 @export var keep_layers : bool = false
@@ -16,8 +17,9 @@ func _ready() -> void:
 	
 
 func body_entered(body):
-	Activate_Trigger.start()
-		
+	if Activate_Trigger:
+		Activate_Trigger.start()
+	entered.emit()
 
 
 

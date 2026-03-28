@@ -1,0 +1,25 @@
+[gd_scene format=4 uid="uid://csegxv3icqtuy"]
+
+[ext_resource type="Script" uid="uid://c4a86dyv6onk0" path="res://Assets/Scripts/Behaviours/gb_level.gd" id="1_i1qn8"]
+[ext_resource type="PackedScene" uid="uid://dk3ngay7jfajw" path="res://Assets/GB/Tiles/gb_cobblestone_tiles.tscn" id="2_s2ts1"]
+[ext_resource type="PackedScene" uid="uid://bj8lb7d0ieuym" path="res://Assets/GB/Objects/Player/gb_player.tscn" id="3_oajm1"]
+[ext_resource type="PackedScene" uid="uid://d3emgtn0wjvra" path="res://Assets/GB/Objects/Sidekick/gb_sidekick.tscn" id="4_0l66b"]
+
+[node name="GB Sewers" type="Node2D" unique_id=255734854 node_paths=PackedStringArray("Object_Parent")]
+script = ExtResource("1_i1qn8")
+Object_Parent = NodePath("Objects")
+metadata/_custom_type_script = "uid://c4a86dyv6onk0"
+
+[node name="BG Cobblestone" parent="." unique_id=2110757318 instance=ExtResource("2_s2ts1")]
+
+[node name="Objects" type="Node2D" parent="." unique_id=1627119416]
+
+[node name="GB Player" parent="." unique_id=1298103726 node_paths=PackedStringArray("Sidekick") instance=ExtResource("3_oajm1")]
+position = Vector2(44, -6)
+Sidekick = NodePath("../GB Sidekick")
+
+[node name="GB Sidekick" parent="." unique_id=1400024817 node_paths=PackedStringArray("Player") instance=ExtResource("4_0l66b")]
+Player = NodePath("../GB Player")
+
+[node name="GB Cobblestone Tiles" parent="." unique_id=2037743436 instance=ExtResource("2_s2ts1")]
+tile_map_data = PackedByteArray("AAAAAAAAAAABAAAAAAABAAAAAAABAAAAAAACAAAAAAABAAAAAAADAAAAAAABAAAAAAAEAAAAAAABAAAAAAAFAAAAAAABAAAAAAAGAAAAAAABAAAAAAAHAAAAAAABAAAAAAAIAAAAAAABAAAAAAAJAAAAAAABAAAAAAAKAAAAAAABAAAAAAALAAAAAAABAAAAAAAMAAAAAAABAAAAAAANAAAAAAABAAAAAAAOAAAAAAABAAAAAAAPAAAAAAABAAAAAAAQAAAAAAABAAAAAAARAAAAAAABAAAAAAASAAAAAAABAAAAAAATAAAAAAABAAAAAAAUAAAAAAABAAAAAAAVAAAAAAABAAAAAAAWAAAAAAABAAAAAAAXAAAAAAABAAAAAAAYAAAAAAABAAAAAAAZAAAAAAABAAAAAAAaAAAAAAABAAAAAAAbAAAAAAABAAAAAAA=")

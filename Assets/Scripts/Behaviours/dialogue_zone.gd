@@ -2,7 +2,7 @@ class_name DialogueZone
 extends Area2D
 
 @export var Speech_Bubble : Node
-@export var Dialogue_Trigger : DialogueTrigger
+@export var Dialogue_Trigger : Trigger
 
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:

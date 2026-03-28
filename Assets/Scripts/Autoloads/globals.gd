@@ -24,7 +24,12 @@ var progress_trackers  : Dictionary = {
 	"signo_warning" : false,
 	"fat_cat_passed" : false,
 	"fat_cat_fed" : false,
-	"froggo_met" : false
+	"froggo_met" : false,
+	"alien_spotted" : false,
+	"alien_exited" : false,
+	"doorway_unlocked" : false,
+	"band_search" : false,
+	"sewer_open" : false,
 }
 
 var dialogue_colours  : Dictionary = {
