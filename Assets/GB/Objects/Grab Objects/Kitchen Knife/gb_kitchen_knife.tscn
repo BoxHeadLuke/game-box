@@ -8,7 +8,7 @@
 radius = 3.0
 height = 18.0
 
-[node name="GB Kitchen Knife" type="RigidBody2D" unique_id=1148473754 node_paths=PackedStringArray("Use_Trigger")]
+[node name="GB Kitchen Knife" type="RigidBody2D" unique_id=1148473754 node_paths=PackedStringArray("Use_Trigger") groups=["violent"]]
 script = ExtResource("1_865dj")
 Impact_Sound = "Metal Impact"
 Use_Trigger = NodePath("PlayerAttackTrigger")

@@ -10,7 +10,7 @@ height = 21.0
 
 [node name="Node2D" type="Node2D" unique_id=1150404974]
 
-[node name="GB Baseball Bat" type="RigidBody2D" parent="." unique_id=909468769 node_paths=PackedStringArray("Use_Trigger")]
+[node name="GB Baseball Bat" type="RigidBody2D" parent="." unique_id=909468769 node_paths=PackedStringArray("Use_Trigger") groups=["violent"]]
 script = ExtResource("1_1hpv7")
 Use_Trigger = NodePath("PlayerAttackTrigger")
 metadata/_custom_type_script = "uid://dvyaqeofsrm7g"

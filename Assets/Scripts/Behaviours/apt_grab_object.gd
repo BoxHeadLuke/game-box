@@ -5,11 +5,14 @@ extends RigidBody3D
 @export var Size : float
 @export var Centre : Node3D
 @export var GB_Version : String
+@export var UID : String
 
 const default_mass = 0.1
 const default_physics_material = "uid://cdjcu8pulisjp"
 
 var prev_velocity : Vector3
+
+var spawner
 
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
@@ -25,6 +28,12 @@ func _ready() -> void:
 		physics_material_override = phys
 	
 	connect("body_entered", collision)
+	
+	spawner = Globals.apt_object_spawner.instantiate()
+	get_parent().call_deferred("add_child", spawner)
+	await get_tree().create_timer(0.4)
+	spawner.load_details(self)
+	
 
 func _physics_process(delta: float) -> void:
 	prev_velocity = linear_velocity

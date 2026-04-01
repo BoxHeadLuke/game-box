@@ -1,0 +1,6 @@
+[gd_scene format=3 uid="uid://ckgyjteam2477"]
+
+[ext_resource type="Script" uid="uid://bi3sfpqlsjtp7" path="res://Assets/Apartment/Objects/Object Spawner/apt_object_spawner.gd" id="1_l5qt0"]
+
+[node name="APT Object Spawner" type="Marker3D" unique_id=1389203566]
+script = ExtResource("1_l5qt0")

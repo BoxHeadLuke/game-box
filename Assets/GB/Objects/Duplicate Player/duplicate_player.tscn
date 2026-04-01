@@ -1,0 +1,144 @@
+[gd_scene format=3 uid="uid://cx1myc7pi0m7g"]
+
+[ext_resource type="Script" uid="uid://dsbplq45cofu6" path="res://Assets/GB/Objects/Duplicate Player/duplicate_player.gd" id="1_kmuse"]
+[ext_resource type="Texture2D" uid="uid://baw1eeq3dahba" path="res://Assets/GB/Art/GB Player.png" id="2_j831e"]
+[ext_resource type="Script" uid="uid://c6ppxwwiuykhq" path="res://Assets/Scripts/Behaviours/squash_&_stretch.gd" id="3_mhgfb"]
+
+[sub_resource type="Animation" id="Animation_j831e"]
+resource_name = "Fall"
+length = 0.1
+loop_mode = 1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Visual Flip/Body:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [9]
+}
+
+[sub_resource type="Animation" id="Animation_mhgfb"]
+resource_name = "Idle"
+length = 0.4
+loop_mode = 1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Visual Flip/Body:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.1, 0.2, 0.3),
+"transitions": PackedFloat32Array(1, 1, 1, 1),
+"update": 1,
+"values": [0, 1, 2, 3]
+}
+
+[sub_resource type="Animation" id="Animation_4c8e8"]
+resource_name = "Jump"
+length = 0.1
+loop_mode = 1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Visual Flip/Body:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [8]
+}
+
+[sub_resource type="Animation" id="Animation_fovxv"]
+resource_name = "Run"
+length = 0.2
+loop_mode = 1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Visual Flip/Body:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.05, 0.1, 0.15),
+"transitions": PackedFloat32Array(1, 1, 1, 1),
+"update": 1,
+"values": [4, 5, 6, 7]
+}
+
+[sub_resource type="Animation" id="Animation_2nwxo"]
+resource_name = "Walk"
+length = 0.28
+loop_mode = 1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Visual Flip/Body:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.071428575, 0.14285715, 0.21428572),
+"transitions": PackedFloat32Array(1, 1, 1, 1),
+"update": 1,
+"values": [4, 5, 6, 7]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_w530x"]
+_data = {
+&"Fall": SubResource("Animation_j831e"),
+&"Idle": SubResource("Animation_mhgfb"),
+&"Jump": SubResource("Animation_4c8e8"),
+&"Run": SubResource("Animation_fovxv"),
+&"Walk": SubResource("Animation_2nwxo")
+}
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_mhgfb"]
+size = Vector2(14, 8)
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_4c8e8"]
+radius = 7.017834
+
+[node name="Duplicate Player" type="CharacterBody2D" unique_id=1971097037 node_paths=PackedStringArray("Flip", "Animator", "Squash")]
+collision_layer = 3
+collision_mask = 3
+platform_floor_layers = 4294967293
+script = ExtResource("1_kmuse")
+Flip = NodePath("Visuals/Visual Flip")
+Animator = NodePath("Visuals/AnimationPlayer")
+Squash = NodePath("Behaviours/SquashAndStretch")
+
+[node name="Behaviours" type="Node" parent="." unique_id=915878236]
+
+[node name="SquashAndStretch" type="Node" parent="Behaviours" unique_id=2098485550 node_paths=PackedStringArray("node")]
+script = ExtResource("3_mhgfb")
+node = NodePath("../../Visuals")
+speed = 7
+turn_amount = 1.2
+metadata/_custom_type_script = "uid://c6ppxwwiuykhq"
+
+[node name="Visuals" type="Node2D" parent="." unique_id=142140514]
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="Visuals" unique_id=475124364]
+libraries/ = SubResource("AnimationLibrary_w530x")
+
+[node name="Visual Flip" type="Node2D" parent="Visuals" unique_id=437031728]
+
+[node name="Body" type="Sprite2D" parent="Visuals/Visual Flip" unique_id=260066935]
+position = Vector2(0, -15)
+texture = ExtResource("2_j831e")
+hframes = 10
+frame = 4
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=258497197]
+position = Vector2(0, -4)
+shape = SubResource("RectangleShape2D_mhgfb")
+
+[node name="CollisionShape2D2" type="CollisionShape2D" parent="." unique_id=606024423]
+position = Vector2(0, -8)
+shape = SubResource("CircleShape2D_4c8e8")

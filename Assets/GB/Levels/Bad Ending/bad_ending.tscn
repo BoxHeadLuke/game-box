@@ -1,0 +1,479 @@
+[gd_scene format=3 uid="uid://bon2idtawyck8"]
+
+[ext_resource type="Script" uid="uid://cfl7x1dfexb0n" path="res://Assets/GB/Levels/Bad Ending/bad_ending.gd" id="1_w7xy0"]
+[ext_resource type="Texture2D" uid="uid://b68ggspnqkres" path="res://Assets/GB/Art/GB Sidekick.png" id="2_4v4jm"]
+[ext_resource type="Script" uid="uid://dmbpj5jlqfh5j" path="res://Assets/Scripts/Behaviours/level_music.gd" id="2_kwcvy"]
+[ext_resource type="Texture2D" uid="uid://g2r566lryjs3" path="res://Assets/slideshow/0012.png" id="3_f02vp"]
+[ext_resource type="Texture2D" uid="uid://ch1hw5jmvjsae" path="res://Assets/slideshow/0013.png" id="4_kifek"]
+[ext_resource type="Script" uid="uid://ch48tmhwpdcy5" path="res://Assets/Scripts/Behaviours/dialogue_trigger.gd" id="4_l5l45"]
+[ext_resource type="Resource" uid="uid://8b2s2k34w1hn" path="res://Assets/Dialogue/ending.dialogue" id="5_4v4jm"]
+[ext_resource type="Texture2D" uid="uid://dw2w6ys8b36tc" path="res://Assets/slideshow/0014.png" id="5_nqk6l"]
+[ext_resource type="FontFile" uid="uid://1jqu6ccykgma" path="res://Assets/Resources/KarenFat.ttf" id="6_nqk6l"]
+[ext_resource type="FontFile" uid="uid://c6aa1i6wym28l" path="res://Assets/Resources/Habbo.ttf" id="7_vntij"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_vwoiv"]
+atlas = ExtResource("2_4v4jm")
+region = Rect2(0, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_f02vp"]
+atlas = ExtResource("2_4v4jm")
+region = Rect2(32, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_kifek"]
+atlas = ExtResource("2_4v4jm")
+region = Rect2(64, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_nqk6l"]
+atlas = ExtResource("2_4v4jm")
+region = Rect2(96, 0, 32, 32)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_vntij"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_vwoiv")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_f02vp")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_kifek")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_nqk6l")
+}],
+"loop": true,
+"name": &"default",
+"speed": 10.0
+}]
+
+[sub_resource type="Animation" id="Animation_xnxt3"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("CanvasLayer/Jacko:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(-41, 76)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("CanvasLayer/Jacko:rotation")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [0.0]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("CanvasLayer/Slides/0012:modulate")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Color(1, 1, 1, 0)]
+}
+tracks/3/type = "value"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath("CanvasLayer/Slides/0013:modulate")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Color(0.012617188, 0.012617188, 0.012617188, 1)]
+}
+tracks/4/type = "value"
+tracks/4/imported = false
+tracks/4/enabled = true
+tracks/4/path = NodePath("CanvasLayer/Slides/0014:modulate")
+tracks/4/interp = 1
+tracks/4/loop_wrap = true
+tracks/4/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Color(1, 1, 1, 0)]
+}
+tracks/5/type = "value"
+tracks/5/imported = false
+tracks/5/enabled = true
+tracks/5/path = NodePath("CanvasLayer/Slides/0012:position")
+tracks/5/interp = 1
+tracks/5/loop_wrap = true
+tracks/5/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(144, 88)]
+}
+tracks/6/type = "value"
+tracks/6/imported = false
+tracks/6/enabled = true
+tracks/6/path = NodePath("CanvasLayer/Slides/0012:scale")
+tracks/6/interp = 1
+tracks/6/loop_wrap = true
+tracks/6/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(0.1, 0.1)]
+}
+tracks/7/type = "value"
+tracks/7/imported = false
+tracks/7/enabled = true
+tracks/7/path = NodePath("CanvasLayer/Slides/0013:position")
+tracks/7/interp = 1
+tracks/7/loop_wrap = true
+tracks/7/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(144, 88)]
+}
+tracks/8/type = "value"
+tracks/8/imported = false
+tracks/8/enabled = true
+tracks/8/path = NodePath("CanvasLayer/Slides/0013:scale")
+tracks/8/interp = 1
+tracks/8/loop_wrap = true
+tracks/8/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(0.1, 0.1)]
+}
+tracks/9/type = "value"
+tracks/9/imported = false
+tracks/9/enabled = true
+tracks/9/path = NodePath("CanvasLayer/Slides/0014:position")
+tracks/9/interp = 1
+tracks/9/loop_wrap = true
+tracks/9/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(144, 88)]
+}
+tracks/10/type = "value"
+tracks/10/imported = false
+tracks/10/enabled = true
+tracks/10/path = NodePath("CanvasLayer/Slides/0014:scale")
+tracks/10/interp = 1
+tracks/10/loop_wrap = true
+tracks/10/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(0.1, 0.1)]
+}
+tracks/11/type = "value"
+tracks/11/imported = false
+tracks/11/enabled = true
+tracks/11/path = NodePath("CanvasLayer/Label:visible")
+tracks/11/interp = 1
+tracks/11/loop_wrap = true
+tracks/11/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [false]
+}
+tracks/12/type = "value"
+tracks/12/imported = false
+tracks/12/enabled = true
+tracks/12/path = NodePath("CanvasLayer/Label2:visible")
+tracks/12/interp = 1
+tracks/12/loop_wrap = true
+tracks/12/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [false]
+}
+
+[sub_resource type="Animation" id="Animation_vntij"]
+resource_name = "slideshow"
+length = 26.0
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("CanvasLayer/Jacko:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.8333334),
+"transitions": PackedFloat32Array(-2, 1),
+"update": 0,
+"values": [Vector2(145, 87), Vector2(23, 155)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("CanvasLayer/Jacko:rotation")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 0.23333333, 0.6, 0.8333334),
+"transitions": PackedFloat32Array(-2, -2, -2, 1),
+"update": 0,
+"values": [0.0, -0.7120943348136867, -0.7120943348136867, 0.0]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("CanvasLayer/Slides/0012:modulate")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(1.9666667, 3.0000002),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Color(1, 1, 1, 0), Color(1, 1, 1, 1)]
+}
+tracks/3/type = "value"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath("CanvasLayer/Slides/0013:modulate")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"times": PackedFloat32Array(8, 9),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Color(1, 1, 1, 0), Color(1, 1, 1, 1)]
+}
+tracks/4/type = "value"
+tracks/4/imported = false
+tracks/4/enabled = true
+tracks/4/path = NodePath("CanvasLayer/Slides/0014:modulate")
+tracks/4/interp = 1
+tracks/4/loop_wrap = true
+tracks/4/keys = {
+"times": PackedFloat32Array(14.000001, 15.000001),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Color(1, 1, 1, 0), Color(1, 1, 1, 1)]
+}
+tracks/5/type = "value"
+tracks/5/imported = false
+tracks/5/enabled = true
+tracks/5/path = NodePath("CanvasLayer/Slides/0012:position")
+tracks/5/interp = 1
+tracks/5/loop_wrap = true
+tracks/5/keys = {
+"times": PackedFloat32Array(20.000002, 22.000002),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Vector2(144, 88), Vector2(48.000008, 38.000004)]
+}
+tracks/6/type = "value"
+tracks/6/imported = false
+tracks/6/enabled = true
+tracks/6/path = NodePath("CanvasLayer/Slides/0012:scale")
+tracks/6/interp = 1
+tracks/6/loop_wrap = true
+tracks/6/keys = {
+"times": PackedFloat32Array(20.000002, 22.000002),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Vector2(0.1, 0.1), Vector2(0.05, 0.05)]
+}
+tracks/7/type = "value"
+tracks/7/imported = false
+tracks/7/enabled = true
+tracks/7/path = NodePath("CanvasLayer/Slides/0013:position")
+tracks/7/interp = 1
+tracks/7/loop_wrap = true
+tracks/7/keys = {
+"times": PackedFloat32Array(20.000002, 22.000002),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Vector2(144, 88), Vector2(143, 38)]
+}
+tracks/8/type = "value"
+tracks/8/imported = false
+tracks/8/enabled = true
+tracks/8/path = NodePath("CanvasLayer/Slides/0013:scale")
+tracks/8/interp = 1
+tracks/8/loop_wrap = true
+tracks/8/keys = {
+"times": PackedFloat32Array(20.000002, 22.000002),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Vector2(0.1, 0.1), Vector2(0.05, 0.05)]
+}
+tracks/9/type = "value"
+tracks/9/imported = false
+tracks/9/enabled = true
+tracks/9/path = NodePath("CanvasLayer/Slides/0014:position")
+tracks/9/interp = 1
+tracks/9/loop_wrap = true
+tracks/9/keys = {
+"times": PackedFloat32Array(20.000002, 22.000002),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Vector2(144, 88), Vector2(239, 38)]
+}
+tracks/10/type = "value"
+tracks/10/imported = false
+tracks/10/enabled = true
+tracks/10/path = NodePath("CanvasLayer/Slides/0014:scale")
+tracks/10/interp = 1
+tracks/10/loop_wrap = true
+tracks/10/keys = {
+"times": PackedFloat32Array(20.000002, 22.000002),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Vector2(0.1, 0.1), Vector2(0.05, 0.05)]
+}
+tracks/11/type = "value"
+tracks/11/imported = false
+tracks/11/enabled = true
+tracks/11/path = NodePath("CanvasLayer/Label:visible")
+tracks/11/interp = 1
+tracks/11/loop_wrap = true
+tracks/11/keys = {
+"times": PackedFloat32Array(0, 6.766667),
+"transitions": PackedFloat32Array(1, 1),
+"update": 1,
+"values": [false, true]
+}
+tracks/12/type = "value"
+tracks/12/imported = false
+tracks/12/enabled = true
+tracks/12/path = NodePath("CanvasLayer/Label2:visible")
+tracks/12/interp = 1
+tracks/12/loop_wrap = true
+tracks/12/keys = {
+"times": PackedFloat32Array(0, 6.766667),
+"transitions": PackedFloat32Array(1, 1),
+"update": 1,
+"values": [false, true]
+}
+
+[sub_resource type="Animation" id="Animation_30mov"]
+resource_name = "start"
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("CanvasLayer/Jacko:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 1),
+"transitions": PackedFloat32Array(0.5, 1),
+"update": 0,
+"values": [Vector2(-41, 76), Vector2(145, 87)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("CanvasLayer/Jacko:rotation")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0.56666666, 1),
+"transitions": PackedFloat32Array(0.5, 1),
+"update": 0,
+"values": [0.42062434973063384, 0.0]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_gr32n"]
+_data = {
+&"RESET": SubResource("Animation_xnxt3"),
+&"slideshow": SubResource("Animation_vntij"),
+&"start": SubResource("Animation_30mov")
+}
+
+[node name="Bad Ending" type="Node2D" unique_id=1510085540]
+script = ExtResource("1_w7xy0")
+metadata/_custom_type_script = "uid://c4a86dyv6onk0"
+
+[node name="CanvasLayer" type="CanvasLayer" parent="." unique_id=1049365447]
+
+[node name="ColorRect" type="ColorRect" parent="CanvasLayer" unique_id=358080792]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(0, 0, 0, 1)
+metadata/_edit_use_anchors_ = true
+
+[node name="Label" type="Label" parent="CanvasLayer" unique_id=1847547691]
+visible = false
+offset_left = 72.0
+offset_top = 66.0
+offset_right = 222.0
+offset_bottom = 89.0
+theme_override_fonts/font = ExtResource("6_nqk6l")
+text = "Thanks for playing"
+
+[node name="Label2" type="Label" parent="CanvasLayer" unique_id=690037260]
+visible = false
+offset_left = 76.0
+offset_top = 81.0
+offset_right = 226.0
+offset_bottom = 142.0
+theme_override_fonts/font = ExtResource("7_vntij")
+text = "A Game By:
+BoxHead Luke
+MattBil
+Musicka"
+horizontal_alignment = 1
+
+[node name="Slides" type="Node2D" parent="CanvasLayer" unique_id=1285370632]
+
+[node name="0012" type="Sprite2D" parent="CanvasLayer/Slides" unique_id=246539373]
+modulate = Color(1, 1, 1, 0)
+position = Vector2(144, 88)
+scale = Vector2(0.1, 0.1)
+texture = ExtResource("3_f02vp")
+
+[node name="0013" type="Sprite2D" parent="CanvasLayer/Slides" unique_id=747039821]
+modulate = Color(0.012617188, 0.012617188, 0.012617188, 1)
+position = Vector2(144, 88)
+scale = Vector2(0.1, 0.1)
+texture = ExtResource("4_kifek")
+
+[node name="0014" type="Sprite2D" parent="CanvasLayer/Slides" unique_id=359262345]
+modulate = Color(1, 1, 1, 0)
+position = Vector2(144, 88)
+scale = Vector2(0.1, 0.1)
+texture = ExtResource("5_nqk6l")
+
+[node name="Jacko" type="AnimatedSprite2D" parent="CanvasLayer" unique_id=128802887]
+position = Vector2(-41, 76)
+scale = Vector2(2, 2)
+sprite_frames = SubResource("SpriteFrames_vntij")
+autoplay = "default"
+frame_progress = 0.79230624
+
+[node name="LevelMusic" type="Node" parent="." unique_id=1976936830]
+script = ExtResource("2_kwcvy")
+music_name = "Level 2 Music"
+metadata/_custom_type_script = "uid://dmbpj5jlqfh5j"
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="." unique_id=512064370]
+libraries/ = SubResource("AnimationLibrary_gr32n")
+
+[node name="DialogueTrigger" type="Node" parent="." unique_id=797143123]
+script = ExtResource("4_l5l45")
+Dialogue_File = ExtResource("5_4v4jm")
+Start_Flag = "start"
+metadata/_custom_type_script = "uid://ch48tmhwpdcy5"

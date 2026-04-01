@@ -46,4 +46,5 @@ func _on_screen_zone_body_entered(body: Node3D) -> void:
 			particles.visible = true
 		
 		Globals.summon_objects.append(body.GB_Version)
+		Globals.spawner_list.append(body.spawner)
 		body.queue_free()

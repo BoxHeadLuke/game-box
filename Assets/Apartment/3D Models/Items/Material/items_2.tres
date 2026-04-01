@@ -1,0 +1,7 @@
+[gd_resource type="StandardMaterial3D" format=3 uid="uid://de3l7ukmcoptq"]
+
+[ext_resource type="Texture2D" uid="uid://cfxl8cdqk60j4" path="res://Assets/Apartment/3D Models/Items/Material/banana_Untitled.png" id="1_cbtb3"]
+
+[resource]
+cull_mode = 2
+albedo_texture = ExtResource("1_cbtb3")

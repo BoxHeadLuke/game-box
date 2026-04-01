@@ -10,7 +10,11 @@ func _ready() -> void:
 	
 	while not Globals.gb_player:
 		await get_tree().process_frame
-	
+		print("yes")
+	print(name)
+	Globals.gb_player.global_position = global_position
+	print(global_position)
+	await get_tree().process_frame
 	Globals.gb_player.global_position = global_position
 	if face_left:
 		Globals.gb_player.start_flip()

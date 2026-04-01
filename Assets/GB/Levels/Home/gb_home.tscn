@@ -25,10 +25,11 @@
 [ext_resource type="Texture2D" uid="uid://bvjpt5lo6c6eu" path="res://Assets/GB/Art/Arrow Sign.png" id="18_eiu1k"]
 [ext_resource type="Script" uid="uid://ch48tmhwpdcy5" path="res://Assets/Scripts/Behaviours/dialogue_trigger.gd" id="18_fxph4"]
 [ext_resource type="Script" uid="uid://dbmqoiea22bv5" path="res://Assets/Scripts/Behaviours/secret_area.gd" id="19_16m1t"]
-[ext_resource type="PackedScene" uid="uid://bn48nmk785v3r" path="res://Assets/GB/Objects/Grab Objects/Box/gb_box.tscn" id="20_y4w7s"]
+[ext_resource type="PackedScene" uid="uid://b4mk48q7kwwvu" path="res://Assets/GB/Objects/Grab Objects/Crate/gb_crate.tscn" id="21_hjhbd"]
 [ext_resource type="Script" uid="uid://cpvi0ebcsnx7t" path="res://Assets/Scripts/Behaviours/trigger_zone.gd" id="27_itusm"]
 [ext_resource type="Script" uid="uid://btd6wa0m47im1" path="res://Assets/Scripts/Behaviours/switch_level_trigger.gd" id="28_t7yy0"]
 [ext_resource type="Script" uid="uid://08g4wiraqh22" path="res://Assets/Scripts/Behaviours/level_door.gd" id="29_7jlfi"]
+[ext_resource type="Script" uid="uid://dmbpj5jlqfh5j" path="res://Assets/Scripts/Behaviours/level_music.gd" id="30_hjhbd"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_ogdep"]
 size = Vector2(40, 7)
@@ -506,13 +507,13 @@ tile_map_data = PackedByteArray("AAAWAAIAAAABAAEAAAAWAAEAAAABAAEAAAAWAAAAAAABAAA
 [node name="GB Pet Rock" parent="Objects" unique_id=1458840425 instance=ExtResource("9_a23tv")]
 position = Vector2(-71, 0)
 
-[node name="GB Box" parent="Objects" unique_id=1407793 instance=ExtResource("20_y4w7s")]
+[node name="GB Crate" parent="Objects" unique_id=925983687 instance=ExtResource("21_hjhbd")]
 position = Vector2(2146, -128)
 
-[node name="GB Box2" parent="Objects" unique_id=964230053 instance=ExtResource("20_y4w7s")]
+[node name="GB Crate2" parent="Objects" unique_id=620486028 instance=ExtResource("21_hjhbd")]
 position = Vector2(2162, -128)
 
-[node name="GB Box3" parent="Objects" unique_id=1565852520 instance=ExtResource("20_y4w7s")]
+[node name="GB Crate3" parent="Objects" unique_id=489515407 instance=ExtResource("21_hjhbd")]
 position = Vector2(2178, -128)
 
 [node name="SecretArea" type="Area2D" parent="." unique_id=1356661516]
@@ -614,6 +615,10 @@ gizmo_extents = 20.0
 script = ExtResource("29_7jlfi")
 face_left = true
 metadata/_custom_type_script = "uid://08g4wiraqh22"
+
+[node name="LevelMusic" type="Node" parent="." unique_id=1339350155]
+script = ExtResource("30_hjhbd")
+metadata/_custom_type_script = "uid://dmbpj5jlqfh5j"
 
 [connection signal="body_entered" from="Fake Jump" to="." method="_on_fake_jump_entered"]
 [connection signal="body_entered" from="Sad Pit" to="." method="_on_sad_pit_body_entered"]

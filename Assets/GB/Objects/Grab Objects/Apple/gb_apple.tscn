@@ -2,18 +2,34 @@
 
 [ext_resource type="Script" uid="uid://dvyaqeofsrm7g" path="res://Assets/Scripts/Behaviours/gb_bass_guitar.gd" id="1_ojg3w"]
 [ext_resource type="Texture2D" uid="uid://dhem3qc51rux7" path="res://Assets/GB/Art/GB Apple.png" id="2_46nta"]
+[ext_resource type="Script" uid="uid://c6ppxwwiuykhq" path="res://Assets/Scripts/Behaviours/squash_&_stretch.gd" id="3_xudcl"]
+[ext_resource type="Script" uid="uid://cmhmv4frtf554" path="res://Assets/Scripts/Behaviours/scale_player_trigger.gd" id="4_xq2ts"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_ojg3w"]
 size = Vector2(11, 10)
 
-[node name="GB Apple" type="RigidBody2D" unique_id=1413369442 groups=["food"]]
+[node name="GB Apple" type="RigidBody2D" unique_id=1413369442 node_paths=PackedStringArray("Use_Trigger", "Squash_And_Stretch") groups=["food"]]
 script = ExtResource("1_ojg3w")
+Use_Sound = "Chomp"
+Use_Trigger = NodePath("ScalePlayerTrigger")
+Squash_And_Stretch = NodePath("SquashAndStretch")
 metadata/_custom_type_script = "uid://dvyaqeofsrm7g"
 
 [node name="GbApple" type="Sprite2D" parent="." unique_id=1168939533]
-position = Vector2(1, -6)
 texture = ExtResource("2_46nta")
+offset = Vector2(1, -6)
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=1727741159]
 position = Vector2(0.5, -5)
 shape = SubResource("RectangleShape2D_ojg3w")
+
+[node name="SquashAndStretch" type="Node" parent="." unique_id=1307265087 node_paths=PackedStringArray("node")]
+script = ExtResource("3_xudcl")
+node = NodePath("../GbApple")
+metadata/_custom_type_script = "uid://c6ppxwwiuykhq"
+
+[node name="ScalePlayerTrigger" type="Node" parent="." unique_id=2041637847]
+script = ExtResource("4_xq2ts")
+Scale = Vector2(0.7, 1.2)
+time = 20.0
+metadata/_custom_type_script = "uid://cmhmv4frtf554"

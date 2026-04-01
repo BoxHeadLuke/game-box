@@ -104,7 +104,7 @@ func _ready() -> void:
 
 func _process(delta: float) -> void:
 	
-	if Input.is_action_just_pressed("Jump") and start_anim_finished:
+	if Input.is_action_just_pressed("Jump") and start_anim_finished and not Globals.progress_trackers["concert_active"]:
 		if dialogue_label.is_typing:
 			dialogue_label.skip_typing()
 		else:

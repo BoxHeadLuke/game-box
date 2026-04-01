@@ -11,7 +11,7 @@ config_version=5
 [application]
 
 config/name="GameBox"
-run/main_scene="uid://c0obricqshh07"
+run/main_scene="uid://bcwpqjyns87y"
 config/features=PackedStringArray("4.6", "GL Compatibility")
 config/icon="res://icon.svg"
 
@@ -50,6 +50,9 @@ enabled=PackedStringArray("res://addons/dialogue_manager/plugin.cfg", "res://add
 grab_object=""
 food=""
 musical=""
+violent=""
+unhealthy=""
+addiction=""
 
 [gui]
 
@@ -105,7 +108,7 @@ Switch={
 
 [internationalization]
 
-locale/translations_pot_files=PackedStringArray("res://Assets/Dialogue/test.dialogue", "res://Assets/Dialogue/area_1_npcs.dialogue", "res://Assets/Dialogue/home.dialogue", "res://Assets/Dialogue/city.dialogue")
+locale/translations_pot_files=PackedStringArray("res://Assets/Dialogue/test.dialogue", "res://Assets/Dialogue/area_1_npcs.dialogue", "res://Assets/Dialogue/home.dialogue", "res://Assets/Dialogue/city.dialogue", "res://Assets/Dialogue/ending.dialogue", "res://Assets/Dialogue/opening.dialogue")
 
 [layer_names]
 

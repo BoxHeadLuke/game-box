@@ -666,6 +666,7 @@ top_level = true
 
 [node name="PhantomCamera2D" type="Node2D" parent="Camera Pivot" unique_id=570395126]
 script = ExtResource("4_dmoiy")
+priority = 1
 tween_resource = SubResource("Resource_m3vlg")
 host_layers = 2
 metadata/_custom_type_script = "uid://bhexx6mj1xv3q"

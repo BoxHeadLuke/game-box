@@ -1,0 +1,35 @@
+[gd_scene format=3 uid="uid://b4566nr5y82o2"]
+
+[ext_resource type="Script" uid="uid://dvyaqeofsrm7g" path="res://Assets/Scripts/Behaviours/gb_bass_guitar.gd" id="1_brg3s"]
+[ext_resource type="Texture2D" uid="uid://bd2ylyn4u4vai" path="res://Assets/GB/Art/GB Pills.png" id="2_u72i6"]
+[ext_resource type="Script" uid="uid://cmhmv4frtf554" path="res://Assets/Scripts/Behaviours/scale_player_trigger.gd" id="3_u72i6"]
+[ext_resource type="Script" uid="uid://c6ppxwwiuykhq" path="res://Assets/Scripts/Behaviours/squash_&_stretch.gd" id="4_4t410"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_4t410"]
+size = Vector2(8, 13)
+
+[node name="GB Pills" type="RigidBody2D" unique_id=1252065343 node_paths=PackedStringArray("Use_Trigger", "Squash_And_Stretch") groups=["addiction", "pills"]]
+script = ExtResource("1_brg3s")
+Use_Sound = "Soda"
+Use_Trigger = NodePath("ScalePlayerTrigger")
+Squash_And_Stretch = NodePath("SquashAndStretch")
+metadata/_custom_type_script = "uid://dvyaqeofsrm7g"
+
+[node name="GbPills" type="Sprite2D" parent="." unique_id=130391350]
+texture = ExtResource("2_u72i6")
+offset = Vector2(0, -7)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=184751200]
+position = Vector2(0, -6.5)
+shape = SubResource("RectangleShape2D_4t410")
+
+[node name="ScalePlayerTrigger" type="Node" parent="." unique_id=1388753789]
+script = ExtResource("3_u72i6")
+Scale = Vector2(0.5, 0.5)
+time = 15.0
+metadata/_custom_type_script = "uid://cmhmv4frtf554"
+
+[node name="SquashAndStretch" type="Node" parent="." unique_id=1074607115 node_paths=PackedStringArray("node")]
+script = ExtResource("4_4t410")
+node = NodePath("..")
+metadata/_custom_type_script = "uid://c6ppxwwiuykhq"

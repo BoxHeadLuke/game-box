@@ -33,9 +33,12 @@ func switch_level(new_level : String):
 	
 	Level_Parent.add_child(load(new_level).instantiate())
 	
+	Globals.free_spawners()
+	
 	await get_tree().create_timer(0.5).timeout
 	
 	HUD.trans_in()
+	
 
 func add_balloon(balloon):
 	Balloon_Parent.add_child(balloon)

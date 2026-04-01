@@ -1,0 +1,55 @@
+[gd_scene format=3 uid="uid://d1tler8bi1gw2"]
+
+[ext_resource type="Script" uid="uid://dvyaqeofsrm7g" path="res://Assets/Scripts/Behaviours/gb_bass_guitar.gd" id="1_hh5dk"]
+[ext_resource type="Texture2D" uid="uid://1fg08ftry80r" path="res://Assets/GB/Art/water.png" id="2_n1jfj"]
+[ext_resource type="Texture2D" uid="uid://gf552jrgi8op" path="res://Assets/GB/Art/GB Water Gun.png" id="3_6yxal"]
+[ext_resource type="Script" uid="uid://cbnsu2lcq1ms5" path="res://Assets/Scripts/Behaviours/particle_trigger.gd" id="4_6yxal"]
+[ext_resource type="Script" uid="uid://c6ppxwwiuykhq" path="res://Assets/Scripts/Behaviours/squash_&_stretch.gd" id="5_uo8dg"]
+
+[sub_resource type="ParticleProcessMaterial" id="ParticleProcessMaterial_uo8dg"]
+particle_flag_disable_z = true
+inherit_velocity_ratio = 1.0
+direction = Vector3(1, -0.23, 0)
+spread = 5.0
+initial_velocity_min = 114.06
+initial_velocity_max = 114.06
+gravity = Vector3(0, 196, 0)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_6yxal"]
+size = Vector2(14, 11)
+
+[node name="Water Gun" type="RigidBody2D" unique_id=812302243 node_paths=PackedStringArray("Use_Trigger", "Squash_And_Stretch")]
+script = ExtResource("1_hh5dk")
+Use_Trigger = NodePath("ParticleTrigger")
+Squash_And_Stretch = NodePath("SquashAndStretch")
+metadata/_custom_type_script = "uid://dvyaqeofsrm7g"
+
+[node name="GPUParticles2D" type="GPUParticles2D" parent="." unique_id=2045026123]
+process_mode = 3
+modulate = Color(0.54901963, 0.85490197, 1, 1)
+position = Vector2(8, -9)
+emitting = false
+texture = ExtResource("2_n1jfj")
+lifetime = 0.5
+explosiveness = 0.7
+use_fixed_seed = true
+seed = 2648978535
+process_material = SubResource("ParticleProcessMaterial_uo8dg")
+
+[node name="GbWaterGun" type="Sprite2D" parent="." unique_id=1923670372]
+position = Vector2(0, -7)
+texture = ExtResource("3_6yxal")
+
+[node name="ParticleTrigger" type="Node" parent="." unique_id=1682425929 node_paths=PackedStringArray("particles")]
+script = ExtResource("4_6yxal")
+particles = NodePath("../GPUParticles2D")
+metadata/_custom_type_script = "uid://cbnsu2lcq1ms5"
+
+[node name="SquashAndStretch" type="Node" parent="." unique_id=1882811155 node_paths=PackedStringArray("node")]
+script = ExtResource("5_uo8dg")
+node = NodePath("../GbWaterGun")
+metadata/_custom_type_script = "uid://c6ppxwwiuykhq"
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=1473560052]
+position = Vector2(0, -5.5)
+shape = SubResource("RectangleShape2D_6yxal")

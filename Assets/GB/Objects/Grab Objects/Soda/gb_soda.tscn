@@ -1,0 +1,34 @@
+[gd_scene format=3 uid="uid://ddw0ohpl3g4nd"]
+
+[ext_resource type="Script" uid="uid://dvyaqeofsrm7g" path="res://Assets/Scripts/Behaviours/gb_bass_guitar.gd" id="1_pwoek"]
+[ext_resource type="Texture2D" uid="uid://60lwst8wp7xb" path="res://Assets/GB/Art/GB Soda.png" id="2_87iss"]
+[ext_resource type="Script" uid="uid://dwmeeu0ppqiy3" path="res://Assets/Scripts/Behaviours/player_speed_boost_trigger.gd" id="3_mys6b"]
+[ext_resource type="Script" uid="uid://c6ppxwwiuykhq" path="res://Assets/Scripts/Behaviours/squash_&_stretch.gd" id="4_c7f78"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_mys6b"]
+size = Vector2(8, 12)
+
+[node name="GB Soda" type="RigidBody2D" unique_id=2080459984 node_paths=PackedStringArray("Use_Trigger", "Squash_And_Stretch")]
+script = ExtResource("1_pwoek")
+Use_Sound = "Soda"
+Use_Trigger = NodePath("PlayerSpeedBoostTrigger")
+Squash_And_Stretch = NodePath("SquashAndStretch")
+metadata/_custom_type_script = "uid://dvyaqeofsrm7g"
+
+[node name="GbSoda" type="Sprite2D" parent="." unique_id=1510112899]
+texture = ExtResource("2_87iss")
+offset = Vector2(0, -6)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=1359594373]
+position = Vector2(0, -6)
+shape = SubResource("RectangleShape2D_mys6b")
+
+[node name="PlayerSpeedBoostTrigger" type="Node" parent="." unique_id=1297058023]
+script = ExtResource("3_mys6b")
+boost = 2.0
+metadata/_custom_type_script = "uid://dwmeeu0ppqiy3"
+
+[node name="SquashAndStretch" type="Node" parent="." unique_id=247175486 node_paths=PackedStringArray("node")]
+script = ExtResource("4_c7f78")
+node = NodePath("../GbSoda")
+metadata/_custom_type_script = "uid://c6ppxwwiuykhq"

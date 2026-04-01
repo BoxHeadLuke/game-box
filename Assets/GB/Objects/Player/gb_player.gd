@@ -70,6 +70,9 @@ var sidekick_summon_left : bool
 var is_flipped : bool
 var prev_velocity : Vector2
 var attacking : bool = false
+var scale_timer : float
+var speed_boost : float = 1.0
+var speed_boost_timer :float
 
 # State Machine (Kinda)
 enum{
@@ -137,7 +140,7 @@ func _physics_process(delta):
 				running = false
 			
 			# oh my goodness
-			if input == 0 or (((velocity.x > Max_Speed or velocity.x < -Max_Speed) and not running) or ((velocity.x > Run_Speed or velocity.x < -Run_Speed) and running)):
+			if input == 0 or (((velocity.x > Max_Speed* speed_boost  or velocity.x < -Max_Speed* speed_boost ) and not running) or ((velocity.x > Run_Speed * speed_boost or velocity.x < -Run_Speed* speed_boost ) and running)):
 				velocity.x = lerpf(velocity.x, 0.0 , Friction * delta)
 				
 				
@@ -145,25 +148,25 @@ func _physics_process(delta):
 				
 				if running:
 					
-					velocity.x += input * Run_Acceleration * delta
+					velocity.x += input * Run_Acceleration * delta * speed_boost 
 					
-					if abs(abs(velocity.x) - abs(Run_Speed)) < Max_Speed_Snap:
+					if abs(abs(velocity.x) - abs(Run_Speed * speed_boost)) < Max_Speed_Snap:
 						
 						if velocity.x > 0:
-							velocity.x = Run_Speed
+							velocity.x = Run_Speed * speed_boost
 						else:
-							velocity.x = -Run_Speed
+							velocity.x = -Run_Speed * speed_boost
 					
 				else:
 					
-					velocity.x += input * Acceleration * delta
+					velocity.x += input * Acceleration * delta * speed_boost 
 					
 					if abs(abs(velocity.x) - abs(Max_Speed)) < Max_Speed_Snap:
 						
 						if velocity.x > 0:
-							velocity.x = Max_Speed
+							velocity.x = Max_Speed * speed_boost
 						else:
-							velocity.x = -Max_Speed
+							velocity.x = -Max_Speed* speed_boost
 						
 					
 				if ((velocity.x > 0 and input < 0) or (velocity.x < 0 and input > 0)) and is_on_floor():
@@ -300,6 +303,14 @@ func _physics_process(delta):
 			
 			
 			prev_velocity = velocity
+	
+	scale_timer -= delta
+	if scale_timer <= 0:
+		scale = Vector2(1,1)
+	
+	speed_boost_timer -= delta
+	if speed_boost_timer <= 0:
+		speed_boost = 1.0
 
 
 func _process(delta: float) -> void:
@@ -377,3 +388,12 @@ func start_flip():
 	Visual_Flip.scale.x = -1
 	Flip.scale.x = -1
 	is_flipped = true
+
+func scale_player(sc : Vector2 , time: float):
+	scale = sc
+	scale_timer = time
+
+
+func player_speed_boost(boost : float , time: float):
+	speed_boost = boost
+	speed_boost_timer = time

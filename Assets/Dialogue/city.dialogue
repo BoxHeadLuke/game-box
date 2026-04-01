@@ -1,4 +1,6 @@
 ~ fat_cat_1
+if "pills" in Globals.held_tags:
+	=> fat_cat_pills
 if "food" in Globals.held_tags:
 	Fat Cat: YUMMY FOOD!
 	Fat Cat: [b][shake rate=20 level=6]GIVE IT TO ME!!!
@@ -12,7 +14,41 @@ else:
 => END
 
 ~ fat_cat_talk
+if Globals.progress_trackers["fat_cat_complete"]:
+	if Globals.assign_instrument("fat_cat_instrument"):
+		Fat Cat: I wills go to band now.
+		=> END
+	Fat Cat: [i] I needs an instruments...
+	=> END
+	
+
+if Globals.progress_trackers["band_search"]:
+	if Globals.progress_trackers["fat_cat_fed"]:
+		Jacko: Hey cat, do you wanna join our band?
+		Fat Cat: Since I loves yous and yous feeds me...
+		Fat Cat: [b][shake rate=20 level=6] YES! OF COURSES I WILLS JOIN BAND!!!!
+		Fat Cat: [i] but I needs an instrument firsts...
+		do Globals.progress_trackers["fat_cat_complete"] = true
+		=> END
+	else:
+		if "food" in Globals.held_tags:
+			Jacko: Hey kitty kitty kitty, we brought you some food...
+			do Globals.gb_audio.play("Meow")
+			do Globals.gb_destroy_held()
+			Fat Cat: [b][shake rate=20 level=6]FINES! I WILLS JOIN YOURS BAND!
+			Fat Cat: [i]just gives me instrument firsts
+			do Globals.progress_trackers["fat_cat_complete"] = true
+			=> END
+			
+			
+		Jacko: Hey cat, do you wanna join our band?
+		Fat Cat: Since yous abandons me with no foods.
+		Fat Cat: [b][shake rate=20 level=6]I WILLS NEVER JOINS BAND!!!
+		Fat Cat: [i] unless yous gives me foods
+		=> END
 if not Globals.progress_trackers["fat_cat_passed"]:
+	if "pills" in Globals.held_tags:
+		=> fat_cat_pills
 	if "food" in Globals.held_tags:
 		do Globals.progress_trackers["fat_cat_passed"] = true
 		do Globals.progress_trackers["fat_cat_fed"] = true
@@ -39,11 +75,18 @@ Fat Cat: [i]sorry, me is very hungry.
 ~ fat_cat_feed
 Fat Cat: [i]Waits...
 Fat Cat: [b][shake rate=20 level=6]IS THATS FOODS?!?!?!
+do Globals.gb_audio.play("Meow")
 do Globals.gb_destroy_held()
 Fat Cat: [b][shake rate=20 level=6]YUMMY FOOD!!!!!
 Fat Cat: Thanks you small blob thing.
 Fat Cat: When you needs anythings, me will be happys to help!
 Fat Cat: You can go pasts now!
+=> END
+
+~ fat_cat_pills
+Fat Cat: [wave]woahhhhhhhs...
+Fat Cat: [wave]These foods makes me feels weirds
+Fat Cat: [b][shake rate=20 level=6]BUTS ME IS STILLS HUNGRY!!!!!
 => END
 
 ~ fat_cat_pre_band_happy
@@ -76,6 +119,54 @@ Fat Cat: [i]Whatevers, me don'ts even wants food anyway...
 
 
 ~ not_alien_girl
+
+if Globals.progress_trackers["alien_girl_complete"]:
+	if Globals.assign_instrument("alien_girl_instrument"):
+		Totally Normal Girl: Thank you.
+		=> END
+	Totally Normal Girl: I request an instrument.
+	=> END
+
+if Globals.progress_trackers["alien_girl_quest"]:
+	if Globals.held_tags == []:
+		Totally Normal Girl: Are you giving me nothing at all?
+		Totally Normal Girl: How human... but as a selfish lifeform, I will not accept it.
+		=> END
+	if "violent" in Globals.held_tags:
+		Totally Normal Girl: Ah yes, violence. Us humans are always tearing each other apart.
+		do Globals.gb_destroy_held()
+		Totally Normal Girl: I accept your offer, I will join your band if you can provide an instrument.
+		Totally Normal Girl: Moving the goalposts of a deal, how human of me.
+		do Globals.progress_trackers["alien_girl_complete"] = true
+		=> END
+		
+	if "addiction" in Globals.held_tags:
+		Totally Normal Girl: Ah yes, addiction. Us humans love to rely on our vices.
+		do Globals.gb_destroy_held()
+		Totally Normal Girl: I accept your offer, I will join your band if you can provide an instrument.
+		Totally Normal Girl: Moving the goalposts of a deal, how human of me.
+		do Globals.progress_trackers["alien_girl_complete"] = true
+		=> END
+	if "unhealthy" in Globals.held_tags:
+		Totally Normal Girl: Unhealthy sustenance. Us humans love to consume things with no intrensic value.
+		do Globals.gb_destroy_held()
+		Totally Normal Girl: I accept your offer, I will join your band if you can provide an instrument.
+		Totally Normal Girl: Moving the goalposts of a deal, how human of me.
+		do Globals.progress_trackers["alien_girl_complete"] = true
+		=> END
+	Totally Normal Girl: This object is not human enough. As a human, would know.
+	do Globals.print(Globals.held_tags)
+	=> END
+
+if Globals.progress_trackers["band_search"]:
+	Jacko: Hey...
+	Totally Normal Girl: Hello fellow human, how are you doing today? I love small talk.
+	Jacko: Uh ok, do you wanna join our band?
+	Totally Normal Girl: As a human I put my own needs above others, so I will request compensation for my efforts.
+	Jacko: Ok??? What do you want?
+	Totally Normal Girl: Something human, very human, something that encapsulates human nature.
+	do Globals.progress_trackers["alien_girl_quest"] = true
+	=> END
 Totally Normal Girl: You're looking for aliens?
 Totally Normal Girl: Sorry, I haven't seen any.
 => END
@@ -85,6 +176,24 @@ World's most boring tree ->
 => END
 
 ~ froggo_talk
+if Globals.progress_trackers["ricky_rats_instrument"] != "None":
+	if Globals.progress_trackers["cowboy_joe_instrument"] != "None":
+		if Globals.progress_trackers["alien_girl_instrument"] != "None":
+			if Globals.progress_trackers["fat_cat_instrument"] != "None":
+				Froggo: This is a gnarly band you got here dudez.
+				Froggo: KOOL KATS, ARE YOU READY TO ROCK?!?!?!?!?!
+				Froggo: One, two, three...
+				do Globals.progress_trackers["concert_active"] = true
+				do Globals.progress_trackers["band_complete"] = true
+				do Globals.gb_audio.play("Band Track")
+				do Globals.gb_audio.fade_out_music(20)
+				do Globals.progress_trackers["concert_active"] = false
+				Jacko: Wow, that was not the type of music I was expecting.
+				Jacko: Let's go check on the portal.
+				do Globals.gb_root.switch_level("uid://bon2idtawyck8")
+				=> END
+				
+				
 if Globals.progress_trackers["band_search"]:
 	Froggo: Good luck kool katz!
 	=> END
@@ -116,6 +225,20 @@ Jacko: Whatever, let's just keep going, the aliens shouldn't be too far away.
 
 ~ ricky_rats
 
+if Globals.progress_trackers["ricky_rats_complete"]:
+	if Globals.assign_instrument("ricky_rats_instrument"):
+		Ricky Rats: Thanks kid, I'll head down now.
+		=> END
+	Ricky Rats: Just hand me an instrument and I'll get to work kid.
+	=> END
+
+if Globals.progress_trackers["sewer_flushed"]:
+	Ricky Rats: Thanks for flushing out the "pests" kids.
+	Jacko: ???
+	Ricky Rats: I'll join your band now, just hand me an instrument.
+	do Globals.progress_trackers["ricky_rats_complete"] = true
+	=> END
+
 if Globals.progress_trackers["sewer_open"]:
 	Ricky Rats: Good luck kids.
 	=> END
@@ -126,13 +249,16 @@ if Globals.progress_trackers["band_search"]:
 	Jacko: Do you mean the sewers?
 	Ricky Rats: Whatever you call 'em, they've been overrun with pests ever since the water stopped flowing.
 	Jacko: Maybe we could help to turn it back on!
-	Ricky Rats: Well, I'll let ya give it a shot. I ain't got nothin' to lose.
+	Ricky Rats: Well, I'll let ya give it a shot, good luck kids.
 	
 	do Globals.progress_trackers["sewer_open"] = true
 	=> END
 Ricky Rats: Scram kid, these tunnels are overrun with pests.
 => END
 
+~ ricky_rats_sewers
+Ricky Rats: It was me, I was the pests all along.
+=> END
 
 ~ alien_encounter_1
 Jacko: [shake rate=20 level=6]LOOK, IT'S AN ALIEN! STOP THEM!!!
@@ -145,4 +271,55 @@ Jacko: If we can open it back up then we could get aboard their ship.
 Jacko: It would take a lot of energy though. Maybe thermal, or chemical, or kinetic...
 Jacko: or...sound...
 Jacko: We're gonna have to join that guy's band, aren't we?
+=> END
+
+
+~ cowboy_joe
+if Globals.progress_trackers["cowboy_joe_complete"]:
+	if Globals.assign_instrument("cowboy_joe_instrument"):
+		Cowboy Joe: Thanks stranger, I'll head down for rehersals.
+		=> END
+	Cowboy Joe: Just pass me on over an instrument, and I'd be happy to join your band.
+	=> END
+if Globals.progress_trackers["band_search"]:
+	if "pet_rock" in Globals.held_tags:
+		Cowboy Joe: Rocky, you sneaky son of a gun. You're mighty kind strangers.
+		do Globals.gb_destroy_held()
+		Cowboy Joe: I'd be happy to join your band, just pass me over an instrument.
+		do Globals.progress_trackers["cowboy_joe_complete"] = true
+		=> END
+	Jacko: Hey cowboy guy, do you wanna join our band?
+	Cowboy Joe: Sorry partner, but I'm searchin' for my trusty steed. He's gone and ran away from me now.
+	Jacko: Maybe we can help, what does he look like?
+	Cowboy Joe: He's the sturdiest steed in town with an ashy grey mane, and he responds to the name Rocky.
+	Jacko: Noted!
+	=> END
+Cowboy Joe: Howdy there strangers!
+=> END
+
+
+
+~ sewer_flush
+Jacko: Alright, lets flush this place and get out of here.
+do Globals.progress_trackers["sewer_open"] = false
+do Globals.progress_trackers["sewer_flushed"] = true
+do Globals.gb_door = 5
+do Globals.gb_root.switch_level("uid://cu1x55k6ik758")
+=> END
+
+
+~ fat_cat_band
+Fat Cat: I accidentally eats my instrument, but don'ts worry cuz I cans plays it withs my stomach.
+=> END
+
+~ ricky_rats_band
+Ricky Rats: This is a nice gig ya got goin' here.
+
+=> END
+
+~ alien_girl_band
+Totally Normal Girl: Music is very human, I enjoy this.
+=> END
+~ cowboy_joe_band
+Cowboy Joe: There's nothin' like some good ol' fashioned live music.
 => END

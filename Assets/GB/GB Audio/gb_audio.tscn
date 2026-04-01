@@ -5,6 +5,7 @@
 [ext_resource type="AudioStream" uid="uid://cvc87ug5gor3x" path="res://Assets/Audio/Music/level_one_loop.wav" id="2_eos0e"]
 [ext_resource type="AudioStream" uid="uid://cfe75t8yx6a8f" path="res://addons/kenney impact sounds/impact_wood_heavy_001.ogg" id="2_ideyi"]
 [ext_resource type="AudioStream" uid="uid://ctmp3s7ei5r3h" path="res://Assets/Audio/SFX/tape_slow_REPLACE.wav" id="3_08eeq"]
+[ext_resource type="AudioStream" uid="uid://ldbxe5v70y75" path="res://Assets/Audio/Music/level_two_loop.wav" id="3_gicsd"]
 [ext_resource type="AudioStream" uid="uid://6wpwtv0s2ntu" path="res://addons/kenney impact sounds/impact_wood_heavy_002.ogg" id="3_wmxqg"]
 [ext_resource type="AudioStream" uid="uid://b08intt1hy0xm" path="res://addons/kenney impact sounds/impact_wood_heavy_003.ogg" id="4_mqsvv"]
 [ext_resource type="AudioStream" uid="uid://4vs264kdum2e" path="res://addons/kenney impact sounds/impact_wood_heavy_004.ogg" id="5_n87na"]
@@ -40,6 +41,19 @@
 [ext_resource type="AudioStream" uid="uid://coau71yca6hd8" path="res://Assets/Audio/SFX/meow_1.ogg" id="38_7dclt"]
 [ext_resource type="AudioStream" uid="uid://bi8r0nd08d5ij" path="res://Assets/Audio/SFX/meow_2.ogg" id="39_ugmt2"]
 [ext_resource type="AudioStream" uid="uid://c7a2rfafkfpm1" path="res://Assets/Audio/SFX/meow_3.ogg" id="40_h4jiu"]
+[ext_resource type="AudioStream" uid="uid://br8xuy5jt0o0m" path="res://Assets/Audio/SFX/drum_1.mp3" id="41_h4jiu"]
+[ext_resource type="AudioStream" uid="uid://dw8kmr0v08sq2" path="res://Assets/Audio/SFX/drum_2.mp3" id="42_ikhcj"]
+[ext_resource type="AudioStream" uid="uid://c3x2wfpkhl7sj" path="res://Assets/Audio/SFX/drum_3.ogg" id="43_ikhcj"]
+[ext_resource type="AudioStream" uid="uid://bhw378flj7217" path="res://Assets/Audio/SFX/chomp_1.mp3" id="44_mvmch"]
+[ext_resource type="AudioStream" uid="uid://c1nor8bfsgbvo" path="res://Assets/Audio/SFX/piano_1.ogg" id="44_tvrwq"]
+[ext_resource type="AudioStream" uid="uid://b1mp0wsoa48ij" path="res://Assets/Audio/SFX/soda_1.mp3" id="45_0lflq"]
+[ext_resource type="AudioStream" uid="uid://c5b3cb6lmvcva" path="res://Assets/Audio/SFX/piano_2.ogg" id="45_gicsd"]
+[ext_resource type="AudioStream" uid="uid://capy0rr80r5vq" path="res://Assets/Audio/SFX/piano_3.ogg" id="46_gyk0l"]
+[ext_resource type="AudioStream" uid="uid://b85ba0c5rt3wa" path="res://Assets/Audio/Music/band_track.wav" id="50_yvu53"]
+[ext_resource type="AudioStream" uid="uid://42rjqifkjdbt" path="res://Assets/Audio/Music/bass_track.wav" id="51_baene"]
+[ext_resource type="AudioStream" uid="uid://djxeyd03fas0n" path="res://Assets/Audio/Music/drum_track.wav" id="52_qbqr6"]
+[ext_resource type="AudioStream" uid="uid://b0w5udhi2pk48" path="res://Assets/Audio/Music/guitar_track.wav" id="53_o5so0"]
+[ext_resource type="AudioStream" uid="uid://cu0nty3jre4s1" path="res://Assets/Audio/Music/piano_track.wav" id="54_baene"]
 
 [node name="GB Audio" type="Node3D" unique_id=611054415]
 process_mode = 3
@@ -55,6 +69,19 @@ bus = &"GameBox Music"
 
 [node name="AudioStreamPlayer3D" type="AudioStreamPlayer3D" parent="Level 1 Music APT" unique_id=2025908253]
 stream = ExtResource("2_eos0e")
+panning_strength = 3.0
+bus = &"Apartment Music"
+
+[node name="Level 2 Music GB" type="Node3D" parent="." unique_id=266837630]
+
+[node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="Level 2 Music GB" unique_id=1047613470]
+stream = ExtResource("3_gicsd")
+bus = &"GameBox Music"
+
+[node name="Level 2 Music APT" type="Node3D" parent="." unique_id=2022016534]
+
+[node name="AudioStreamPlayer3D" type="AudioStreamPlayer3D" parent="Level 2 Music APT" unique_id=1697020774]
+stream = ExtResource("3_gicsd")
 panning_strength = 3.0
 bus = &"Apartment Music"
 
@@ -215,3 +242,73 @@ bus = &"GameBox SFX"
 [node name="Audio 3" type="AudioStreamPlayer" parent="Meow" unique_id=1321560847]
 stream = ExtResource("40_h4jiu")
 bus = &"GameBox SFX"
+
+[node name="Drum" type="Node3D" parent="." unique_id=706848630]
+
+[node name="Audio 1" type="AudioStreamPlayer" parent="Drum" unique_id=1429449528]
+stream = ExtResource("41_h4jiu")
+bus = &"GameBox SFX"
+
+[node name="Audio 2" type="AudioStreamPlayer" parent="Drum" unique_id=606334435]
+stream = ExtResource("42_ikhcj")
+bus = &"GameBox SFX"
+
+[node name="Audio 3" type="AudioStreamPlayer" parent="Drum" unique_id=2047087630]
+stream = ExtResource("43_ikhcj")
+bus = &"GameBox SFX"
+
+[node name="Piano" type="Node3D" parent="." unique_id=118344337]
+
+[node name="Audio 1" type="AudioStreamPlayer" parent="Piano" unique_id=1946010540]
+stream = ExtResource("44_tvrwq")
+bus = &"GameBox SFX"
+
+[node name="Audio 2" type="AudioStreamPlayer" parent="Piano" unique_id=1153909423]
+stream = ExtResource("45_gicsd")
+bus = &"GameBox SFX"
+
+[node name="Audio 3" type="AudioStreamPlayer" parent="Piano" unique_id=1690665467]
+stream = ExtResource("46_gyk0l")
+bus = &"GameBox SFX"
+
+[node name="Chomp" type="Node3D" parent="." unique_id=806903757]
+
+[node name="Audio 1" type="AudioStreamPlayer" parent="Chomp" unique_id=1344872263]
+stream = ExtResource("44_mvmch")
+bus = &"GameBox SFX"
+
+[node name="Soda" type="Node3D" parent="." unique_id=1876783503]
+
+[node name="Audio 1" type="AudioStreamPlayer" parent="Soda" unique_id=1195373531]
+stream = ExtResource("45_0lflq")
+bus = &"GameBox SFX"
+
+[node name="Band Track" type="Node3D" parent="." unique_id=334848062]
+
+[node name="Audio 1" type="AudioStreamPlayer" parent="Band Track" unique_id=124076898]
+stream = ExtResource("50_yvu53")
+bus = &"GameBox Music"
+
+[node name="Bass Track" type="Node3D" parent="." unique_id=978681037]
+
+[node name="Audio 1" type="AudioStreamPlayer" parent="Bass Track" unique_id=1880179219]
+stream = ExtResource("51_baene")
+bus = &"GameBox Music"
+
+[node name="Drum Track" type="Node3D" parent="." unique_id=1753208970]
+
+[node name="Audio 1" type="AudioStreamPlayer" parent="Drum Track" unique_id=245916214]
+stream = ExtResource("52_qbqr6")
+bus = &"GameBox Music"
+
+[node name="Guitar Track" type="Node3D" parent="." unique_id=1144786452]
+
+[node name="Audio 1" type="AudioStreamPlayer" parent="Guitar Track" unique_id=776305835]
+stream = ExtResource("53_o5so0")
+bus = &"GameBox Music"
+
+[node name="Piano Track" type="Node3D" parent="." unique_id=1072891594]
+
+[node name="Audio 1" type="AudioStreamPlayer" parent="Piano Track" unique_id=1913425831]
+stream = ExtResource("54_baene")
+bus = &"GameBox Music"

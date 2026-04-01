@@ -284,7 +284,7 @@ _data = {
 
 [node name="GameBox" type="Node2D" unique_id=1282922401 node_paths=PackedStringArray("HUD", "Level_Parent", "Balloon_Parent")]
 script = ExtResource("1_rbs5k")
-start_level = "uid://cu1x55k6ik758"
+start_level = "uid://c0y2vg7f5lkph"
 HUD = NodePath("GB HUD")
 Level_Parent = NodePath("Level")
 Balloon_Parent = NodePath("Balloon")

@@ -9,7 +9,7 @@
 radius = 5.0
 height = 28.0
 
-[node name="GB Bass Guitar" type="RigidBody2D" unique_id=1802441780 node_paths=PackedStringArray("Use_Trigger", "Squash_And_Stretch")]
+[node name="GB Bass Guitar" type="RigidBody2D" unique_id=1802441780 node_paths=PackedStringArray("Use_Trigger", "Squash_And_Stretch") groups=["bass", "musical"]]
 script = ExtResource("1_5008n")
 Impact_Sound = "Bass Guitar Impact"
 Use_Trigger = NodePath("PlayAudioTrigger")

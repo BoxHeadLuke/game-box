@@ -1,0 +1,33 @@
+[gd_scene format=3 uid="uid://bb61vpy6yrm8e"]
+
+[ext_resource type="Script" uid="uid://dvyaqeofsrm7g" path="res://Assets/Scripts/Behaviours/gb_bass_guitar.gd" id="1_87hgl"]
+[ext_resource type="Texture2D" uid="uid://boaw4ohexng5j" path="res://Assets/GB/Art/Piano.png" id="2_thp72"]
+[ext_resource type="Script" uid="uid://c6ppxwwiuykhq" path="res://Assets/Scripts/Behaviours/squash_&_stretch.gd" id="3_fo5tq"]
+[ext_resource type="Script" uid="uid://clmoravb7y2ls" path="res://Assets/Scripts/Behaviours/play_sound_trigger.gd" id="4_tpncj"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_fo5tq"]
+size = Vector2(30, 11)
+
+[node name="GB Piano" type="RigidBody2D" unique_id=388593100 node_paths=PackedStringArray("Use_Trigger", "Squash_And_Stretch") groups=["musical", "piano"]]
+script = ExtResource("1_87hgl")
+Use_Trigger = NodePath("PlayAudioTrigger")
+Squash_And_Stretch = NodePath("SquashAndStretch")
+metadata/_custom_type_script = "uid://dvyaqeofsrm7g"
+
+[node name="Piano" type="Sprite2D" parent="." unique_id=283995241]
+texture = ExtResource("2_thp72")
+offset = Vector2(0, -5)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=1884048200]
+position = Vector2(0, -5.5)
+shape = SubResource("RectangleShape2D_fo5tq")
+
+[node name="SquashAndStretch" type="Node" parent="." unique_id=690473689 node_paths=PackedStringArray("node")]
+script = ExtResource("3_fo5tq")
+node = NodePath("../Piano")
+metadata/_custom_type_script = "uid://c6ppxwwiuykhq"
+
+[node name="PlayAudioTrigger" type="Node" parent="." unique_id=1646353428]
+script = ExtResource("4_tpncj")
+GB_Audio_Name = "Piano"
+metadata/_custom_type_script = "uid://clmoravb7y2ls"

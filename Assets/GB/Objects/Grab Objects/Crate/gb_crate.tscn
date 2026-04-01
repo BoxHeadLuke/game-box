@@ -1,0 +1,19 @@
+[gd_scene format=3 uid="uid://b4mk48q7kwwvu"]
+
+[ext_resource type="Script" uid="uid://dvyaqeofsrm7g" path="res://Assets/Scripts/Behaviours/gb_bass_guitar.gd" id="1_j3hoi"]
+[ext_resource type="Texture2D" uid="uid://buu8eklweo3cq" path="res://Assets/GB/Art/GB Crate.png" id="2_675lp"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_hrm54"]
+size = Vector2(16, 16)
+
+[node name="GB Crate" type="RigidBody2D" unique_id=925983687]
+script = ExtResource("1_j3hoi")
+metadata/_custom_type_script = "uid://dvyaqeofsrm7g"
+
+[node name="GbCrate" type="Sprite2D" parent="." unique_id=1954549550]
+position = Vector2(0, -8)
+texture = ExtResource("2_675lp")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=1694534620]
+position = Vector2(0, -8)
+shape = SubResource("RectangleShape2D_hrm54")

@@ -1,0 +1,36 @@
+[gd_scene format=3 uid="uid://dvk8rmwqaf1a6"]
+
+[ext_resource type="Script" uid="uid://dvyaqeofsrm7g" path="res://Assets/Scripts/Behaviours/gb_bass_guitar.gd" id="1_g6bt4"]
+[ext_resource type="Texture2D" uid="uid://5haatktrk0p8" path="res://Assets/GB/Art/GB Drums.png" id="2_1pmqc"]
+[ext_resource type="Script" uid="uid://clmoravb7y2ls" path="res://Assets/Scripts/Behaviours/play_sound_trigger.gd" id="3_mjtsw"]
+[ext_resource type="Script" uid="uid://c6ppxwwiuykhq" path="res://Assets/Scripts/Behaviours/squash_&_stretch.gd" id="4_db7if"]
+
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_mjtsw"]
+radius = 7.0
+height = 20.0
+
+[node name="GB Drum" type="RigidBody2D" unique_id=551106831 node_paths=PackedStringArray("Use_Trigger", "Squash_And_Stretch") groups=["drum", "musical"]]
+script = ExtResource("1_g6bt4")
+Impact_Sound = "Drum"
+Use_Trigger = NodePath("PlayAudioTrigger")
+Squash_And_Stretch = NodePath("SquashAndStretch")
+metadata/_custom_type_script = "uid://dvyaqeofsrm7g"
+
+[node name="GbDrums" type="Sprite2D" parent="." unique_id=1464693811]
+texture = ExtResource("2_1pmqc")
+offset = Vector2(0, -8)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=1307305150 groups=["drum", "musical"]]
+position = Vector2(0, -7)
+rotation = 1.5707964
+shape = SubResource("CapsuleShape2D_mjtsw")
+
+[node name="PlayAudioTrigger" type="Node" parent="." unique_id=676861296]
+script = ExtResource("3_mjtsw")
+GB_Audio_Name = "Drum"
+metadata/_custom_type_script = "uid://clmoravb7y2ls"
+
+[node name="SquashAndStretch" type="Node" parent="." unique_id=1329887995 node_paths=PackedStringArray("node")]
+script = ExtResource("4_db7if")
+node = NodePath("../GbDrums")
+metadata/_custom_type_script = "uid://c6ppxwwiuykhq"

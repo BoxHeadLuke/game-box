@@ -3,6 +3,7 @@ extends RigidBody2D
 
 @export var Use_Default_Material : bool = true
 @export var Impact_Sound : String = "Wood Impact"
+@export var Use_Sound : String
 @export var Use_Trigger : Trigger
 @export var Squash_And_Stretch : SquashAndStretch
 
@@ -14,6 +15,7 @@ var prev_velocity : Vector2
 
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
+	
 	set_collision_layer_value(1, false)
 	set_collision_layer_value(2, true)
 	set_collision_mask_value(1, true)
@@ -41,6 +43,9 @@ func collision(body):
 		Globals.gb_audio.play(Impact_Sound)
 
 func use():
+	if Use_Sound != "":
+		Globals.gb_audio.play(Use_Sound)
+	
 	if Use_Trigger:
 		Use_Trigger.start()
 		if Squash_And_Stretch:
